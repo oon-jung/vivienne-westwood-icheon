@@ -350,8 +350,8 @@ a:hover {
 }
 #footer .footer-brand { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding-top: 6px; }
 #footer .footer-brand .brand-orb { width: 42px; height: 42px; margin: 0 auto 10px; }
-/* 푸터 워드마크 로고 (wordmark.svg) */
-#footer .footer-brand .brand-logo { height: 118px; width: auto; display: block; margin: 0 auto; }
+/* 푸터 풀 로고 (오브+워드마크, logo-color.png) — 피그마 6:8038 푸터 와이어프레임 기준 */
+#footer .footer-brand .brand-logo { height: 132px; width: auto; display: block; margin: 0 auto; }
 #footer .footer-brand .brand-name { display: flex; flex-direction: column; line-height: 1.1; }
 #footer .footer-brand .brand-name .en {
   font-family: var(--font-display);
@@ -455,7 +455,7 @@ a:hover {
   #footer .footer-top { padding: 72px 0 0; }
   #footer .footer-top .row { grid-template-columns: 1fr; gap: 28px; }
   #footer .footer-brand { margin-bottom: 12px; }
-  #footer .footer-brand .brand-logo { height: 92px; }
+  #footer .footer-brand .brand-logo { height: 108px; }
   #footer .footer-member { margin-bottom: 0; padding-top: 0; }
   #footer .footer-member ul li { padding: 16px 0; }
   #footer .footer-tartan { height: 220px; }

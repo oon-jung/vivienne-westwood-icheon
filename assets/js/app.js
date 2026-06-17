@@ -6,6 +6,140 @@
 (function () {
   "use strict";
 
+  var HEADER_HTML = [
+    '<div class="container d-flex justify-content-between align-items-center">',
+    '  <div class="logo">',
+    '    <a href="index.html" class="brand">',
+    '      <img src="assets/img/brand/logo.svg" alt="Vivienne Westwood × 이천쌀" class="brand-logo">',
+    '    </a>',
+    '  </div>',
+    '  <nav id="navbar" class="navbar">',
+    '    <ul>',
+    '      <li class="nav-home"><a href="index.html">Home</a></li>',
+    '      <li class="dropdown nav-about"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>',
+    '        <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>',
+    '      <li class="dropdown nav-products"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>',
+    '        <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>',
+    '      <li class="dropdown nav-icheon"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>',
+    '        <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>',
+    '      <li class="dropdown nav-archive"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>',
+    '        <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>',
+    '      <li class="nav-stores"><a href="stores.html">Stores</a></li>',
+    '      <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>',
+    '    </ul>',
+    '    <i class="bi bi-list mobile-nav-toggle"></i>',
+    '  </nav>',
+    '</div>'
+  ].join("\n");
+
+  var FOOTER_HTML = [
+    '<div class="footer-top">',
+    '  <div class="container">',
+    '    <div class="row gy-4">',
+    '      <div class="col-lg-5 footer-brand">',
+    '        <a href="index.html" class="brand">',
+    '          <img src="assets/img/brand/logo-color.png" alt="Vivienne Westwood × 이천쌀" class="brand-logo">',
+    '        </a>',
+    '      </div>',
+    '      <div class="col-lg-3 col-md-6 footer-member">',
+    '        <h4>신하현 <small>Shin Hahyun</small></h4>',
+    '        <p class="role">Design · Front-end</p>',
+    '        <ul>',
+    '          <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>',
+    '          <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>',
+    '        </ul>',
+    '      </div>',
+    '      <div class="col-lg-3 col-md-6 footer-member">',
+    '        <h4>김운정 <small>Kim Woonjung</small></h4>',
+    '        <p class="role">Design · Front-end</p>',
+    '        <ul>',
+    '          <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>',
+    '          <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>',
+    '        </ul>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+    '</div>',
+    '<div class="footer-legal">',
+    '  <div class="container">',
+    '    <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>',
+    '    <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>',
+    '  </div>',
+    '</div>',
+    '<div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>'
+  ].join("\n");
+
+  function getPageKey() {
+    var file = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
+    return file || "index";
+  }
+
+  function setNavActive(pageKey) {
+    var header = document.getElementById("header");
+    if (!header) return;
+
+    header.classList.toggle("header-transparent", pageKey === "index" || pageKey === "");
+
+    var nav = header.querySelector("#navbar");
+    if (!nav) return;
+
+    nav.querySelectorAll("a").forEach(function (link) { link.classList.remove("active"); });
+
+    var map = {
+      "index": ".nav-home > a",
+      "about": ".nav-about > a",
+      "symbol": ".nav-about > a",
+      "products": ".nav-products > a",
+      "product-detail": ".nav-products > a",
+      "icheon": ".nav-icheon > a",
+      "icheon-discover": ".nav-icheon > a",
+      "icheon-festival": ".nav-icheon > a",
+      "archive": ".nav-archive > a",
+      "archive-gallery": ".nav-archive > a",
+      "article": ".nav-archive > a",
+      "stores": ".nav-stores > a"
+    };
+    var selector = map[pageKey];
+    if (selector) {
+      var active = nav.querySelector(selector);
+      if (active) active.classList.add("active");
+    }
+
+    var subMap = {
+      "symbol": 'a[href="symbol.html"]',
+      "products": 'a[href="products.html"]',
+      "product-detail": 'a[href="products.html"]',
+      "icheon": 'a[href="icheon.html"]',
+      "icheon-discover": 'a[href="icheon-discover.html"]',
+      "icheon-festival": 'a[href="icheon-festival.html"]',
+      "archive": 'a[href="archive.html"]',
+      "archive-gallery": 'a[href="archive-gallery.html"]',
+      "article": 'a[href="archive.html"]'
+    };
+    var sub = subMap[pageKey];
+    if (sub) {
+      var subLink = nav.querySelector(sub);
+      if (subLink) subLink.classList.add("active");
+    }
+  }
+
+  function renderLayout() {
+    var pageKey = getPageKey();
+    var header = document.getElementById("header");
+    var footer = document.getElementById("footer");
+
+    if (header && !header.dataset.layoutInjected) {
+      header.innerHTML = HEADER_HTML;
+      header.dataset.layoutInjected = "1";
+    }
+    if (footer && !footer.dataset.layoutInjected) {
+      footer.innerHTML = FOOTER_HTML;
+      footer.dataset.layoutInjected = "1";
+    }
+
+    setNavActive(pageKey);
+  }
+
   /* ----------------------------------------------------------------------
    * Home — Feature 탭 전환
    * 우측 리스트 항목 클릭 → 좌측 스테이지(번호·타이틀·서브·바로가기) 교체
@@ -150,6 +284,7 @@
 
   // 로그인 상태에 따라 네비 우측(가입하기/로그인 ↔ 마이페이지/로그아웃) 전환
   function updateAuthNav() {
+    var pageKey = getPageKey();
     var auth = getAuth();
     document.querySelectorAll(".nav-auth").forEach(function (box) {
       var signup = box.querySelector(".btn-signup");
@@ -162,6 +297,9 @@
         signup.textContent = "가입하기"; signup.setAttribute("href", "signup.html");
         login.textContent = "로그인"; login.setAttribute("href", "login.html"); delete login.dataset.logout;
       }
+
+      signup.classList.toggle("active", !auth && pageKey === "signup");
+      login.classList.toggle("active", !auth && pageKey === "login");
     });
     document.querySelectorAll("[data-logout]").forEach(function (b) {
       b.addEventListener("click", function (e) { e.preventDefault(); setAuth(null); location.href = "index.html"; });
@@ -200,6 +338,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    renderLayout();
     initFeatureTabs();
     initSymbolRail();
     initTabs();
