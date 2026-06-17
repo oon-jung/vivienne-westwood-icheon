@@ -19,7 +19,7 @@
   <style>
     .ab-intro { text-align: center; padding: 130px 0 46px; }
     .ab-video { padding: 0 0 30px; }
-    .ab-video__frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 56px rgba(16,16,16,.18); }
+    .ab-video__frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 28px rgba(16,16,16,.10); }
     .ab-video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .ab-intro .eyebrow { color: var(--grey-600); }
     .ab-intro h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.25; margin: 0 0 20px; color: var(--grey-900); }
@@ -32,7 +32,7 @@
 
     .tl-scene { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: center; margin-bottom: 88px; }
     .tl-scene:last-child { margin-bottom: 0; }
-    .tl-scene__media { border-radius: 4px; overflow: hidden; box-shadow: 0 18px 40px rgba(16,16,16,.12); }
+    .tl-scene__media { border-radius: 4px; overflow: hidden; box-shadow: 0 9px 20px rgba(16,16,16,.07); }
     .tl-scene__media img { display: block; width: 100%; height: auto; }
     .tl-scene--rev .tl-scene__media { order: 2; }
     .tl-scene--rev .tl-scene__body { order: 1; text-align: right; }
@@ -68,8 +68,7 @@
     <div class="container d-flex justify-content-between align-items-center">
       <div class="logo">
         <a href="index.html" class="brand">
-          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
-          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+          <img src="assets/img/brand/logo.svg" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
         </a>
       </div>
       <nav id="navbar" class="navbar">
@@ -125,28 +124,28 @@
           <div class="tl-scene__media"><img src="assets/img/about/scene-01.png" alt="비비안 행성"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">01</span><p class="tl-scene__cap">Orb Planet</p>
             <h3 class="tl-scene__title">비비안 행성</h3>
-            <p class="tl-scene__text">우주 어딘가, 오브가 빛나는 행성이 있었습니다. 모든 이야기가 시작되는 곳.</p></div>
+            <p class="tl-scene__text">비비안의 세계가 시작되는 별. 오브의 빛이 처음 켜지고, 콜라보의 여정이 출발합니다.</p></div>
         </div>
 
         <div class="tl-scene tl-scene--rev" data-aos="fade-up">
-          <div class="tl-scene__media"><img src="assets/img/about/scene-02.png" alt="오리보리 오브"></div>
-          <div class="tl-scene__body"><span class="tl-scene__no">02</span><p class="tl-scene__cap">Ori-Bori Orb</p>
+          <div class="tl-scene__media"><img src="assets/img/about/scene-02.png" alt="오브들의 행성"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">02</span><p class="tl-scene__cap">Orb Village</p>
             <h3 class="tl-scene__title">오브들의 행성</h3>
-            <p class="tl-scene__text">행성의 주민, 오브들이 모여 사는 풍경. 호기심 많은 한 오브가 새로운 세계를 꿈꿉니다.</p></div>
+            <p class="tl-scene__text">오브들이 함께 살아가는 장면. 낯선 우주 속에서도 서로의 리듬을 맞추며 세계를 이룹니다.</p></div>
         </div>
 
         <div class="tl-scene" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-03.png" alt="우주 여행"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">03</span><p class="tl-scene__cap">Space Ride</p>
             <h3 class="tl-scene__title">우주를 가르다</h3>
-            <p class="tl-scene__text">오브를 타고 별과 별 사이를 가로질러, 미지의 행성을 향해 날아갑니다.</p></div>
+            <p class="tl-scene__text">별 사이를 가로지르는 비행. 오브는 더 넓은 세계를 향해 조용히 속도를 높입니다.</p></div>
         </div>
 
         <div class="tl-scene tl-scene--rev" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-04.png" alt="이천 불시착"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">04</span><p class="tl-scene__cap">Arrival · Icheon</p>
             <h3 class="tl-scene__title">이천에 불시착</h3>
-            <p class="tl-scene__text">긴 여정 끝에 도착한 곳은 한국 이천의 들녘. 낯설지만 따뜻한 땅이었습니다.</p></div>
+            <p class="tl-scene__text">여정의 끝에서 만난 이천의 풍경. 따뜻한 땅과 정직한 농업의 결이 첫 인상을 남깁니다.</p></div>
         </div>
 
         <div class="tl-scene" data-aos="fade-up">
@@ -157,38 +156,43 @@
         </div>
 
         <div class="tl-scene tl-scene--rev" data-aos="fade-up">
-          <div class="tl-scene__media"><img src="assets/img/about/scene-06.png" alt="농부와 쌀알"></div>
-          <div class="tl-scene__body"><span class="tl-scene__no">06</span><p class="tl-scene__cap">Farmer & Grain</p>
+          <div class="tl-scene__media">
+            <img src="assets/img/about/scene-06.png" alt="농부와 쌀알">
+          </div>
+          <div class="tl-scene__body">
+            <span class="tl-scene__no">06</span>
+            <p class="tl-scene__cap">Farmer & Grain</p>
             <h3 class="tl-scene__title">임금님표 쌀을 만나다</h3>
-            <p class="tl-scene__text">농부의 손에서 정성껏 빚어진 임금님표 쌀 한 알. 그 빛깔이 오브를 닮았습니다.</p></div>
+            <p class="tl-scene__text">농부의 손끝에서 다듬어진 한 알. 시간과 정성이 쌓여 특별한 존재가 됩니다.</p>
+          </div>
         </div>
 
         <div class="tl-scene" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-07.png" alt="쌀이 오브가 되다"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">07</span><p class="tl-scene__cap">Rice in Space</p>
             <h3 class="tl-scene__title">쌀, 오브가 되다</h3>
-            <p class="tl-scene__text">한 알의 쌀이 왕관과 토성의 고리를 두르고, 비비안의 오브로 다시 태어납니다.</p></div>
+            <p class="tl-scene__text">한 알의 쌀이 오브의 형태로 다시 태어납니다. 전통은 여기서 새로운 상징을 얻습니다.</p></div>
         </div>
 
         <div class="tl-scene tl-scene--rev" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-08.png" alt="600년의 시간"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">08</span><p class="tl-scene__cap">600 Years</p>
             <h3 class="tl-scene__title">600년의 시간</h3>
-            <p class="tl-scene__text">고려 성종 때부터 임금에게 진상되어 온 600년 전통. 시간이 빚어낸 한 그릇입니다.</p></div>
+            <p class="tl-scene__text">오랜 세월 이어진 재배와 진상의 역사. 쌀 한 톨 안에 축적된 시간이 보입니다.</p></div>
         </div>
 
         <div class="tl-scene" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-09.png" alt="첫 콜라보"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">09</span><p class="tl-scene__cap">First Trade</p>
             <h3 class="tl-scene__title">두 세계의 첫 만남</h3>
-            <p class="tl-scene__text">비비안의 펑크와 이천의 전통이 손을 맞잡습니다. 콜라보의 첫 거래가 성사됩니다.</p></div>
+            <p class="tl-scene__text">비비안의 상징과 이천의 전통이 맞닿는 순간. 콜라보는 여기서 실제가 됩니다.</p></div>
         </div>
 
         <div class="tl-scene tl-scene--rev" data-aos="fade-up">
           <div class="tl-scene__media"><img src="assets/img/about/scene-10.png" alt="엔드 카드"></div>
           <div class="tl-scene__body"><span class="tl-scene__no">10</span><p class="tl-scene__cap">End Card</p>
             <h3 class="tl-scene__title">Vivienne Westwood × 이천쌀</h3>
-            <p class="tl-scene__text">비비안 행성에 불시착한 이천 임금님표 쌀. 이제 한국에서 만나보세요.</p></div>
+            <p class="tl-scene__text">비비안 행성에 불시착한 이천 임금님표 쌀. 이제 한국에서 이 이야기를 만나보세요.</p></div>
         </div>
 
       </div>
@@ -203,8 +207,7 @@
         <div class="row gy-4">
           <div class="col-lg-5 footer-brand">
             <a href="index.html" class="brand">
-              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
-              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+              <img src="assets/img/brand/wordmark.svg" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
             </a>
             <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
           </div>

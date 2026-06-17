@@ -39,30 +39,15 @@
       font-size: clamp(20px, 3vw, 28px); letter-spacing: .02em; line-height: 1.3; }
     .at-quote .kr { display: block; margin-top: 8px; font-size: 15px; color: var(--grey-700); font-weight: 600; }
 
-    /* Contributor info */
-    .at-info { border-top: 1px solid var(--back-w4); margin-top: 18px; padding: 56px 0 80px; }
-    .at-info-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; align-items: start; }
-    .at-tag { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
-    .at-tag .orb { width: 46px; height: auto; }
-    .at-tag .mark { font-family: var(--font-display); font-weight: 800; line-height: 1.15; color: var(--grey-900); font-size: 18px; }
-    .at-tag .mark small { display: block; font-size: 11px; letter-spacing: .14em; color: var(--grey-600); font-weight: 600; margin-top: 4px; }
-    .at-person h4 { font-size: 17px; font-weight: 800; color: var(--grey-900); margin: 0 0 2px; }
-    .at-person h4 small { font-weight: 600; color: var(--grey-600); font-size: 13px; margin-left: 6px; }
-    .at-person .role { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-600); margin: 0 0 16px; }
-    .at-person ul { list-style: none; padding: 0; margin: 0; }
-    .at-person li { margin-bottom: 10px; }
-    .at-person li a { display: flex; align-items: center; gap: 9px; color: var(--grey-800); font-size: 13.5px; text-decoration: none; word-break: break-all; }
-    .at-person li a i { font-size: 18px; color: var(--k-black); flex: none; }
-    .at-person li a:hover { color: var(--k-black); }
+    /* (기여자 정보 블록은 공통 푸터로 대체 — 관련 .at-info/.at-tag/.at-person 스타일 제거됨) */
 
     /* Back button */
     .at-back { position: fixed; top: 92px; left: 26px; z-index: 998; width: 46px; height: 46px; border-radius: 50%; background: #fff;
-      box-shadow: 0 6px 20px rgba(0,0,0,.18); display: flex; align-items: center; justify-content: center; color: #111; font-size: 22px; }
+      box-shadow: 0 3px 10px rgba(0,0,0,.10); display: flex; align-items: center; justify-content: center; color: #111; font-size: 22px; }
     .at-back:hover { background: var(--k-black); color: #fff; }
     .at-foot-nav { text-align: center; padding: 0 0 30px; }
 
     @media (max-width: 700px) {
-      .at-info-grid { grid-template-columns: 1fr; gap: 36px; }
       .at-back { top: 78px; left: 14px; width: 40px; height: 40px; font-size: 18px; }
     }
   </style>
@@ -75,8 +60,7 @@
     <div class="container d-flex justify-content-between align-items-center">
       <div class="logo">
         <a href="index.html" class="brand">
-          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
-          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+          <img src="assets/img/brand/logo.svg" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
         </a>
       </div>
       <nav id="navbar" class="navbar">
@@ -139,36 +123,9 @@
         </div>
       </div>
 
-      <!-- Contributor info -->
-      <section class="at-info">
-        <div class="at-wrap">
-          <div class="at-info-grid">
-            <div class="at-tag">
-              <img class="orb" src="assets/img/brand/orb.svg" alt="">
-              <div class="mark">Vivienne Westwood<small>× ICHEON</small></div>
-            </div>
-            <div class="at-person">
-              <h4>신하현 <small>Shin Hahyun</small></h4>
-              <p class="role">Design · Front-end</p>
-              <ul>
-                <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bi bi-instagram"></i> @ha_yeah_thats_my_name</a></li>
-                <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> linkedin.com/in/hahyun-shin</a></li>
-              </ul>
-            </div>
-            <div class="at-person">
-              <h4>김운정 <small>Kim Woonjung</small></h4>
-              <p class="role">Design · Front-end</p>
-              <ul>
-                <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bi bi-instagram"></i> @woonjvng</a></li>
-                <li><a href="https://www.notion.so/" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- 기여자/로고 블록은 하단 공통 푸터로 대체. 기사 끝엔 NEWS로 돌아가기 버튼만 노출 -->
       <div class="at-foot-nav">
-        <a class="btn-vw btn-vw--ghost" href="archive.html#news"><i class="bi bi-arrow-left"></i>&nbsp; NEWS로 돌아가기</a>
+        <a class="btn-vw btn-vw--solid" href="archive.html#news"><i class="bi bi-arrow-left"></i>&nbsp; NEWS로 돌아가기</a>
       </div>
 
     </article>
@@ -181,8 +138,7 @@
         <div class="row gy-4">
           <div class="col-lg-5 footer-brand">
             <a href="index.html" class="brand">
-              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
-              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+              <img src="assets/img/brand/wordmark.svg" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
             </a>
             <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
           </div>
