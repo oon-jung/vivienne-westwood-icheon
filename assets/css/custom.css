@@ -546,15 +546,18 @@ a:hover {
   border-color: var(--white);
 }
 
+/* 문구는 컨테이너 전체폭 기준으로 항상 가운데, 화살표는 양끝에 절대배치(센터링이 화살표 폭에 안 흔들리게) */
 .ic-hero-nav {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 20px;
+  position: relative;
   width: 100%;
   margin: 0 auto;
+  padding: 0 52px;
+  text-align: center;
 }
 .ic-hero-nav__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   appearance: none;
   border: 0;
   background: transparent;
@@ -572,10 +575,10 @@ a:hover {
 .ic-hero-nav__btn:hover {
   opacity: .7;
 }
-.ic-hero-nav__btn--prev { justify-self: start; }
-.ic-hero-nav__btn--prev:hover { transform: translateX(-2px); }
-.ic-hero-nav__btn--next { justify-self: end; }
-.ic-hero-nav__btn--next:hover { transform: translateX(2px); }
+.ic-hero-nav__btn--prev { left: 0; }
+.ic-hero-nav__btn--prev:hover { transform: translateY(-50%) translateX(-2px); }
+.ic-hero-nav__btn--next { right: 0; }
+.ic-hero-nav__btn--next:hover { transform: translateY(-50%) translateX(2px); }
 .ic-hero-nav__copy {
   text-align: center;
   min-width: 0;
