@@ -83,14 +83,14 @@
           <div class="pd-info" data-aos="fade-up" data-aos-delay="100">
             <p class="cat">Accessories</p>
             <h1>오브 진주 목걸이</h1>
-            <p class="pd-price">72,000 W</p>
+            <p class="pd-price">276,000 W</p>
             <p class="pd-desc">진주처럼 빛나는 쌀알을 비비안의 오브에 담아낸 콜라보 목걸이. 토성의 고리와 왕관 모티프가 어우러진 시그니처 피스입니다.</p>
 
             <div class="pd-opt">
               <label>Color</label>
               <div class="pd-chips" data-group="color">
-                <button class="pd-swatch is-active" style="background:#d9d9d9" data-val="실버" aria-label="실버"></button>
-                <button class="pd-swatch" style="background:#c9a227" data-val="골드" aria-label="골드"></button>
+                <button class="pd-swatch is-active" style="background:#d9d9d9" data-val="실버" data-price="276000" data-img="assets/img/products/acc-1.jpg" aria-label="실버"></button>
+                <button class="pd-swatch" style="background:#c9a227" data-val="골드" data-price="389000" data-img="assets/img/products/acc-2.jpg" aria-label="골드"></button>
               </div>
             </div>
             <div class="pd-opt">
@@ -148,6 +148,16 @@
           btn.addEventListener('click', function () {
             g.querySelectorAll('button').forEach(function (x) { x.classList.remove('is-active'); });
             btn.classList.add('is-active');
+
+            if (btn.dataset.price) {
+              document.querySelector('.pd-price').textContent = (+btn.dataset.price).toLocaleString('ko-KR') + ' W';
+            }
+            if (btn.dataset.img && mainImage) {
+              mainImage.src = btn.dataset.img;
+              document.querySelectorAll('.pd-thumbs button').forEach(function (x) {
+                x.classList.toggle('is-active', x.dataset.img === btn.dataset.img);
+              });
+            }
           });
         });
       });
