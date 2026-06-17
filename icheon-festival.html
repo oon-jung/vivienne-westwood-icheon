@@ -60,25 +60,6 @@
     .festival-panel__link { color: #fff; font-size: 16px; line-height: 1.4; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
     .festival-panel__link:hover { color: #fff; opacity: .78; }
 
-    .festival-footer { border-top: 1px solid #111; padding: 72px clamp(24px, 7vw, 100px) 34px; background: #fff; color: #101010; }
-    .festival-footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr minmax(280px, 376px); gap: 42px; max-width: 1200px; margin: 0 auto 70px; }
-    .festival-footer h3 { margin: 0 0 20px; color: #101010; font-size: 16px; font-weight: 800; }
-    .festival-footer a,
-    .festival-footer p { color: #757575; font-size: 14px; line-height: 1.8; }
-    .festival-footer ul { list-style: none; padding: 0; margin: 0; }
-    .festival-footer__subscribe { background: #edf3ff; padding: 30px; min-height: 154px; }
-    .festival-footer__subscribe p { margin: 0 0 18px; color: #424242; line-height: 1.45; }
-    .festival-footer__form { display: flex; min-height: 38px; background: #fff; }
-    .festival-footer__form input { min-width: 0; flex: 1; border: 0; padding: 0 14px; color: #424242; font-size: 13px; background: #fff; }
-    .festival-footer__form button { border: 0; width: 46px; color: #fff; background: #101010; font-size: 18px; }
-    .festival-footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1200px; margin: 0 auto; color: #757575; }
-    .festival-footer__brand { color: #101010; font-size: 18px; font-weight: 800; letter-spacing: .2px; white-space: nowrap; }
-    .festival-footer__links,
-    .festival-footer__social { display: flex; align-items: center; gap: 22px; }
-    .festival-footer__links a,
-    .festival-footer__credits { color: #757575; font-size: 13px; }
-    .festival-footer__social a { display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; color: #101010; font-size: 18px; }
-
     @media (max-width: 991px) {
       .festival-hero { padding-top: 60px; padding-bottom: 68px; }
       .festival-panel { min-height: 560px; }
@@ -87,8 +68,6 @@
       .festival-panel__line { display: none; }
       .festival-panel--sansuyu .festival-panel__content { align-items: flex-start; text-align: left; }
       .festival-panel--sansuyu::after { background: linear-gradient(to bottom, rgba(0,0,0,.12) 0%, rgba(0,0,0,.88) 100%); }
-      .festival-footer__top { grid-template-columns: repeat(2, 1fr); }
-      .festival-footer__bottom { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 575px) {
       .festival-hero { overflow: hidden; }
@@ -99,8 +78,6 @@
       .festival-panel h2 { font-size: 42px; white-space: normal; }
       .festival-panel__desc { width: 100%; max-width: 100%; font-size: 14px; line-height: 1.5; word-break: break-all; overflow-wrap: anywhere; }
       .festival-panel__desc br { display: none; }
-      .festival-footer__top { grid-template-columns: 1fr; gap: 28px; }
-      .festival-footer__links { flex-wrap: wrap; gap: 12px 18px; }
     }
   </style>
 </head>
@@ -210,58 +187,43 @@
   </main>
 
   <!-- ======= Footer ======= -->
-  <footer class="festival-footer">
-    <div class="festival-footer__top">
-      <div>
-        <h3>Product</h3>
-        <ul>
-          <li><a href="products.html#apparels">Apparels</a></li>
-          <li><a href="products.html#acc">Accessories</a></li>
-          <li><a href="products.html#rice">Icheon Rice</a></li>
-          <li><a href="stores.html">Stores</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Information</h3>
-        <ul>
-          <li><a href="about.html">Brand Story</a></li>
-          <li><a href="icheon.html">Icheon Eats</a></li>
-          <li><a href="icheon-discover.html">Discover Icheon</a></li>
-          <li><a href="icheon-festival.html">Festivals</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul>
-          <li><a href="archive.html">News</a></li>
-          
-          <li><a href="archive-gallery.html">Gallery</a></li>
-          <li><a href="about.html#timeline">Timeline</a></li>
-        </ul>
-      </div>
-      <div class="festival-footer__subscribe">
-        <h3>Subscribe</h3>
-        <p>Get the latest updates on drops, Icheon stories, and festival notes.</p>
-        <form class="festival-footer__form">
-          <input type="email" aria-label="Email address" placeholder="Email address">
-          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
-        </form>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="festival-footer__bottom">
-      <a class="festival-footer__brand" href="index.html">Vivienne Westwood × 이천쌀</a>
-      <div class="festival-footer__links">
-        <a href="#">Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Cookies</a>
-        <span class="festival-footer__credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></span>
-      </div>
-      <div class="festival-footer__social" aria-label="Social links">
-        <a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-        <a href="#" aria-label="Notion"><i class="bi bi-journal-text"></i></a>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
       </div>
     </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
   </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
