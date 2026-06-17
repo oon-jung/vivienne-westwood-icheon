@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>심볼 — Vivienne Westwood × 이천쌀</title>
+  <meta content="콜라보 오브 심볼의 변주 — 로고 모핑" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .sy-head { text-align: center; padding: 80px 0 12px; }
+    .sy-head .eyebrow { color: var(--grey-600); }
+    .sy-head h1 { font-size: clamp(30px, 4.4vw, 52px); font-weight: 800; color: var(--grey-900); margin: 8px 0 14px; }
+    .sy-head p { color: var(--grey-600); font-size: 15px; margin: 0; }
+    .sy-hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 13px; color: var(--grey-600); }
+    .sy-hint i { font-size: 18px; }
+
+    /* 가로 스크롤 스냅 캐러셀 — 휠 굴리면 옆으로 한 단계씩 '딱' */
+    .sy-stage { padding: 30px 0 70px; }
+    .sy-rail {
+      display: flex; gap: 0; overflow-x: auto;
+      scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      padding: 30px 0;
+    }
+    .sy-rail::-webkit-scrollbar { display: none; }
+    .sy-slide {
+      scroll-snap-align: center; scroll-snap-stop: always;
+      flex: 0 0 46%; margin: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 0 3%;
+    }
+    .sy-slide__img {
+      width: 100%; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden;
+      background: var(--back-w2); display: flex; align-items: center; justify-content: center;
+      transition: transform .45s ease, box-shadow .45s ease, opacity .45s ease;
+      opacity: .4; transform: scale(.82);
+    }
+    .sy-slide__img img { width: 100%; height: 100%; object-fit: cover; }
+    .sy-slide.is-center .sy-slide__img { opacity: 1; transform: scale(1); box-shadow: 0 30px 60px rgba(16,16,16,.22); }
+    .sy-slide__cap { margin-top: 22px; text-align: center; opacity: 0; transition: opacity .4s ease; }
+    .sy-slide.is-center .sy-slide__cap { opacity: 1; }
+    .sy-slide__cap .no { font-family: var(--font-display); font-size: 14px; color: var(--grey-600); letter-spacing: .1em; }
+    .sy-slide__cap h3 { font-size: 18px; font-weight: 700; color: var(--grey-900); margin: 4px 0 0; }
+
+    .sy-nav { display: flex; justify-content: center; gap: 14px; margin-top: 10px; }
+    .sy-nav button { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--back-w4); background: #fff;
+      color: var(--k-black); font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s ease; }
+    .sy-nav button:hover { background: var(--k-black); color: #fff; border-color: var(--k-black); }
+    .sy-dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; }
+    .sy-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--back-w4); transition: all .2s ease; }
+    .sy-dots span.is-on { background: var(--k-black); width: 22px; border-radius: 5px; }
+
+    @media (max-width: 991px) { .sy-slide { flex-basis: 78%; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a class="active" href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="sy-head" data-aos="fade-up">
+      <p class="eyebrow">Symbol</p>
+      <h1>오브, 끊임없이 변주되다</h1>
+      <p>한 알의 쌀에서 태어난 오브가 물·진주·네온·타탄으로 모습을 바꿉니다.</p>
+      <span class="sy-hint"><i class="bi bi-mouse"></i> 휠을 굴리면 옆으로 한 단계씩 넘어갑니다</span>
+    </section>
+
+    <section class="sy-stage">
+      <div class="sy-rail" data-symbol-rail>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-01.png" alt="워터 오브"></div><figcaption class="sy-slide__cap"><span class="no">01</span><h3>Water Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-02.png" alt="펄 오브"></div><figcaption class="sy-slide__cap"><span class="no">02</span><h3>Pearl Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-03.png" alt="엠블럼 오브"></div><figcaption class="sy-slide__cap"><span class="no">03</span><h3>Emblem Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-04.png" alt="베이슨 오브"></div><figcaption class="sy-slide__cap"><span class="no">04</span><h3>Basin Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-05.png" alt="피크닉 오브"></div><figcaption class="sy-slide__cap"><span class="no">05</span><h3>Picnic Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-06.png" alt="퍼 오브"></div><figcaption class="sy-slide__cap"><span class="no">06</span><h3>Fur Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-07.png" alt="워드마크"></div><figcaption class="sy-slide__cap"><span class="no">07</span><h3>Wordmark</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-08.png" alt="네온 오브"></div><figcaption class="sy-slide__cap"><span class="no">08</span><h3>Neon Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-09.png" alt="라인 오브"></div><figcaption class="sy-slide__cap"><span class="no">09</span><h3>Line Orb</h3></figcaption></figure>
+        <figure class="sy-slide"><div class="sy-slide__img"><img src="assets/img/about/symbol/symbol-10.png" alt="콜라보 오브"></div><figcaption class="sy-slide__cap"><span class="no">10</span><h3>Collab Orb</h3></figcaption></figure>
+      </div>
+      <div class="sy-nav">
+        <button data-sym-prev aria-label="이전"><i class="bi bi-chevron-left"></i></button>
+        <button data-sym-next aria-label="다음"><i class="bi bi-chevron-right"></i></button>
+      </div>
+      <div class="sy-dots" data-sym-dots></div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js?v=2"></script>
+  <script>
+    // 심볼 가로 캐러셀 — 휠→가로, 화살표/도트, 중앙 강조
+    (function () {
+      var rail = document.querySelector('[data-symbol-rail]');
+      if (!rail) return;
+      var slides = Array.prototype.slice.call(rail.querySelectorAll('.sy-slide'));
+      var dots = document.querySelector('[data-sym-dots]');
+      slides.forEach(function (s, i) {
+        var d = document.createElement('span'); d.dataset.i = i; dots.appendChild(d);
+      });
+      var dotEls = Array.prototype.slice.call(dots.children);
+
+      // 세로 휠 → 가로 스크롤 (레일 위에서만, 끝이면 페이지 스크롤 허용)
+      rail.addEventListener('wheel', function (e) {
+        var dy = e.deltaY;
+        if (Math.abs(dy) < Math.abs(e.deltaX)) return;
+        var atStart = rail.scrollLeft <= 0;
+        var atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
+        if ((dy < 0 && atStart) || (dy > 0 && atEnd)) return;
+        e.preventDefault();
+        rail.scrollLeft += dy;
+      }, { passive: false });
+
+      function centerIndex() {
+        var mid = rail.scrollLeft + rail.clientWidth / 2, best = 0, bd = Infinity;
+        slides.forEach(function (s, i) {
+          var c = s.offsetLeft + s.offsetWidth / 2, d = Math.abs(c - mid);
+          if (d < bd) { bd = d; best = i; }
+        });
+        return best;
+      }
+      function mark() {
+        var ci = centerIndex();
+        slides.forEach(function (s, i) { s.classList.toggle('is-center', i === ci); });
+        dotEls.forEach(function (d, i) { d.classList.toggle('is-on', i === ci); });
+      }
+      function go(i) {
+        i = Math.max(0, Math.min(slides.length - 1, i));
+        var s = slides[i];
+        rail.scrollTo({ left: s.offsetLeft - (rail.clientWidth - s.offsetWidth) / 2, behavior: 'smooth' });
+      }
+      rail.addEventListener('scroll', function () { window.requestAnimationFrame(mark); });
+      document.querySelector('[data-sym-prev]').addEventListener('click', function () { go(centerIndex() - 1); });
+      document.querySelector('[data-sym-next]').addEventListener('click', function () { go(centerIndex() + 1); });
+      dotEls.forEach(function (d) { d.addEventListener('click', function () { go(+d.dataset.i); }); });
+      mark();
+    })();
+  </script>
+</body>
+</html>

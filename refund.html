@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>환불 요청 — Vivienne Westwood × 이천쌀</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .rf-wrap { padding: 70px 0 110px; max-width: 600px; margin: 0 auto; }
+    .rf-wrap h1 { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+    .rf-wrap > p { color: var(--grey-600); font-size: 14px; margin: 0 0 34px; }
+    .rf-item { display: flex; gap: 14px; align-items: center; padding: 18px; border: 1px solid var(--back-w4); border-radius: 6px; margin-bottom: 30px; }
+    .rf-item img { width: 64px; height: 64px; border-radius: 4px; object-fit: cover; }
+    .rf-item h3 { font-size: 15px; font-weight: 700; margin: 0 0 3px; }
+    .rf-item p { font-size: 12px; color: var(--grey-600); margin: 0; }
+    .rf-field { margin-bottom: 18px; }
+    .rf-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+    .rf-field select, .rf-field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--back-w4); border-radius: 3px; font-size: 14px; font-family: inherit; }
+    .rf-field select:focus, .rf-field textarea:focus { outline: none; border-color: var(--k-black); }
+    .rf-toast { position: fixed; left: 50%; bottom: 32px; transform: translate(-50%, 20px); background: var(--k-black); color: #fff; padding: 14px 26px; border-radius: 3px; font-size: 14px; opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 999; }
+    .rf-toast.show { opacity: 1; transform: translate(-50%, 0); }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo"><a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a></div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li>
+          <li><a href="icheon.html">Icheon</a></li><li><a href="archive.html">Archive</a></li><li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="mypage.html">마이페이지</a><a class="btn-login" href="index.html">로그아웃</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="rf-wrap">
+      <h1>환불 요청</h1>
+      <p>주문번호 VW-ICHEON-260610-0042</p>
+
+      <div class="rf-item">
+        <img src="assets/img/products/acc-2.jpg" alt="">
+        <div><h3>오브 진주 목걸이 · 골드</h3><p>Color 골드 / Size 45cm · 수량 1 · 72,000 W</p></div>
+      </div>
+
+      <form onsubmit="return false">
+        <div class="rf-field">
+          <label>환불 사유</label>
+          <select>
+            <option>단순 변심</option>
+            <option>상품 불량 / 파손</option>
+            <option>오배송</option>
+            <option>배송 지연</option>
+            <option>기타</option>
+          </select>
+        </div>
+        <div class="rf-field">
+          <label>상세 내용</label>
+          <textarea rows="4" placeholder="환불 사유를 자세히 적어주세요."></textarea>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:24px">
+          <button class="btn-vw btn-vw--solid" type="button" id="rfSubmit" style="flex:1">환불 요청하기</button>
+          <a class="btn-vw btn-vw--ghost" href="mypage.html">취소</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="rf-toast" id="rfToast">환불 요청이 접수되었습니다.</div>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top"><div class="container"><div class="row gy-4">
+      <div class="col-lg-5 footer-brand">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+        <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>신하현 <small>Shin Hahyun</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li><li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li></ul></div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>김운정 <small>Kim Woonjung</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li><li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-legal"><div class="container"><div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div></div></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.getElementById('rfSubmit').addEventListener('click', function () {
+      var t = document.getElementById('rfToast'); t.classList.add('show');
+      setTimeout(function () { t.classList.remove('show'); location.href = 'mypage.html'; }, 1600);
+    });
+  </script>
+</body>
+</html>

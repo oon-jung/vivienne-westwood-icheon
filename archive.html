@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Archive — Vivienne Westwood × 이천쌀</title>
+  <meta content="Vivienne Westwood × 이천쌀 아카이브 — 뉴스 · 인터뷰 · 갤러리" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .ar-sec { padding: 92px 0; }
+    .archive-page {
+      background:
+        linear-gradient(rgba(255,255,255,.05), rgba(255,255,255,.05)),
+        url("assets/img/archive/news-bg-figma.png") center top / 760px auto repeat;
+    }
+    .ar-sec--dark { background: #111110; }
+    .ar-head { text-align: center; margin-bottom: 48px; }
+    .ar-head .eyebrow { color: var(--grey-600); }
+    .ar-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--grey-900); margin: 6px 0 8px; font-family: var(--font-display); }
+    .ar-head p { color: var(--grey-600); font-size: 15px; margin: 0; }
+    .ar-sec--dark .ar-head h2 { color: #fff; }
+    .ar-sec--dark .ar-head .eyebrow, .ar-sec--dark .ar-head p { color: rgba(255,255,255,.6); }
+
+    /* NEWS */
+    .news-shell { max-width: 980px; margin: 0 auto; }
+    .news-title {
+      max-width: 980px;
+      margin: 120px auto 70px;
+      background: #fff;
+      padding: 18px 20px 16px;
+      text-align: center;
+    }
+    .news-title h1 {
+      font-size: clamp(42px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--k-black);
+      margin: 0;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+    .news-grid { display: grid; gap: 80px; }
+    .news-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 80px; }
+    .news-card {
+      display: block;
+      background: #fff;
+      overflow: hidden;
+      color: inherit;
+    }
+    .news-card__media {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+    .news-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease, filter .35s ease;
+      display: block;
+    }
+    .news-card__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 140px;
+      padding: 25px;
+      color: var(--k-black);
+    }
+    .news-card__body .en {
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+      word-break: break-word;
+    }
+    .news-card__body .kr {
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 300;
+      margin: 0;
+      word-break: keep-all;
+    }
+    .news-card__body time {
+      font-size: 14px;
+      line-height: 1.2;
+      margin-top: auto;
+    }
+    .news-card:hover img { transform: scale(1.06); filter: brightness(.95); }
+
+    /* INTERVIEW */
+    .interview { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border: 1px solid var(--back-w4); border-radius: 6px; overflow: hidden; background: #fff; }
+    .interview__media { position: relative; min-height: 360px; }
+    .interview__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .interview__body { padding: 54px 50px; display: flex; flex-direction: column; justify-content: center; }
+    .interview__body .eyebrow { color: var(--grey-600); }
+    .interview__body h3 { font-size: 28px; font-weight: 800; line-height: 1.35; color: var(--grey-900); margin: 8px 0 16px; }
+    .interview__body p { color: var(--grey-700); font-size: 15px; line-height: 1.8; margin: 0 0 26px; }
+
+    /* GALLERY */
+    .gallery-swiper { overflow: hidden; }
+    .gallery-swiper .swiper-slide { aspect-ratio: 3/2; }
+    .gallery-swiper .swiper-slide a { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 4px; }
+    .gallery-swiper .swiper-slide img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery-swiper .swiper-slide:hover img { transform: scale(1.05); }
+    .gallery-nav { display: flex; justify-content: center; gap: 16px; margin-top: 30px; }
+    .gallery-nav button { width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: transparent;
+      color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s ease; }
+    .gallery-nav button:hover { background: #fff; color: #111; }
+
+    @media (max-width: 991px) {
+      .news-row { grid-template-columns: 1fr; gap: 22px; }
+      .interview { grid-template-columns: 1fr; }
+      .interview__media { min-height: 260px; }
+      .interview__body { padding: 36px 28px; }
+    }
+    @media (max-width: 575px) {
+      .news-title { margin: 96px 16px 56px; }
+      .news-title h1 { font-size: 42px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a class="active" href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page archive-page">
+
+    <!-- ======= NEWS ======= -->
+    <section id="news" class="ar-sec">
+      <div class="news-shell">
+        <div class="news-title" data-aos="fade-up">
+          <h1>NEWS</h1>
+        </div>
+        <div class="news-grid" data-aos="fade-up">
+          <div class="news-row">
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-1-figma.jpg" alt="비비안이 바라본 이천 쌀"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Vivienne Westwood Looks at Icheon</p>
+                  <p class="kr">비비안이 바라본 이천 쌀</p>
+                </div>
+                <time>JULY 2026</time>
+              </div>
+            </a>
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-2-figma.jpg" alt="좋은 것은 시간이 만든다"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Good Things Take Time</p>
+                  <p class="kr">좋은 것은 시간이 만든다</p>
+                </div>
+                <time>JULY 2026</time>
+              </div>
+            </a>
+          </div>
+          <div class="news-row">
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-3-figma.jpg" alt="오래가는 것에는 시간이 깃든다"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Make It Last</p>
+                  <p class="kr">오래가는 것에는 시간이 깃든다</p>
+                </div>
+                <time>JUNE 2026</time>
+              </div>
+            </a>
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-4-figma.jpg" alt="이천의 일상을 직접 안내합니다"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Your Guide to Icheon</p>
+                  <p class="kr">이천의 일상을 직접 안내합니다</p>
+                </div>
+                <time>JUNE 2026</time>
+              </div>
+            </a>
+          </div>
+          <div class="news-row">
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-5-figma.jpg" alt="전통은 버리는 것이 아니라 잇는 것"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Don't Throw Away Tradition</p>
+                  <p class="kr">전통은 버리는 것이 아니라 잇는 것</p>
+                </div>
+                <time>MAY 2026</time>
+              </div>
+            </a>
+            <a class="news-card" href="article.html">
+              <div class="news-card__media"><img src="assets/img/archive/news-6-figma.jpg" alt="숫자 말고 하나, 제대로 만든 것"></div>
+              <div class="news-card__body">
+                <div>
+                  <p class="en">Quality, Not Quantity</p>
+                  <p class="kr">숫자 말고 하나, 제대로 만든 것</p>
+                </div>
+                <time>MAY 2026</time>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    // GALLERY — Swiper (좌우 화살표 전용, 무한 루프) + GLightbox
+    (function () {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.gallery-swiper', {
+          slidesPerView: 1.2, spaceBetween: 20, loop: true, centeredSlides: false,
+          navigation: { prevEl: '#galPrev', nextEl: '#galNext' },
+          breakpoints: { 768: { slidesPerView: 2.2 }, 1100: { slidesPerView: 3.2 } }
+        });
+      }
+      if (typeof GLightbox !== 'undefined') { GLightbox({ selector: '.glightbox' }); }
+    })();
+  </script>
+</body>
+</html>

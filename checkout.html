@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>주문서 — Vivienne Westwood × 이천쌀</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .co-wrap { padding: 60px 0 110px; }
+    .co-wrap h1 { font-size: 30px; font-weight: 800; margin: 0 0 8px; }
+    .co-steps { font-size: 13px; color: var(--grey-600); margin-bottom: 40px; }
+    .co-steps b { color: var(--k-black); }
+    .co-grid { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+    .co-block { margin-bottom: 36px; }
+    .co-block h2 { font-size: 17px; font-weight: 800; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--k-black); }
+    .co-field { margin-bottom: 16px; }
+    .co-field label { display: block; font-size: 13px; font-weight: 600; color: var(--grey-800); margin-bottom: 7px; }
+    .co-field input, .co-field select, .co-field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--back-w4); border-radius: 3px; font-size: 14px; font-family: inherit; }
+    .co-field input:focus, .co-field textarea:focus, .co-field select:focus { outline: none; border-color: var(--k-black); }
+    .co-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .co-pay { display: flex; gap: 10px; flex-wrap: wrap; }
+    .co-pay label { flex: 1; min-width: 120px; border: 1px solid var(--back-w4); border-radius: 3px; padding: 14px; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--grey-700); }
+    .co-pay input { display: none; }
+    .co-pay input:checked + span { color: var(--k-black); }
+    .co-pay label:has(input:checked) { border-color: var(--k-black); background: var(--back-w2); }
+
+    .co-sum { border: 1px solid var(--back-w4); border-radius: 6px; padding: 26px; position: sticky; top: 100px; }
+    .co-sum h2 { font-size: 18px; font-weight: 800; margin: 0 0 18px; }
+    .co-sline { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--back-w2); }
+    .co-sline img { width: 46px; height: 46px; border-radius: 3px; object-fit: cover; }
+    .co-sline .nm { font-size: 13px; flex: 1; }
+    .co-sline .pr { font-size: 13px; font-weight: 700; }
+    .co-sum .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--grey-700); margin: 14px 0 0; }
+    .co-sum .total { border-top: 1px solid var(--back-w4); padding-top: 14px; margin-top: 14px; font-size: 18px; font-weight: 800; color: var(--k-black); }
+    .co-sum .btn-vw { width: 100%; margin-top: 18px; }
+    @media (max-width: 991px) { .co-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li>
+          <li><a href="icheon.html">Icheon</a></li><li><a href="archive.html">Archive</a></li><li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="co-wrap">
+      <div class="container">
+        <h1>주문서</h1>
+        <p class="co-steps">01 장바구니 &nbsp;›&nbsp; <b>02 주문서</b> &nbsp;›&nbsp; 03 주문완료</p>
+
+        <div class="co-grid">
+          <form id="coForm" onsubmit="return false">
+            <div class="co-block">
+              <h2>배송지 정보</h2>
+              <div class="co-field"><label>받는 분</label><input type="text" placeholder="이름" required></div>
+              <div class="co-field"><label>연락처</label><input type="tel" placeholder="010-0000-0000" required></div>
+              <div class="co-field"><label>주소</label><input type="text" placeholder="주소를 입력하세요" required></div>
+              <div class="co-field"><label>상세 주소</label><input type="text" placeholder="상세 주소"></div>
+              <div class="co-field"><label>배송 메모</label><textarea rows="2" placeholder="부재 시 문 앞에 놓아주세요"></textarea></div>
+            </div>
+            <div class="co-block">
+              <h2>결제 수단</h2>
+              <div class="co-pay">
+                <label><input type="radio" name="pay" checked><span>신용카드</span></label>
+                <label><input type="radio" name="pay"><span>계좌이체</span></label>
+                <label><input type="radio" name="pay"><span>간편결제</span></label>
+              </div>
+            </div>
+          </form>
+
+          <aside class="co-sum">
+            <h2>주문 상품</h2>
+            <div class="co-sline"><img src="assets/img/products/acc-1.jpg" alt=""><span class="nm">오브 진주 목걸이 · 실버<br><small style="color:#888">수량 1</small></span><span class="pr">72,000 W</span></div>
+            <div class="co-sline"><img src="assets/img/products/rice-4kg.png" alt=""><span class="nm">이천 임금님표 쌀 · 4kg<br><small style="color:#888">수량 2</small></span><span class="pr">48,000 W</span></div>
+            <div class="row"><span>상품 금액</span><span>120,000 W</span></div>
+            <div class="row"><span>배송비</span><span>무료</span></div>
+            <div class="row total"><span>총 결제금액</span><span>120,000 W</span></div>
+            <a class="btn-vw btn-vw--solid" href="order-complete.html">120,000 W 결제하기</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top"><div class="container"><div class="row gy-4">
+      <div class="col-lg-5 footer-brand">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+        <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>신하현 <small>Shin Hahyun</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li><li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li></ul></div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>김운정 <small>Kim Woonjung</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li><li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-legal"><div class="container"><div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div></div></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

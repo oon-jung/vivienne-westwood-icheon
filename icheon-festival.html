@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>축제 — Icheon | Vivienne Westwood × 이천쌀</title>
+  <meta content="이천 축제 — 도자기축제 · 산수유꽃축제 · 쌀문화축제" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    body.festival-page { overflow-x: hidden; background: #fff; color: #212121; font-family: "Pretendard Variable", Pretendard, Inter, sans-serif; }
+    body.festival-page #main.page { margin-top: var(--header-h); }
+    body.festival-page #header { background: #fff; box-shadow: inset 0 -1px 1px rgba(0,0,0,.1); }
+    body.festival-page #header .container { max-width: none; padding-left: clamp(20px, 6.9vw, 100px); padding-right: clamp(20px, 6.9vw, 100px); }
+
+    .festival-hero { position: relative; padding: 78px clamp(24px, 8.3vw, 120px) 98px; background: #fff; text-align: center; }
+    .festival-hero__inner { position: relative; max-width: 1200px; margin: 0 auto; }
+    .festival-hero__kicker { margin: 0 0 24px; color: #757575; font-size: 20px; line-height: 1.35; letter-spacing: .2px; }
+    .festival-hero h1 { margin: 0; color: #212121; font-size: clamp(42px, 5vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: .2px; text-transform: uppercase; }
+    .festival-hero__sub { margin: 0; color: #757575; font-size: 20px; line-height: 1.35; letter-spacing: .2px; }
+    .festival-hero__nav { margin: 0 0 22px; }
+    .festival-hero__nav .ic-hero-nav__copy { display: grid; gap: 0; }
+    .festival-hero__nav .ic-hero-nav__btn { margin-top: 6px; }
+    .festival-hero__nav .ic-hero-nav__sub { margin-top: 20px; }
+    .festival-panel { scroll-margin-top: calc(var(--header-h) + 28px); }
+
+    .festival-stack { width: 100%; overflow: hidden; }
+    .festival-panel { position: relative; min-height: 600px; display: flex; align-items: flex-end; isolation: isolate; overflow: hidden; }
+    .festival-panel + .festival-panel { margin-top: 0; }
+    .festival-panel__image { position: absolute; inset: 0; z-index: -2; }
+    .festival-panel__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .festival-panel::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+    .festival-panel--ceramic::after { background: linear-gradient(to bottom, rgba(0,0,0,0) 18%, rgba(0,0,0,.88) 100%); }
+    .festival-panel--sansuyu { align-items: center; }
+    .festival-panel--sansuyu::after { background: linear-gradient(to right, rgba(0,0,0,0) 28%, rgba(0,0,0,.92) 100%); }
+    .festival-panel--rice::after { background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 65%); }
+    .festival-panel--ceramic .festival-panel__image img { object-position: center 34%; }
+    .festival-panel--sansuyu .festival-panel__image img { object-position: center; }
+    .festival-panel--rice .festival-panel__image img { object-position: center 68%; }
+
+    .festival-panel__content { width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding: 0 0 56px; color: #fff; }
+    .festival-panel--sansuyu .festival-panel__content { padding: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+    .festival-panel--rice .festival-panel__content { padding-bottom: 90px; }
+    .festival-panel__desc { max-width: 760px; margin: 0 0 30px; color: #fff; font-size: 16px; line-height: 1.4; }
+    .festival-panel--sansuyu .festival-panel__desc { max-width: 1040px; margin: 0; }
+    .festival-panel__rule { width: 100%; height: 1px; margin: 0 0 30px; background: rgba(255,255,255,.85); }
+    .festival-panel--sansuyu .festival-panel__rule { margin: 30px 0; }
+    .festival-panel__row { display: flex; align-items: center; justify-content: space-between; gap: 38px; width: 100%; }
+    .festival-panel h2 { margin: 0; color: #fff; font-size: clamp(52px, 6.65vw, 96px); font-weight: 800; line-height: 1; letter-spacing: .2px; }
+    .festival-panel__line { flex: 1 1 220px; max-width: 400px; height: 1px; background: #fff; position: relative; }
+    .festival-panel__line::after { content: ""; position: absolute; right: 0; top: 50%; width: 15px; height: 15px; border-top: 2px solid #fff; border-right: 2px solid #fff; transform: translateY(-50%) rotate(45deg); }
+    .festival-panel__link { color: #fff; font-size: 16px; line-height: 1.4; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+    .festival-panel__link:hover { color: #fff; opacity: .78; }
+
+    .festival-footer { border-top: 1px solid #111; padding: 72px clamp(24px, 7vw, 100px) 34px; background: #fff; color: #101010; }
+    .festival-footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr minmax(280px, 376px); gap: 42px; max-width: 1200px; margin: 0 auto 70px; }
+    .festival-footer h3 { margin: 0 0 20px; color: #101010; font-size: 16px; font-weight: 800; }
+    .festival-footer a,
+    .festival-footer p { color: #757575; font-size: 14px; line-height: 1.8; }
+    .festival-footer ul { list-style: none; padding: 0; margin: 0; }
+    .festival-footer__subscribe { background: #edf3ff; padding: 30px; min-height: 154px; }
+    .festival-footer__subscribe p { margin: 0 0 18px; color: #424242; line-height: 1.45; }
+    .festival-footer__form { display: flex; min-height: 38px; background: #fff; }
+    .festival-footer__form input { min-width: 0; flex: 1; border: 0; padding: 0 14px; color: #424242; font-size: 13px; background: #fff; }
+    .festival-footer__form button { border: 0; width: 46px; color: #fff; background: #101010; font-size: 18px; }
+    .festival-footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1200px; margin: 0 auto; color: #757575; }
+    .festival-footer__brand { color: #101010; font-size: 18px; font-weight: 800; letter-spacing: .2px; white-space: nowrap; }
+    .festival-footer__links,
+    .festival-footer__social { display: flex; align-items: center; gap: 22px; }
+    .festival-footer__links a,
+    .festival-footer__credits { color: #757575; font-size: 13px; }
+    .festival-footer__social a { display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; color: #101010; font-size: 18px; }
+
+    @media (max-width: 991px) {
+      .festival-hero { padding-top: 60px; padding-bottom: 74px; }
+      .festival-panel { min-height: 560px; }
+      .festival-panel__content { width: min(100% - 40px, 720px); padding-bottom: 44px; }
+      .festival-panel__row { align-items: flex-start; flex-direction: column; gap: 18px; }
+      .festival-panel__line { display: none; }
+      .festival-panel--sansuyu .festival-panel__content { align-items: flex-start; text-align: left; }
+      .festival-panel--sansuyu::after { background: linear-gradient(to bottom, rgba(0,0,0,.12) 0%, rgba(0,0,0,.88) 100%); }
+      .festival-footer__top { grid-template-columns: repeat(2, 1fr); }
+      .festival-footer__bottom { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 575px) {
+      .festival-hero { overflow: hidden; }
+      .festival-hero__kicker,
+      .festival-hero__sub { max-width: 300px; margin-left: auto; margin-right: auto; font-size: 16px; white-space: normal; overflow-wrap: break-word; }
+      .festival-panel { min-height: 520px; }
+      .festival-panel__content { width: calc(100vw - 40px); max-width: calc(100vw - 40px); }
+      .festival-panel h2 { font-size: 42px; white-space: normal; }
+      .festival-panel__desc { width: 100%; max-width: 100%; font-size: 14px; line-height: 1.5; word-break: break-all; overflow-wrap: anywhere; }
+      .festival-panel__desc br { display: none; }
+      .festival-footer__top { grid-template-columns: 1fr; gap: 28px; }
+      .festival-footer__links { flex-wrap: wrap; gap: 12px 18px; }
+    }
+  </style>
+</head>
+
+<body class="festival-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a class="active" href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <!-- ======= 축제 FESTIVALS ======= -->
+    <section id="festival" class="festival-hero" aria-labelledby="festival-title">
+      <div class="festival-hero__inner festival-hero__nav ic-hero-nav" data-aos="fade-up">
+        <button class="ic-hero-nav__btn ic-hero-nav__btn--prev" type="button" data-festival-prev aria-label="이전 페이지 — Discover" title="Discover"><i class="bi bi-chevron-left"></i></button>
+        <div class="ic-hero-nav__copy">
+          <p class="festival-hero__kicker eyebrow">이천에서 정말 신나게 놀고싶다면,</p>
+          <h1 id="festival-title" class="ic-hero-nav__title">Festivals</h1>
+          <p class="festival-hero__sub ic-hero-nav__sub">Unleash the Fun: Vibrant Activities in Icheon</p>
+        </div>
+        <button class="ic-hero-nav__btn ic-hero-nav__btn--next" type="button" data-festival-next aria-label="다음 페이지 — Food" title="Food"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="festival-stack" aria-label="이천 축제 목록">
+      <article class="festival-panel festival-panel--ceramic" id="festival-ceramic">
+        <div class="festival-panel__image" aria-hidden="true">
+          <img src="assets/img/icheon/festival-ceramic.jpg" alt="">
+        </div>
+        <div class="festival-panel__content" data-aos="fade-up">
+          <p class="festival-panel__desc">
+            이천도자기축제는 이천의 전통 도자 문화와<br>
+            현대 도예 작품을 함께 만날 수 있는 대표 문화 축제입니다.<br><br>
+            축제 기간 동안 도자 전시와 판매, 물레 체험, 도자기 컵 만들기, 대형 도자기 소원 글쓰기 등 다양한 체험 프로그램이 운영됩니다.<br>
+            2026년 제40회 축제는 이천도자예술마을과 사기막골 도예촌 일대에서 열렸으며, 전통과 현대를 잇는 이천 도자문화의 가치를 소개하는 자리로 구성되었습니다.
+          </p>
+          <div class="festival-panel__rule" aria-hidden="true"></div>
+          <div class="festival-panel__row">
+            <h2>이천도자기축제</h2>
+            <span class="festival-panel__line" aria-hidden="true"></span>
+            <a class="festival-panel__link" href="https://icheondoja.kr" target="_blank" rel="noopener">Check out the link</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="festival-panel festival-panel--sansuyu" id="festival-sansuyu">
+        <div class="festival-panel__image" aria-hidden="true">
+          <img src="assets/img/icheon/festival-sansuyu.jpg" alt="">
+        </div>
+        <div class="festival-panel__content" data-aos="fade-up">
+          <h2>이천백사<br>산수유꽃축제</h2>
+          <a class="festival-panel__link" href="https://2104sansooyou.com" target="_blank" rel="noopener">Check out the link</a>
+          <div class="festival-panel__rule" aria-hidden="true"></div>
+          <p class="festival-panel__desc">
+            이천백사 산수유꽃축제는 백사면 산수유마을에서 열리는 봄꽃 축제입니다.<br>
+            백사면 도립리, 송말리, 경사리 일대에는 수령 100년이 넘는 산수유나무 군락지가 형성되어 있어, 초봄이면 마을 전체가 노란 꽃으로 물듭니다.<br>
+            축제에서는 산수유꽃길 산책, 포토존, 공연, 만들기 체험, 전통놀이, 지역 먹거리 등을 함께 즐길 수 있습니다.
+          </p>
+        </div>
+      </article>
+
+      <article class="festival-panel festival-panel--rice" id="festival-rice">
+        <div class="festival-panel__image" aria-hidden="true">
+          <img src="assets/img/icheon/festival-rice.jpg" alt="">
+        </div>
+        <div class="festival-panel__content" data-aos="fade-up">
+          <p class="festival-panel__desc">
+            이천쌀문화축제는 임금님께 진상하던 쌀의 고장, 이천의 대표 농경문화 축제입니다.<br>
+            이천쌀을 중심으로 가마솥밥 시식, 농경문화 체험, 민속놀이, 공연, 먹거리 프로그램 등이 함께 운영되어<br>
+            이천의 풍요로운 수확 문화를 직접 경험할 수 있습니다. 2026년 축제는 10월 14일부터 10월 18일까지 복하천 수변공원 일원에서 열릴 예정입니다.
+          </p>
+          <div class="festival-panel__rule" aria-hidden="true"></div>
+          <div class="festival-panel__row">
+            <h2>이천쌀문화축제</h2>
+            <span class="festival-panel__line" aria-hidden="true"></span>
+            <a class="festival-panel__link" href="https://ricefestival.or.kr" target="_blank" rel="noopener">Check out the link</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer class="festival-footer">
+    <div class="festival-footer__top">
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="products.html#apparels">Apparels</a></li>
+          <li><a href="products.html#acc">Accessories</a></li>
+          <li><a href="products.html#rice">Icheon Rice</a></li>
+          <li><a href="stores.html">Stores</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="about.html">Brand Story</a></li>
+          <li><a href="icheon.html">Icheon Eats</a></li>
+          <li><a href="icheon-discover.html">Discover Icheon</a></li>
+          <li><a href="icheon-festival.html">Festivals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="archive.html">News</a></li>
+          
+          <li><a href="archive-gallery.html">Gallery</a></li>
+          <li><a href="about.html#timeline">Timeline</a></li>
+        </ul>
+      </div>
+      <div class="festival-footer__subscribe">
+        <h3>Subscribe</h3>
+        <p>Get the latest updates on drops, Icheon stories, and festival notes.</p>
+        <form class="festival-footer__form">
+          <input type="email" aria-label="Email address" placeholder="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="festival-footer__bottom">
+      <a class="festival-footer__brand" href="index.html">Vivienne Westwood × 이천쌀</a>
+      <div class="festival-footer__links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+        <span class="festival-footer__credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></span>
+      </div>
+      <div class="festival-footer__social" aria-label="Social links">
+        <a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+        <a href="#" aria-label="Notion"><i class="bi bi-journal-text"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.festival-panel'));
+      var prev = document.querySelector('[data-festival-prev]');
+      var next = document.querySelector('[data-festival-next]');
+      if (!panels.length || !prev || !next) return;
+      var currentIndex = 0;
+      var ticking = false;
+
+      function go(index) {
+        index = (index + panels.length) % panels.length;
+        var panel = panels[index];
+        if (!panel) return;
+        currentIndex = index;
+        if (panel.scrollIntoView) {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      function refreshCurrent() {
+        var headerOffset = (document.getElementById('header') || {}).offsetHeight || 0;
+        var bestIndex = 0;
+        var bestDistance = Infinity;
+        panels.forEach(function (panel, index) {
+          var rect = panel.getBoundingClientRect();
+          var distance = Math.abs(rect.top - headerOffset - 24);
+          if (rect.bottom > headerOffset + 24 && distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+        currentIndex = bestIndex;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () {
+          refreshCurrent();
+          ticking = false;
+        });
+      }, { passive: true });
+
+      // 3개 축제는 한 화면에 모두 노출(스크롤). 제목 화살표 = 이천 3개 페이지 무한 순환.
+      prev.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
+      next.addEventListener('click', function () { window.location.href = 'icheon.html'; });
+      refreshCurrent();
+    })();
+  </script>
+</body>
+</html>

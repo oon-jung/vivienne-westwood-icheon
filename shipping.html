@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>배송 확인 — Vivienne Westwood × 이천쌀</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .sh-wrap { padding: 70px 0 110px; max-width: 640px; margin: 0 auto; }
+    .sh-wrap h1 { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+    .sh-wrap > p { color: var(--grey-600); font-size: 14px; margin: 0 0 36px; }
+    .sh-box { border: 1px solid var(--back-w4); border-radius: 6px; padding: 28px; margin-bottom: 30px; }
+    .sh-box .row { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; }
+    .sh-box .row span:first-child { color: var(--grey-600); }
+    .sh-box .row span:last-child { font-weight: 700; }
+    .sh-track { list-style: none; padding: 0; margin: 0; }
+    .sh-track li { position: relative; padding: 0 0 30px 34px; }
+    .sh-track li::before { content: ""; position: absolute; left: 9px; top: 22px; bottom: -4px; width: 2px; background: var(--back-w4); }
+    .sh-track li:last-child::before { display: none; }
+    .sh-track li .dot { position: absolute; left: 0; top: 2px; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--back-w4); background: #fff; }
+    .sh-track li.done .dot { background: var(--k-black); border-color: var(--k-black); }
+    .sh-track li.done .dot::after { content: "\f26e"; font-family: bootstrap-icons; color: #fff; font-size: 11px; position: absolute; left: 3px; top: 1px; }
+    .sh-track li h3 { font-size: 15px; font-weight: 700; margin: 0 0 2px; color: var(--grey-900); }
+    .sh-track li p { font-size: 12px; color: var(--grey-600); margin: 0; }
+    .sh-track li:not(.done) h3 { color: var(--grey-600); }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo"><a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a></div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li>
+          <li><a href="icheon.html">Icheon</a></li><li><a href="archive.html">Archive</a></li><li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="mypage.html">마이페이지</a><a class="btn-login" href="index.html">로그아웃</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="sh-wrap">
+      <h1>배송 확인</h1>
+      <p>주문번호 VW-ICHEON-260617-0001</p>
+
+      <div class="sh-box">
+        <div class="row"><span>택배사</span><span>비비안 행성 특송</span></div>
+        <div class="row"><span>송장번호</span><span>1004-2026-0617</span></div>
+        <div class="row"><span>받는 분</span><span>비비안님</span></div>
+        <div class="row"><span>배송지</span><span>서울특별시 성동구 …</span></div>
+      </div>
+
+      <ul class="sh-track">
+        <li class="done"><span class="dot"></span><h3>주문 접수</h3><p>06.17 09:12 · 이천 물류센터</p></li>
+        <li class="done"><span class="dot"></span><h3>상품 준비 완료</h3><p>06.17 14:30 · 이천 물류센터</p></li>
+        <li class="done"><span class="dot"></span><h3>배송 출발</h3><p>06.18 08:05 · 성수 허브</p></li>
+        <li><span class="dot"></span><h3>배송 중</h3><p>오늘 도착 예정</p></li>
+        <li><span class="dot"></span><h3>배송 완료</h3><p>—</p></li>
+      </ul>
+
+      <div style="display:flex;gap:10px;margin-top:30px">
+        <a class="btn-vw btn-vw--ghost" href="mypage.html">마이페이지</a>
+        <a class="btn-vw btn-vw--ghost" href="refund.html">환불 요청</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top"><div class="container"><div class="row gy-4">
+      <div class="col-lg-5 footer-brand">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+        <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>신하현 <small>Shin Hahyun</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li><li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li></ul></div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>김운정 <small>Kim Woonjung</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li><li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-legal"><div class="container"><div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div></div></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

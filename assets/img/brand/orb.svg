@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="Vivienne Westwood orb">
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- sphere -->
+    <circle cx="24" cy="26" r="9" fill="none"/>
+    <!-- saturn ring -->
+    <ellipse cx="24" cy="26" rx="16" ry="5.5" transform="rotate(-18 24 26)" fill="none"/>
+    <!-- cross stem -->
+    <path d="M24 17V6"/>
+    <!-- cross bar -->
+    <path d="M19 10h10"/>
+    <!-- small flange / star on top -->
+    <path d="M24 6l2.4 2.4M24 6l-2.4 2.4"/>
+  </g>
+</svg>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>맛집 — Icheon | Vivienne Westwood × 이천쌀</title>
+  <meta content="이천 맛집 · 놀거리 · 축제 — Vivien이 큐레이션한 이천" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .ic-sec { padding: 96px 0; }
+    .ic-sec--alt { background: var(--back-w2); }
+    .ic-head { text-align: center; margin-bottom: 50px; }
+    .ic-head .eyebrow { color: var(--grey-600); }
+    .ic-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--grey-900); margin: 6px 0 8px; font-family: var(--font-display); }
+    .ic-head p { color: var(--grey-600); font-size: 15px; margin: 0; }
+
+    /* 맛집 카드 */
+    .food-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 56px; }
+    .food-card { cursor: pointer; transition: transform .25s ease; }
+    .food-card:hover { transform: translateY(-4px); }
+    .food-card.is-active .food-card__media { box-shadow: 0 0 0 1px var(--k-black) inset; }
+    .food-card.is-active h3 { color: var(--k-black); }
+    .food-card__media { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 4px; }
+    .food-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .food-card:hover .food-card__media img { transform: scale(1.06); }
+    .food-card__wish { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: 0; border-radius: 50%;
+      background: rgba(255,255,255,.92); color: var(--k-black); font-size: 15px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .food-card__wish.is-on { color: #c1121f; }
+    .food-card__wish.is-on i::before { content: "\f415"; }
+    .food-card h3 { font-size: 17px; font-weight: 700; color: var(--grey-900); margin: 16px 0 6px; }
+    .food-card p { font-size: 13px; color: var(--grey-600); line-height: 1.6; margin: 0; }
+
+    .food-map-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 30px; align-items: stretch; }
+    .food-detail { display: flex; flex-direction: column; justify-content: center; }
+    .food-detail h3 { font-size: 26px; font-weight: 800; color: var(--grey-900); margin: 0 0 10px; }
+    .food-detail p { color: var(--grey-700); font-size: 14px; line-height: 1.7; margin: 0 0 22px; }
+    .food-detail .acts { display: flex; gap: 10px; }
+    .food-map { border-radius: 4px; overflow: hidden; min-height: 380px; border: 1px solid var(--back-w4); }
+    .food-map iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+    .food-hero { margin-bottom: 50px; }
+
+    /* 놀거리 */
+    .disc-tabs { display: flex; justify-content: center; gap: 36px; margin-bottom: 40px; }
+    .disc-tab { background: none; border: 0; font-size: 16px; font-weight: 600; color: var(--grey-600); cursor: pointer; padding: 0 2px 10px; border-bottom: 2px solid transparent; }
+    .disc-tab.is-active { color: var(--k-black); border-bottom-color: var(--k-black); }
+    .disc-panel { display: none; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .disc-panel.is-active { display: grid; }
+    .disc-panel figure { margin: 0; position: relative; aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; }
+    .disc-panel img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .disc-panel figure:hover img { transform: scale(1.05); }
+    .disc-panel figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; color: #fff; font-weight: 700;
+      background: linear-gradient(transparent, rgba(0,0,0,.65)); }
+
+    /* 축제 */
+    .fest-list { display: grid; gap: 18px; }
+    .fest-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 30px 34px;
+      border: 1px solid var(--back-w4); border-radius: 4px; transition: all .25s ease; background: #fff; }
+    .fest-row:hover { border-color: var(--k-black); transform: translateX(4px); }
+    .fest-row h3 { font-size: 20px; font-weight: 800; color: var(--grey-900); margin: 0 0 4px; }
+    .fest-row p { margin: 0; font-size: 13px; color: var(--grey-600); }
+    .fest-row .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--k-black); white-space: nowrap; }
+
+    @media (max-width: 991px) {
+      .food-grid { grid-template-columns: repeat(2, 1fr); }
+      .food-map-wrap { grid-template-columns: 1fr; }
+      .disc-panel.is-active { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 575px) { .food-grid { grid-template-columns: 1fr; } .fest-row { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a class="active" href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <!-- ======= 맛집 ======= -->
+    <section id="food" class="ic-sec">
+      <div class="container">
+        <div class="food-hero ic-hero-nav" data-aos="fade-up">
+          <button class="ic-hero-nav__btn ic-hero-nav__btn--prev" type="button" data-food-prev aria-label="이전 페이지 — Festivals" title="Festivals"><i class="bi bi-chevron-left"></i></button>
+          <div class="ic-hero-nav__copy">
+            <p class="eyebrow">Vivien's Pick</p>
+            <h2 class="ic-hero-nav__title">THE CULINARY SOUL OF ICHEON</h2>
+            <p class="ic-hero-nav__sub">Top Icheon Eats, Curated by Vivian</p>
+          </div>
+          <button class="ic-hero-nav__btn ic-hero-nav__btn--next" type="button" data-food-next aria-label="다음 페이지 — Discover" title="Discover"><i class="bi bi-chevron-right"></i></button>
+        </div>
+
+        <div class="food-grid" data-aos="fade-up">
+          <article class="food-card" data-name="강민주의들밥 본점" data-desc="돌솥밥과 구수한 청국장, 제철 나물 반찬이 어우러지는 건강한 이천식 밥상." data-q="강민주의들밥 본점 이천">
+            <div class="food-card__media"><img src="assets/img/icheon/food-1.jpg" alt="강민주의들밥 본점"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>강민주의들밥 본점</h3><p>돌솥밥과 구수한 청국장, 제철 나물 반찬이 어우러지는 건강한 이천식 밥상.</p>
+          </article>
+          <article class="food-card" data-name="나랏님이천쌀밥" data-desc="윤기 나는 이천쌀밥에 게장, 갈비찜, 직화구이 정식을 더한 대표 쌀밥 한정식." data-q="나랏님이천쌀밥 이천">
+            <div class="food-card__media"><img src="assets/img/icheon/food-2.jpg" alt="나랏님이천쌀밥"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>나랏님이천쌀밥</h3><p>윤기 나는 이천쌀밥에 게장, 갈비찜, 직화구이 정식을 더한 대표 쌀밥 한정식.</p>
+          </article>
+          <article class="food-card" data-name="야반" data-desc="제철 재료로 차린 자연식 한정식. 솥밥과 게장, 보리굴비를 푸짐하게 즐기는 곳." data-q="야반 이천 한정식">
+            <div class="food-card__media"><img src="assets/img/icheon/food-3.jpg" alt="야반"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>야반</h3><p>제철 재료로 차린 자연식 한정식. 솥밥과 게장, 보리굴비를 푸짐하게 즐기는 곳.</p>
+          </article>
+          <article class="food-card" data-name="관촌순두부" data-desc="고소한 순두부와 콩비지를 담백하게 맛볼 수 있는 사음동의 정갈한 두부 맛집." data-q="관촌순두부 이천">
+            <div class="food-card__media"><img src="assets/img/icheon/food-4.jpg" alt="관촌순두부"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>관촌순두부</h3><p>고소한 순두부와 콩비지를 담백하게 맛볼 수 있는 사음동의 정갈한 두부 맛집.</p>
+          </article>
+          <article class="food-card" data-name="희원" data-desc="고즈넉한 한옥 정원과 베이커리가 어우러진 카페. 식사 후 쉬어가기 좋은 공간." data-q="희원 이천 카페">
+            <div class="food-card__media"><img src="assets/img/icheon/food-5.jpg" alt="희원"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>희원</h3><p>고즈넉한 한옥 정원과 베이커리가 어우러진 카페. 식사 후 쉬어가기 좋은 공간.</p>
+          </article>
+          <article class="food-card" data-name="호타루 회전초밥" data-desc="신선한 재료의 스시를 회전초밥으로 즐기는 이천의 캐주얼 초밥 맛집." data-q="호타루 회전초밥 이천">
+            <div class="food-card__media"><img src="assets/img/icheon/food-6.jpg" alt="호타루 회전초밥"><button class="food-card__wish" type="button" aria-label="찜"><i class="bi bi-heart"></i></button></div>
+            <h3>호타루 회전초밥</h3><p>신선한 재료의 스시를 회전초밥으로 즐기는 이천의 캐주얼 초밥 맛집.</p>
+          </article>
+        </div>
+
+        <div class="food-map-wrap" data-aos="fade-up">
+          <div class="food-detail">
+            <h3 data-food-name>강민주의들밥 본점</h3>
+            <p data-food-desc>돌솥밥과 구수한 청국장, 제철 나물 반찬이 어우러지는 건강한 이천식 밥상.</p>
+            <div class="acts">
+              <a class="btn-vw btn-vw--solid" href="https://map.naver.com/" target="_blank" rel="noopener">예약하기</a>
+              <a class="btn-vw btn-vw--ghost" data-food-link href="https://maps.google.com/maps?q=강민주의들밥 본점 이천" target="_blank" rel="noopener">지도에서 보기</a>
+            </div>
+          </div>
+          <div class="food-map">
+            <iframe data-food-map title="이천 맛집 지도" loading="lazy"
+              src="https://maps.google.com/maps?q=%EC%9D%B4%EC%B2%9C%EC%8B%9C&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      var name = document.querySelector('[data-food-name]');
+      var desc = document.querySelector('[data-food-desc]');
+      var map = document.querySelector('[data-food-map]');
+      var link = document.querySelector('[data-food-link]');
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.food-card'));
+      var prev = document.querySelector('[data-food-prev]');
+      var next = document.querySelector('[data-food-next]');
+      var activeIndex = 0;
+
+      function activate(index, shouldScroll) {
+        if (!cards.length) return;
+        index = (index + cards.length) % cards.length;
+        activeIndex = index;
+        cards.forEach(function (card, i) {
+          var isActive = i === index;
+          card.classList.toggle('is-active', isActive);
+          card.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+        var card = cards[index];
+        var q = card.dataset.q;
+        name.textContent = card.dataset.name;
+        desc.textContent = card.dataset.desc;
+        map.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(q) + '&t=&z=14&ie=UTF8&iwloc=&output=embed';
+        link.href = 'https://maps.google.com/maps?q=' + encodeURIComponent(q);
+        if (shouldScroll && card.scrollIntoView) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+      }
+
+      cards.forEach(function (c, i) {
+        c.setAttribute('tabindex', '0');
+        c.addEventListener('click', function (e) {
+          if (e.target.closest('.food-card__wish')) return;
+          activate(i, false);
+        });
+        c.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate(i, false);
+          }
+        });
+      });
+      // 제목 화살표 = 이천 3개 페이지 무한 순환 (Food → Discover → Festivals → Food)
+      if (prev) prev.addEventListener('click', function () { window.location.href = 'icheon-festival.html'; });
+      if (next) next.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
+      document.querySelectorAll('.food-card__wish').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.stopPropagation(); b.classList.toggle('is-on'); });
+      });
+      activate(0, false);
+    })();
+  </script>
+</body>
+</html>

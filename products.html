@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Products — Vivienne Westwood × 이천쌀</title>
+  <meta content="Vivienne Westwood × 이천쌀 콜라보 제품 — Apparels · ACC · Icheon Rice" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <!-- 페이지 전용 스타일 (Figma 기반 · 자기완결) -->
+  <style>
+    #main.page { margin-top: var(--header-h); }
+
+    .pv-hero { position: relative; background: #fff; }
+    .pv-hero img { display: block; width: 100%; height: 500px; object-fit: cover; object-position: center; }
+
+    .pv-wrap { padding: 52px 0 118px; background: #fff; }
+    .pv-tabs {
+      display: flex;
+      justify-content: center;
+      gap: clamp(48px, 9vw, 116px);
+      border-bottom: 1px solid #d9d9d9;
+      margin-bottom: 54px;
+    }
+    .pv-tab {
+      min-width: 124px;
+      background: none;
+      border: 0;
+      padding: 0 4px 28px;
+      margin-bottom: -2px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1;
+      color: #8f8f8f;
+      cursor: pointer;
+      border-bottom: 5px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .pv-tab:hover { color: var(--grey-900); }
+    .pv-tab.is-active { color: var(--k-black); border-bottom-color: var(--k-black); }
+
+    .pv-grid { display: none; grid-template-columns: repeat(2, minmax(0, 460px)); justify-content: center; gap: 54px 90px; }
+    .pv-grid.is-active { display: grid; }
+
+    .pv-card { display: flex; flex-direction: column; min-width: 0; }
+    .pv-card__media {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 520px;
+      overflow: hidden;
+      background: #fff;
+      border: 0;
+      border-radius: 0;
+    }
+    .pv-card__media img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform .5s ease; }
+    .pv-card:hover .pv-card__media img { transform: scale(1.05); }
+    .pv-card__label {
+      position: absolute;
+      left: 28px;
+      top: 22px;
+      z-index: 2;
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+      color: #141a22;
+      letter-spacing: -.02em;
+    }
+    .pv-card__wish {
+      position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%;
+      background: rgba(255,255,255,.92); color: var(--k-black); font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .2s ease;
+    }
+    .pv-card__wish:hover { background: var(--k-black); color: #fff; }
+    .pv-card__wish.is-on { color: var(--c-red, #c1121f); }
+    .pv-card__wish.is-on i::before { content: "\f415"; } /* bi-heart-fill */
+
+    .pv-card__body { margin-top: -28px; position: relative; z-index: 3; padding: 0 38px; }
+    .pv-card__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .pv-card__price { font-size: 23px; font-weight: 800; color: #141a22; white-space: nowrap; }
+    .pv-card__buy {
+      min-width: 118px;
+      padding: 13px 22px;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      color: #17202a;
+      background: #c9c9c9;
+      border: 0;
+      border-radius: 4px;
+      transition: all .2s ease;
+    }
+    .pv-card__buy:hover { background: var(--k-black); color: #fff; }
+
+    @media (max-width: 991px) {
+      .pv-hero img { height: 320px; }
+      .pv-wrap { padding: 40px 0 96px; }
+      .pv-tabs { gap: 18px; overflow-x: auto; justify-content: flex-start; padding-left: 6px; }
+      .pv-tab { min-width: 110px; font-size: 19px; padding-bottom: 20px; }
+      .pv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 58px 24px; }
+      .pv-card__media { height: 420px; }
+      .pv-card__body { padding: 0 14px; }
+    }
+    @media (max-width: 575px) {
+      .pv-hero img { height: 230px; }
+      .pv-grid { grid-template-columns: 1fr; }
+      .pv-card__media { height: 430px; }
+      .pv-card__label { left: 18px; top: 18px; font-size: 19px; }
+      .pv-card__price { font-size: 20px; }
+      .pv-card__buy { min-width: 104px; padding: 11px 18px; }
+    }
+  </style>
+</head>
+
+<body class="products-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a class="active" href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <!-- ======= Hero ======= -->
+    <section class="pv-hero">
+      <img src="assets/img/products/hero.jpg" alt="Vivienne Westwood × 이천쌀 콜라보 제품">
+    </section>
+
+    <!-- ======= Tabs + Grid ======= -->
+    <section class="pv-wrap" data-tab-root>
+      <div class="container">
+        <div class="pv-tabs" role="tablist">
+          <button class="pv-tab" data-tab-target="apparels" id="apparels">Apparels</button>
+          <button class="pv-tab is-active" data-tab-target="acc" id="acc">ACC</button>
+          <button class="pv-tab" data-tab-target="rice" id="rice">Icheon Rice</button>
+        </div>
+
+        <!-- Apparels -->
+        <div class="pv-grid" data-tab-panel="apparels">
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">블랙 오브 크롭 탑</h3>
+              <img src="assets/img/products/apparel-black.png" alt="블랙 오브 크롭 탑">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">248.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">화이트 오브 크롭 탑</h3>
+              <img src="assets/img/products/apparel-white.png" alt="화이트 오브 크롭 탑">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">312.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+        </div>
+
+        <!-- ACC -->
+        <div class="pv-grid is-active" data-tab-panel="acc">
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">오브 진주 목걸이 · 실버</h3>
+              <img src="assets/img/products/acc-silver.png" alt="오브 진주 목걸이 실버">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">276.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">오브 진주 목걸이 · 골드</h3>
+              <img src="assets/img/products/acc-gold.png" alt="오브 진주 목걸이 골드">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">389.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+        </div>
+
+        <!-- Icheon Rice -->
+        <div class="pv-grid" data-tab-panel="rice">
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">임금님표 이천쌀 · 4kg</h3>
+              <img src="assets/img/products/rice-4kg.png" alt="Vivienne Westwood 이천쌀 4kg">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">72.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+          <article class="pv-card pv-card--figma">
+            <a class="pv-card__media" href="product-detail.html">
+              <h3 class="pv-card__label">임금님표 이천쌀 · 10kg</h3>
+              <img src="assets/img/products/rice-10kg.png" alt="Vivienne Westwood 이천쌀 10kg">
+              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+            </a>
+            <div class="pv-card__body">
+              <div class="pv-card__row"><span class="pv-card__price">72.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <!-- 위시리스트 토글 (프론트 흉내) -->
+  <script>
+    document.querySelectorAll('.pv-card__wish').forEach(function(b){
+      b.addEventListener('click', function(e){ e.preventDefault(); b.classList.toggle('is-on'); });
+    });
+  </script>
+</body>
+</html>

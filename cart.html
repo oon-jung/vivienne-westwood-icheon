@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>장바구니 — Vivienne Westwood × 이천쌀</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .ct-wrap { padding: 60px 0 110px; }
+    .ct-wrap h1 { font-size: 30px; font-weight: 800; color: var(--grey-900); margin: 0 0 8px; }
+    .ct-steps { font-size: 13px; color: var(--grey-600); margin-bottom: 40px; }
+    .ct-steps b { color: var(--k-black); }
+    .ct-grid { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+    .ct-item { display: grid; grid-template-columns: 96px 1fr auto; gap: 18px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--back-w4); }
+    .ct-item:first-child { border-top: 1px solid var(--back-w4); }
+    .ct-item__img { width: 96px; height: 96px; border-radius: 4px; overflow: hidden; background: var(--back-w2); }
+    .ct-item__img img { width: 100%; height: 100%; object-fit: cover; }
+    .ct-item__info h3 { font-size: 16px; font-weight: 700; color: var(--grey-900); margin: 0 0 4px; }
+    .ct-item__info p { font-size: 13px; color: var(--grey-600); margin: 0 0 8px; }
+    .ct-qty { display: inline-flex; border: 1px solid var(--back-w4); border-radius: 2px; }
+    .ct-qty button { width: 30px; height: 32px; border: 0; background: #fff; cursor: pointer; }
+    .ct-qty span { width: 40px; height: 32px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+    .ct-item__right { text-align: right; }
+    .ct-item__price { font-weight: 800; color: var(--grey-900); white-space: nowrap; }
+    .ct-item__del { background: none; border: 0; color: var(--grey-600); font-size: 18px; cursor: pointer; margin-top: 8px; }
+    .ct-item__del:hover { color: #c1121f; }
+
+    .ct-sum { border: 1px solid var(--back-w4); border-radius: 6px; padding: 28px 26px; position: sticky; top: 100px; }
+    .ct-sum h2 { font-size: 18px; font-weight: 800; margin: 0 0 20px; }
+    .ct-sum .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--grey-700); margin-bottom: 12px; }
+    .ct-sum .total { border-top: 1px solid var(--back-w4); padding-top: 16px; margin-top: 6px; font-size: 18px; font-weight: 800; color: var(--k-black); }
+    .ct-sum .btn-vw { width: 100%; margin-top: 18px; }
+    .ct-empty { text-align: center; padding: 80px 0; color: var(--grey-600); }
+    @media (max-width: 991px) { .ct-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="icheon.html">Icheon</a></li>
+          <li><a href="archive.html">Archive</a></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="ct-wrap">
+      <div class="container">
+        <h1>장바구니</h1>
+        <p class="ct-steps"><b>01 장바구니</b> &nbsp;›&nbsp; 02 주문서 &nbsp;›&nbsp; 03 주문완료</p>
+
+        <div class="ct-grid">
+          <div id="ctList">
+            <div class="ct-item" data-price="72000" data-qty="1">
+              <div class="ct-item__img"><img src="assets/img/products/acc-1.jpg" alt=""></div>
+              <div class="ct-item__info">
+                <h3>오브 진주 목걸이 · 실버</h3><p>Color 실버 / Size 45cm</p>
+                <div class="ct-qty"><button type="button" data-act="minus">−</button><span data-qty>1</span><button type="button" data-act="plus">+</button></div>
+              </div>
+              <div class="ct-item__right"><div class="ct-item__price" data-line>72,000 W</div><button class="ct-item__del" type="button" aria-label="삭제"><i class="bi bi-trash"></i></button></div>
+            </div>
+            <div class="ct-item" data-price="24000" data-qty="2">
+              <div class="ct-item__img"><img src="assets/img/home/feature-4.jpg" alt=""></div>
+              <div class="ct-item__info">
+                <h3>이천 임금님표 쌀 · 4kg</h3><p>중량 4kg</p>
+                <div class="ct-qty"><button type="button" data-act="minus">−</button><span data-qty>2</span><button type="button" data-act="plus">+</button></div>
+              </div>
+              <div class="ct-item__right"><div class="ct-item__price" data-line>48,000 W</div><button class="ct-item__del" type="button" aria-label="삭제"><i class="bi bi-trash"></i></button></div>
+            </div>
+          </div>
+
+          <aside class="ct-sum">
+            <h2>결제 정보</h2>
+            <div class="row"><span>상품 금액</span><span id="sumItems">120,000 W</span></div>
+            <div class="row"><span>배송비</span><span>무료</span></div>
+            <div class="row total"><span>합계</span><span id="sumTotal">120,000 W</span></div>
+            <a class="btn-vw btn-vw--solid" href="checkout.html">주문하기</a>
+            <a class="btn-vw btn-vw--ghost" href="products.html" style="margin-top:8px;width:100%">쇼핑 계속하기</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top"><div class="container"><div class="row gy-4">
+      <div class="col-lg-5 footer-brand">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+        <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>신하현 <small>Shin Hahyun</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li><li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li></ul></div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>김운정 <small>Kim Woonjung</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li><li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-legal"><div class="container"><div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div></div></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      var won = function (n) { return n.toLocaleString('ko-KR') + ' W'; };
+      function recalc() {
+        var total = 0;
+        document.querySelectorAll('.ct-item').forEach(function (it) {
+          var q = +it.dataset.qty, p = +it.dataset.price, line = p * q;
+          total += line; it.querySelector('[data-line]').textContent = won(line);
+        });
+        document.getElementById('sumItems').textContent = won(total);
+        document.getElementById('sumTotal').textContent = won(total);
+        var list = document.getElementById('ctList');
+        if (!list.querySelector('.ct-item')) list.innerHTML = '<div class="ct-empty">장바구니가 비어 있습니다.</div>';
+      }
+      document.getElementById('ctList').addEventListener('click', function (e) {
+        var it = e.target.closest('.ct-item'); if (!it) return;
+        if (e.target.closest('[data-act=plus]')) { it.dataset.qty = +it.dataset.qty + 1; }
+        else if (e.target.closest('[data-act=minus]')) { if (+it.dataset.qty > 1) it.dataset.qty = +it.dataset.qty - 1; }
+        else if (e.target.closest('.ct-item__del')) { it.remove(); }
+        else return;
+        var qs = it.querySelector('[data-qty]'); if (qs) qs.textContent = it.dataset.qty;
+        recalc();
+      });
+      recalc();
+    })();
+  </script>
+</body>
+</html>

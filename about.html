@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About — Vivienne Westwood × 이천쌀</title>
+  <meta content="비비안 행성에 불시착한 이천 임금님표 쌀 — 콜라보 스토리보드 타임라인과 심볼" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    .ab-intro { text-align: center; padding: 130px 0 46px; }
+    .ab-video { padding: 0 0 30px; }
+    .ab-video__frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 56px rgba(16,16,16,.18); }
+    .ab-video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .ab-intro .eyebrow { color: var(--grey-600); }
+    .ab-intro h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.25; margin: 0 0 20px; color: var(--grey-900); }
+    .ab-intro p { max-width: 640px; margin: 0 auto; font-size: 16px; line-height: 1.75; color: var(--grey-700); }
+
+    .tl { padding: 30px 0 90px; }
+    .tl-head { text-align: center; margin-bottom: 60px; }
+    .tl-head .eyebrow { color: var(--grey-600); }
+    .tl-head h2 { font-size: 34px; font-weight: 800; margin: 8px 0 0; color: var(--grey-900); }
+
+    .tl-scene { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: center; margin-bottom: 88px; }
+    .tl-scene:last-child { margin-bottom: 0; }
+    .tl-scene__media { border-radius: 4px; overflow: hidden; box-shadow: 0 18px 40px rgba(16,16,16,.12); }
+    .tl-scene__media img { display: block; width: 100%; height: auto; }
+    .tl-scene--rev .tl-scene__media { order: 2; }
+    .tl-scene--rev .tl-scene__body { order: 1; text-align: right; }
+    .tl-scene__no { font-family: var(--font-display); font-size: 56px; font-weight: 800; line-height: 1; color: var(--back-w4); display: block; margin-bottom: 10px; }
+    .tl-scene__cap { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-600); margin-bottom: 12px; }
+    .tl-scene__title { font-size: 28px; font-weight: 800; color: var(--grey-900); margin: 0 0 14px; }
+    .tl-scene__text { font-size: 15px; line-height: 1.8; color: var(--grey-700); margin: 0; }
+
+    .sym { padding: 50px 0 110px; background: var(--back-w2); }
+    .sym-head { text-align: center; margin-bottom: 44px; }
+    .sym-head .eyebrow { color: var(--grey-600); }
+    .sym-head h2 { font-size: 34px; font-weight: 800; margin: 8px 0 10px; color: var(--grey-900); }
+    .sym-head p { font-size: 14px; color: var(--grey-600); margin: 0; }
+    .sym-rail { display: flex; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 10px 0; scrollbar-width: none; }
+    .sym-rail::-webkit-scrollbar { display: none; }
+    .sym-slide { scroll-snap-align: center; scroll-snap-stop: always; flex: 0 0 46%; display: flex; align-items: center; justify-content: center; padding: 0 3%; }
+    .sym-slide img { max-width: 100%; max-height: 320px; object-fit: contain; opacity: .4; transform: scale(.84); transition: all .4s ease; }
+    .sym-slide.is-center img { opacity: 1; transform: scale(1); }
+
+    @media (max-width: 991px) {
+      .tl-scene { grid-template-columns: 1fr; gap: 22px; }
+      .tl-scene--rev .tl-scene__media { order: 0; }
+      .tl-scene--rev .tl-scene__body { order: 0; text-align: left; }
+      .sym-slide { flex-basis: 78%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a class="active" href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <!-- ======= Intro ======= -->
+    <section class="ab-intro">
+      <div class="container" data-aos="fade-up">
+        <p class="eyebrow">Vivienne Westwood × 이천쌀</p>
+        <h1>비비안 행성에 불시착한<br>이천 임금님표 쌀</h1>
+        <p>우주 어딘가의 오브 행성에서 출발한 여정이, 600년을 이어온 이천 임금님표 쌀과 만나기까지. 한 알의 쌀이 오브가 되는 콜라보의 이야기입니다.</p>
+      </div>
+    </section>
+
+    <!-- ======= 영상 (스토리보드 시작 전) ======= -->
+    <section class="ab-video" data-aos="fade-up">
+      <div class="container">
+        <div class="ab-video__frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/IJ74YumH2t0?autoplay=1&mute=1&loop=1&playlist=IJ74YumH2t0&controls=1&modestbranding=1&rel=0&playsinline=1"
+            title="Vivienne Westwood × 이천쌀 영상" frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Timeline (Storyboard 01~10) ======= -->
+    <section id="timeline" class="tl">
+      <div class="container">
+        <div class="tl-head" data-aos="fade-up">
+          <p class="eyebrow">Story Board</p>
+          <h2>Timeline</h2>
+        </div>
+
+        <div class="tl-scene" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-01.png" alt="비비안 행성"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">01</span><p class="tl-scene__cap">Orb Planet</p>
+            <h3 class="tl-scene__title">비비안 행성</h3>
+            <p class="tl-scene__text">우주 어딘가, 오브가 빛나는 행성이 있었습니다. 모든 이야기가 시작되는 곳.</p></div>
+        </div>
+
+        <div class="tl-scene tl-scene--rev" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-02.png" alt="오리보리 오브"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">02</span><p class="tl-scene__cap">Ori-Bori Orb</p>
+            <h3 class="tl-scene__title">오브들의 행성</h3>
+            <p class="tl-scene__text">행성의 주민, 오브들이 모여 사는 풍경. 호기심 많은 한 오브가 새로운 세계를 꿈꿉니다.</p></div>
+        </div>
+
+        <div class="tl-scene" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-03.png" alt="우주 여행"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">03</span><p class="tl-scene__cap">Space Ride</p>
+            <h3 class="tl-scene__title">우주를 가르다</h3>
+            <p class="tl-scene__text">오브를 타고 별과 별 사이를 가로질러, 미지의 행성을 향해 날아갑니다.</p></div>
+        </div>
+
+        <div class="tl-scene tl-scene--rev" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-04.png" alt="이천 불시착"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">04</span><p class="tl-scene__cap">Arrival · Icheon</p>
+            <h3 class="tl-scene__title">이천에 불시착</h3>
+            <p class="tl-scene__text">긴 여정 끝에 도착한 곳은 한국 이천의 들녘. 낯설지만 따뜻한 땅이었습니다.</p></div>
+        </div>
+
+        <div class="tl-scene" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-05.png" alt="황금 들판"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">05</span><p class="tl-scene__cap">Golden Field</p>
+            <h3 class="tl-scene__title">황금빛 들판</h3>
+            <p class="tl-scene__text">끝없이 펼쳐진 황금빛 쌀 들판. 오브는 처음 보는 풍요에 마음을 빼앗깁니다.</p></div>
+        </div>
+
+        <div class="tl-scene tl-scene--rev" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-06.png" alt="농부와 쌀알"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">06</span><p class="tl-scene__cap">Farmer & Grain</p>
+            <h3 class="tl-scene__title">임금님표 쌀을 만나다</h3>
+            <p class="tl-scene__text">농부의 손에서 정성껏 빚어진 임금님표 쌀 한 알. 그 빛깔이 오브를 닮았습니다.</p></div>
+        </div>
+
+        <div class="tl-scene" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-07.png" alt="쌀이 오브가 되다"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">07</span><p class="tl-scene__cap">Rice in Space</p>
+            <h3 class="tl-scene__title">쌀, 오브가 되다</h3>
+            <p class="tl-scene__text">한 알의 쌀이 왕관과 토성의 고리를 두르고, 비비안의 오브로 다시 태어납니다.</p></div>
+        </div>
+
+        <div class="tl-scene tl-scene--rev" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-08.png" alt="600년의 시간"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">08</span><p class="tl-scene__cap">600 Years</p>
+            <h3 class="tl-scene__title">600년의 시간</h3>
+            <p class="tl-scene__text">고려 성종 때부터 임금에게 진상되어 온 600년 전통. 시간이 빚어낸 한 그릇입니다.</p></div>
+        </div>
+
+        <div class="tl-scene" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-09.png" alt="첫 콜라보"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">09</span><p class="tl-scene__cap">First Trade</p>
+            <h3 class="tl-scene__title">두 세계의 첫 만남</h3>
+            <p class="tl-scene__text">비비안의 펑크와 이천의 전통이 손을 맞잡습니다. 콜라보의 첫 거래가 성사됩니다.</p></div>
+        </div>
+
+        <div class="tl-scene tl-scene--rev" data-aos="fade-up">
+          <div class="tl-scene__media"><img src="assets/img/about/scene-10.png" alt="엔드 카드"></div>
+          <div class="tl-scene__body"><span class="tl-scene__no">10</span><p class="tl-scene__cap">End Card</p>
+            <h3 class="tl-scene__title">Vivienne Westwood × 이천쌀</h3>
+            <p class="tl-scene__text">비비안 행성에 불시착한 이천 임금님표 쌀. 이제 한국에서 만나보세요.</p></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js?v=2"></script>
+</body>
+</html>

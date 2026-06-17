@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>마이페이지 — Vivienne Westwood × 이천쌀</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .mp-wrap { padding: 60px 0 110px; }
+    .mp-top { display: flex; align-items: center; gap: 18px; padding-bottom: 30px; margin-bottom: 36px; border-bottom: 1px solid var(--back-w4); }
+    .mp-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--back-w2); display: flex; align-items: center; justify-content: center; }
+    .mp-avatar img { width: 38px; height: 38px; }
+    .mp-top h1 { font-size: 22px; font-weight: 800; margin: 0; }
+    .mp-top p { font-size: 13px; color: var(--grey-600); margin: 2px 0 0; }
+    .mp-top .out { margin-left: auto; font-size: 13px; color: var(--grey-600); }
+    .mp-tabs { display: flex; gap: 30px; border-bottom: 1px solid var(--back-w4); margin-bottom: 40px; }
+    .mp-tab { background: none; border: 0; padding: 0 2px 16px; font-size: 16px; font-weight: 600; color: var(--grey-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .mp-tab.is-active { color: var(--k-black); border-bottom-color: var(--k-black); }
+    .mp-panel { display: none; }
+    .mp-panel.is-active { display: block; }
+    .mp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .mp-card { border: 1px solid var(--back-w4); border-radius: 4px; overflow: hidden; }
+    .mp-card__img { aspect-ratio: 1/1; overflow: hidden; background: var(--back-w2); }
+    .mp-card__img img { width: 100%; height: 100%; object-fit: cover; }
+    .mp-card__b { padding: 14px; }
+    .mp-card__b h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+    .mp-card__b .pr { font-size: 14px; font-weight: 800; }
+    .mp-list-item { display: grid; grid-template-columns: 70px 1fr auto auto; gap: 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--back-w4); }
+    .mp-list-item img { width: 70px; height: 70px; border-radius: 4px; object-fit: cover; }
+    .mp-list-item h3 { font-size: 15px; font-weight: 700; margin: 0 0 3px; }
+    .mp-list-item p { font-size: 12px; color: var(--grey-600); margin: 0; }
+    .mp-status { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 20px; background: var(--back-w2); color: var(--grey-800); }
+    .mp-status--done { background: #eafaf0; color: #1a8a4f; }
+    @media (max-width: 991px) { .mp-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li>
+          <li><a href="icheon.html">Icheon</a></li><li><a href="archive.html">Archive</a></li><li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="mypage.html">마이페이지</a><a class="btn-login" href="index.html">로그아웃</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="mp-wrap">
+      <div class="container" data-tab-root>
+        <div class="mp-top">
+          <div class="mp-avatar"><img src="assets/img/brand/orb.svg" alt=""></div>
+          <div><h1>비비안님</h1><p>vivienne@icheon.com</p></div>
+          <a class="out" href="index.html">로그아웃 ›</a>
+        </div>
+
+        <div class="mp-tabs">
+          <button class="mp-tab is-active" data-tab-target="wish">위시리스트</button>
+          <button class="mp-tab" data-tab-target="cart">장바구니</button>
+          <button class="mp-tab" data-tab-target="history">주문 내역</button>
+        </div>
+
+        <!-- 위시리스트 -->
+        <div class="mp-panel is-active" data-tab-panel="wish">
+          <div class="mp-grid">
+            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/products/acc-1.jpg" alt=""></div><div class="mp-card__b"><h3>오브 진주 목걸이 · 실버</h3><span class="pr">72,000 W</span></div></a>
+            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/products/acc-2.jpg" alt=""></div><div class="mp-card__b"><h3>오브 진주 목걸이 · 골드</h3><span class="pr">72,000 W</span></div></a>
+            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/home/feature-4.jpg" alt=""></div><div class="mp-card__b"><h3>빛나는 쌀알 오브</h3><span class="pr">68,000 W</span></div></a>
+          </div>
+        </div>
+
+        <!-- 장바구니 -->
+        <div class="mp-panel" data-tab-panel="cart">
+          <div class="mp-list-item"><img src="assets/img/products/acc-1.jpg" alt=""><div><h3>오브 진주 목걸이 · 실버</h3><p>Color 실버 / Size 45cm · 수량 1</p></div><span class="pr" style="font-weight:800">72,000 W</span><a class="btn-vw btn-vw--ghost" href="cart.html" style="padding:8px 16px;font-size:13px">장바구니</a></div>
+          <div class="mp-list-item"><img src="assets/img/products/rice-4kg.png" alt=""><div><h3>이천 임금님표 쌀 · 4kg</h3><p>중량 4kg · 수량 2</p></div><span class="pr" style="font-weight:800">48,000 W</span><a class="btn-vw btn-vw--ghost" href="cart.html" style="padding:8px 16px;font-size:13px">장바구니</a></div>
+          <div style="text-align:right;margin-top:24px"><a class="btn-vw btn-vw--solid" href="cart.html">장바구니로 이동</a></div>
+        </div>
+
+        <!-- 주문 내역 -->
+        <div class="mp-panel" data-tab-panel="history">
+          <div class="mp-list-item"><img src="assets/img/products/acc-1.jpg" alt=""><div><h3>오브 진주 목걸이 외 1건</h3><p>VW-ICHEON-260617-0001 · 120,000 W</p></div><span class="mp-status mp-status--done">배송완료</span><a class="btn-vw btn-vw--ghost" href="shipping.html" style="padding:8px 16px;font-size:13px">배송확인</a></div>
+          <div class="mp-list-item"><img src="assets/img/products/acc-2.jpg" alt=""><div><h3>오브 진주 목걸이 · 골드</h3><p>VW-ICHEON-260610-0042 · 72,000 W</p></div><span class="mp-status">배송중</span><a class="btn-vw btn-vw--ghost" href="refund.html" style="padding:8px 16px;font-size:13px">환불요청</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top"><div class="container"><div class="row gy-4">
+      <div class="col-lg-5 footer-brand">
+        <a href="index.html" class="brand"><img src="assets/img/brand/orb.svg" alt="" class="brand-orb"><span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span></a>
+        <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+      </div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>신하현 <small>Shin Hahyun</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li><li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li></ul></div>
+      <div class="col-lg-3 col-md-6 footer-member"><h4>김운정 <small>Kim Woonjung</small></h4><p class="role">Design · Front-end</p>
+        <ul><li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li><li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li></ul></div>
+    </div></div></div>
+    <div class="footer-legal"><div class="container"><div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div></div></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

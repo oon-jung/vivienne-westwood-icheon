@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Stores — Vivienne Westwood × 이천쌀</title>
+  <meta content="Vivienne Westwood × 이천쌀 매장 안내 — 성수점 · 이천본점" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .st-hero {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      color: var(--white);
+    }
+    .st-hero__img,
+    .st-store__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .st-hero__img {
+      transform: scale(1.2);
+      transform-origin: center;
+    }
+    .st-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.8) 0%, rgba(102,102,102,.8) 100%);
+    }
+    .st-hero__inner {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      width: min(100% - 32px, 440px);
+      margin: 0 auto;
+      gap: 110px;
+    }
+    .st-hero h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .st-hero p {
+      font-size: 16px;
+      line-height: 1.2;
+      margin: 0;
+      width: 220px;
+    }
+    br.st-mobile-break { display: none; }
+
+    .st-wrap {
+      padding: 50px 0 100px;
+    }
+    .st-container {
+      width: min(100% - 40px, 1140px);
+      margin: 0 auto;
+    }
+    .st-store {
+      display: grid;
+      grid-template-rows: 200px 350px;
+      min-height: 550px;
+    }
+    .st-store + .st-store { margin-top: 100px; }
+    .st-store__info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: stretch;
+    }
+    .st-store__main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      min-width: 0;
+    }
+    .st-store__name h2 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--k-black);
+      margin: 0 0 4px;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .st-store__name p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--k-black);
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .st-address {
+      display: grid;
+      gap: 5px;
+      color: #3f3f3f;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+    .st-address p {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .st-address i {
+      color: var(--k-black);
+      font-size: 25px;
+      line-height: 1;
+    }
+    .st-store__contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 0;
+      color: #3f3f3f;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+    .st-store__contact dl {
+      margin: 0;
+    }
+    .st-store__contact dt {
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .st-store__contact dd {
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin: 0;
+    }
+    .st-store__line {
+      height: 1px;
+      background: #d9d9d9;
+      width: 100%;
+    }
+    .st-store__photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 350px;
+      background: #efd1d1;
+      overflow: hidden;
+    }
+    .st-store__photo {
+      overflow: hidden;
+      position: relative;
+    }
+    .st-store__photo--seongsu-a img {
+      width: 766px;
+      height: 571px;
+      max-width: none;
+      transform: translate(-120px, -44px);
+    }
+    .st-store__photo--seongsu-b img {
+      width: 586px;
+      height: 438px;
+      max-width: none;
+      transform: translate(-5px, -44px);
+    }
+    .st-store__photo--icheon-a img {
+      width: 587px;
+      height: 728px;
+      max-width: none;
+      transform: translate(0, -302px);
+    }
+    .st-store__photo--icheon-b img {
+      width: 575px;
+      height: 430px;
+      max-width: none;
+      transform: translate(0, -57px);
+    }
+
+    @media (max-width: 991px) {
+      .st-hero__inner {
+        grid-template-columns: 1fr;
+        width: min(100% - 48px, 420px);
+        gap: 18px;
+        align-content: center;
+      }
+      .st-hero p { width: auto; }
+      br.st-mobile-break { display: block; }
+      .st-store {
+        grid-template-rows: auto auto;
+        min-height: 0;
+      }
+      .st-store__info,
+      .st-store__photos {
+        grid-template-columns: 1fr;
+      }
+      .st-store__main,
+      .st-store__contact {
+        padding: 0;
+      }
+      .st-store__info {
+        gap: 28px;
+        margin-bottom: 32px;
+      }
+      .st-store__contact {
+        gap: 18px;
+      }
+      .st-store__photos {
+        height: auto;
+      }
+      .st-store__photo {
+        height: 260px;
+      }
+      .st-store__photo img {
+        width: 100%;
+        height: 100%;
+        transform: none;
+        object-fit: cover;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a class="active" href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <section class="st-hero">
+      <img src="assets/img/stores/store-seongsu-hero-figma.jpg" alt="" class="st-hero__img">
+      <div class="st-hero__inner" data-aos="fade-up">
+        <h1>매장 찾기</h1>
+        <p>비비안 웨스트우드와<br>임금님표 이천쌀의 콜라보를<br>한국에서 만나보세요</p>
+      </div>
+    </section>
+
+    <section class="st-wrap">
+      <div class="st-container">
+
+        <!-- 성수점 -->
+        <article class="st-store" data-aos="fade-up">
+          <div class="st-store__info">
+            <div class="st-store__main">
+              <div class="st-store__name">
+              <h2>비비안 웨스트우드 × 임금님표 이천쌀 성수점</h2>
+                <p>VIVIENNE WESTWOOD X ICHEON - Seongsu</p>
+              </div>
+              <div class="st-address">
+                <i class="bi bi-geo-alt"></i>
+                <p>서울특별시 성동구 연무장길 91-4 (성수동2가)</p>
+                <p>91-4, Yeonmujang-gil, Seongdong-gu, Seoul, <br class="st-mobile-break">Republic of Korea</p>
+              </div>
+            </div>
+            <div class="st-store__contact">
+              <dl>
+                <dt>운영시간</dt>
+                <dd>10:30 AM ~ 06:00 PM</dd>
+              </dl>
+              <span class="st-store__line" aria-hidden="true"></span>
+              <dl>
+                <dt>전화번호</dt>
+                <dd>010 - 1234 - 5678</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="st-store__photos">
+            <div class="st-store__photo st-store__photo--seongsu-a"><img src="assets/img/stores/store-seongsu-hero-figma.jpg" alt="성수점 외관"></div>
+            <div class="st-store__photo st-store__photo--seongsu-b"><img src="assets/img/stores/store-seongsu-side-figma.jpg" alt="성수점 공간"></div>
+          </div>
+        </article>
+
+        <!-- 이천본점 -->
+        <article class="st-store" data-aos="fade-up">
+          <div class="st-store__info">
+            <div class="st-store__main">
+              <div class="st-store__name">
+              <h2>비비안 웨스트우드 × 임금님표 이천쌀 이천본점</h2>
+                <p>VIVIENNE WESTWOOD X ICHEON - Icheon</p>
+              </div>
+              <div class="st-address">
+                <i class="bi bi-geo-alt"></i>
+                <p>경기도 이천시 서희로60번길 14-3 (창전동)</p>
+                <p>14-3, Seohee-ro 60beon-gil, Icheon-si, Gyeonggi-do, <br class="st-mobile-break">Republic of Korea</p>
+              </div>
+            </div>
+            <div class="st-store__contact">
+              <dl>
+                <dt>운영시간</dt>
+                <dd>10:30 AM ~ 06:00 PM</dd>
+              </dl>
+              <span class="st-store__line" aria-hidden="true"></span>
+              <dl>
+                <dt>전화번호</dt>
+                <dd>010 - 1234 - 5678</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="st-store__photos">
+            <div class="st-store__photo st-store__photo--icheon-a"><img src="assets/img/stores/store-icheon-main-figma.jpg" alt="이천본점 외관"></div>
+            <div class="st-store__photo st-store__photo--icheon-b"><img src="assets/img/stores/store-icheon-side-figma.jpg" alt="이천본점 공간"></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

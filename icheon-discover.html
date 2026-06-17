@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>놀거리 — Icheon | Vivienne Westwood × 이천쌀</title>
+  <meta content="이천 놀거리 — Couples · Friends · Families 코스" name="description">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
+
+  <style>
+    #main.page { margin-top: var(--header-h); }
+    .ic-sec { padding: 80px 0 96px; }
+    .disc-hero { margin-bottom: 34px; }
+
+    /* 탭 */
+    .disc-tabs { display: flex; align-items: center; justify-content: center; gap: 38px; margin-bottom: 36px; border-bottom: 1px solid var(--back-w4); padding-bottom: 8px; }
+    .disc-tab { background: none; border: 0; font-size: 16px; font-weight: 600; color: #9a9a9a; cursor: pointer; padding: 0 2px 8px; border-bottom: 2px solid transparent; transition: color .2s ease, border-color .2s ease; }
+    .disc-tab.is-active { color: var(--k-black); border-bottom-color: var(--k-black); }
+    .disc-tab__short { display: none; }
+
+    /* 콜라주 (Figma 프레임 그대로) */
+    .disc-stage { border-radius: 6px; overflow: hidden; box-shadow: 0 18px 40px rgba(16,16,16,.14); }
+    .disc-panel { display: none; }
+    .disc-panel.is-active { display: block; }
+    .disc-panel img { width: 100%; height: auto; display: block; }
+
+    @media (max-width: 575px) {
+      .disc-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+        width: 100%;
+      }
+      .disc-tab {
+        font-size: 11px;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.2;
+        min-height: 2.4em;
+      }
+      .disc-tab:nth-of-type(3) {
+        grid-column: 1 / -1;
+      }
+      .disc-tab__full { display: none; }
+      .disc-tab__short { display: inline; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <a href="index.html" class="brand">
+          <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+          <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+        </a>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="about.html#timeline">Timeline</a></li><li><a href="symbol.html">Symbol</a></li></ul></li>
+          <li class="dropdown"><a href="products.html"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="products.html#apparels">Apparels</a></li><li><a href="products.html#acc">ACC</a></li><li><a href="products.html#rice">Icheon Rice</a></li></ul></li>
+          <li class="dropdown"><a class="active" href="icheon.html"><span>Icheon</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="icheon.html">Food</a></li><li><a href="icheon-discover.html">Discover</a></li><li><a href="icheon-festival.html">Festivals</a></li></ul></li>
+          <li class="dropdown"><a href="archive.html"><span>Archive</span> <i class="bi bi-chevron-down"></i></a>
+            <ul><li><a href="archive.html">News</a></li><li><a href="archive-gallery.html">Gallery</a></li></ul></li>
+          <li><a href="stores.html">Stores</a></li>
+          <li class="nav-auth"><a class="btn-signup" href="signup.html">가입하기</a><a class="btn-login" href="login.html">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+
+    <section id="discover" class="ic-sec" data-tab-root>
+      <div class="container">
+        <div class="disc-hero ic-hero-nav" data-aos="fade-up">
+          <button class="ic-hero-nav__btn ic-hero-nav__btn--prev" type="button" data-disc-prev aria-label="이전 페이지 — Food" title="Food"><i class="bi bi-chevron-left"></i></button>
+          <div class="ic-hero-nav__copy">
+            <p class="eyebrow">비비안과 함께하는 이천의 새로운 탐색</p>
+            <h2 class="ic-hero-nav__title">DISCOVER ICHEON</h2>
+            <p class="ic-hero-nav__sub">Rediscover Icheon With Vivian</p>
+          </div>
+          <button class="ic-hero-nav__btn ic-hero-nav__btn--next" type="button" data-disc-next aria-label="다음 페이지 — Festivals" title="Festivals"><i class="bi bi-chevron-right"></i></button>
+        </div>
+
+        <div class="disc-tabs" data-aos="fade-up">
+          <button class="disc-tab is-active" type="button" data-tab-target="couples"><span class="disc-tab__full">For Couples</span><span class="disc-tab__short">Couples</span></button>
+          <button class="disc-tab" type="button" data-tab-target="friends"><span class="disc-tab__full">With Friends</span><span class="disc-tab__short">Friends</span></button>
+          <button class="disc-tab" type="button" data-tab-target="families"><span class="disc-tab__full">For Families</span><span class="disc-tab__short">Families</span></button>
+        </div>
+
+        <div class="disc-stage" data-aos="fade-up">
+          <div class="disc-panel is-active" data-tab-panel="couples">
+            <img src="assets/img/icheon/disc/collage-couples.jpg" alt="For Couples — 설봉공원 · 시몬스테라스 · 이진상회">
+          </div>
+          <div class="disc-panel" data-tab-panel="friends">
+            <img src="assets/img/icheon/disc/collage-friends.jpg" alt="With Friends — 시몬스테라스 · 설봉공원 · 이진상회">
+          </div>
+          <div class="disc-panel" data-tab-panel="families">
+            <img src="assets/img/icheon/disc/collage-families.jpg" alt="For Families — 설봉공원 · 시몬스테라스 · 이진상회">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 footer-brand">
+            <a href="index.html" class="brand">
+              <img src="assets/img/brand/orb.svg" alt="" class="brand-orb">
+              <span class="brand-name"><span class="en">Vivienne Westwood</span><span class="kr">× 이천쌀</span></span>
+            </a>
+            <p>비비안 행성에 불시착한 이천 임금님표 쌀.<br>흑백 미니멀과 타탄으로 빚어낸 콜라보 브랜드.</p>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>신하현 <small>Shin Hahyun</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @ha_yeah_thats_my_name</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-member">
+            <h4>김운정 <small>Kim Woonjung</small></h4>
+            <p class="role">Design · Front-end</p>
+            <ul>
+              <li><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i> @woonjvng</a></li>
+              <li><a href="#" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i> Notion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">&copy; <span>Vivienne Westwood × 이천쌀</span>. All Rights Reserved.</div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+      </div>
+    </div>
+    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      // 코스(커플/친구/가족)는 탭 버튼으로 전환. 제목 화살표 = 이천 3개 페이지 무한 순환.
+      var dPrev = document.querySelector('[data-disc-prev]');
+      var dNext = document.querySelector('[data-disc-next]');
+      if (dPrev) dPrev.addEventListener('click', function () { window.location.href = 'icheon.html'; });
+      if (dNext) dNext.addEventListener('click', function () { window.location.href = 'icheon-festival.html'; });
+    })();
+  </script>
+</body>
+</html>
