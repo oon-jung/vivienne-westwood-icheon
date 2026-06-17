@@ -29,10 +29,13 @@
     .sy-stage { padding: 30px 0 70px; }
     .sy-rail {
       display: flex; gap: 0; overflow-x: auto;
-      scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      scroll-snap-type: x proximity; scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
       padding: 30px 0;
     }
+    /* 앞뒤 스페이서: 첫·마지막 슬라이드도 화면 중앙에 올 수 있게 ((100% - 슬라이드 46%)/2).
+       컨테이너 padding을 쓰면 %flex-basis가 줄어 중앙정렬이 깨지므로 스페이서로 처리. */
+    .sy-rail::before, .sy-rail::after { content: ""; flex: 0 0 27%; }
     .sy-rail::-webkit-scrollbar { display: none; }
     .sy-slide {
       scroll-snap-align: center; scroll-snap-stop: always;
@@ -60,7 +63,10 @@
     .sy-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--back-w4); transition: all .2s ease; }
     .sy-dots span.is-on { background: var(--k-black); width: 22px; border-radius: 5px; }
 
-    @media (max-width: 991px) { .sy-slide { flex-basis: 78%; } }
+    @media (max-width: 991px) {
+      .sy-slide { flex-basis: 78%; }
+      .sy-rail::before, .sy-rail::after { flex-basis: 11%; }
+    }
   </style>
 </head>
 
@@ -108,7 +114,7 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/app.js?v=2"></script>
+  <script src="assets/js/app.js?v=3"></script>
   <script>
     // 심볼 가로 캐러셀 — 휠→가로, 화살표/도트, 중앙 강조
     (function () {
@@ -123,15 +129,20 @@
       });
       const dotEls = Array.from(dots.children);
 
-      // 세로 휠 → 가로 스크롤 (레일 위에서만, 끝이면 페이지 스크롤 허용)
+      // 스마트 휠: 한 번 굴리면 한 슬라이드씩 '딱' 이동 (연속 스크롤 대신 스냅 단계 이동)
+      // 트랙패드 관성으로 여러 칸 튀지 않게 쿨다운(lock)을 둔다. 레일 끝이면 페이지 세로 스크롤 허용.
+      let wheelLock = false;
       rail.addEventListener('wheel', function (e) {
-        const dy = e.deltaY;
-        if (Math.abs(dy) < Math.abs(e.deltaX)) return;
-        const atStart = rail.scrollLeft <= 0;
+        if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return; // 가로 제스처는 그대로
+        const dir = e.deltaY > 0 ? 1 : -1;
+        const atStart = rail.scrollLeft <= 1;
         const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
-        if ((dy < 0 && atStart) || (dy > 0 && atEnd)) return;
+        if ((dir < 0 && atStart) || (dir > 0 && atEnd)) return; // 끝에서 더 굴리면 페이지 스크롤
         e.preventDefault();
-        rail.scrollLeft += dy;
+        if (wheelLock) return;
+        wheelLock = true;
+        go(centerIndex() + dir);
+        setTimeout(function () { wheelLock = false; }, 480);
       }, { passive: false });
 
       function centerIndex() {
@@ -162,7 +173,10 @@
       document.querySelector('[data-sym-prev]').addEventListener('click', function () { go(centerIndex() - 1); });
       document.querySelector('[data-sym-next]').addEventListener('click', function () { go(centerIndex() + 1); });
       dotEls.forEach(function (dot) { dot.addEventListener('click', function () { go(+dot.dataset.i); }); });
+      // 초기 상태: 1번 슬라이드를 화면 중앙에 두고 강조 (스냅이 2번으로 튀지 않게 명시적으로 0으로)
+      rail.scrollLeft = 0;
       mark();
+      window.addEventListener('load', function () { rail.scrollLeft = 0; mark(); });
     })();
   </script>
 </body>

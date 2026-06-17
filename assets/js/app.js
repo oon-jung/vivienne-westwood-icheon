@@ -201,6 +201,9 @@
     if (!symbolRail) return;
 
     const slides = Array.from(symbolRail.querySelectorAll(".symbol-slide"));
+    // symbol.html은 자체 인라인 스크립트(.sy-slide)가 휠/중앙강조를 전담한다.
+    // 여기서 또 wheel 리스너를 붙이면 scrollLeft가 두 번 더해져 휠이 두 배로 튄다 → 슬라이드 없으면 즉시 종료.
+    if (slides.length === 0) return;
 
     symbolRail.addEventListener(
       "wheel",
