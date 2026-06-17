@@ -178,44 +178,10 @@
       const prevButton = document.querySelector('[data-festival-prev]');
       const nextButton = document.querySelector('[data-festival-next]');
       if (!panels.length || !prevButton || !nextButton) return;
-      let ticking = false;
-
-      function go(index) {
-        index = (index + panels.length) % panels.length;
-        const panel = panels[index];
-        if (!panel) return;
-        if (panel.scrollIntoView) {
-          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
-      function refreshCurrent() {
-        const headerOffset = (document.getElementById('header') || {}).offsetHeight || 0;
-        let bestIndex = 0;
-        let bestDistance = Infinity;
-        panels.forEach(function (panel, index) {
-          const rect = panel.getBoundingClientRect();
-          const distance = Math.abs(rect.top - headerOffset - 24);
-          if (rect.bottom > headerOffset + 24 && distance < bestDistance) {
-            bestDistance = distance;
-            bestIndex = index;
-          }
-        });
-      }
-
-      window.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(function () {
-          refreshCurrent();
-          ticking = false;
-        });
-      }, { passive: true });
 
       // 3개 축제는 한 화면에 모두 노출(스크롤). 제목 화살표 = 이천 3개 페이지 무한 순환.
       prevButton.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
       nextButton.addEventListener('click', function () { window.location.href = 'icheon.html'; });
-      refreshCurrent();
     })();
   </script>
 </body>

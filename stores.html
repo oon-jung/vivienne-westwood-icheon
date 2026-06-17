@@ -154,6 +154,35 @@
       background: #d9d9d9;
       width: 100%;
     }
+    /* 전화 tel: 링크 / 주소 옆 "지도에서 보기" */
+    .st-tel { color: inherit; text-decoration: none; }
+    .st-tel:hover { color: var(--k-black); text-decoration: underline; }
+    .st-address__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--k-black);
+      text-decoration: none;
+    }
+    .st-address__link i { font-size: 16px; }
+    .st-address__link:hover { color: var(--c-red); text-decoration: underline; }
+    /* 매장별 임베드 지도 (Google Maps) — icheon Food 패턴과 동일 */
+    .st-store__map {
+      margin-top: 24px;
+      height: 360px;
+      border: 1px solid var(--back-w4);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .st-store__map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
     .st-store__photos {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -230,6 +259,7 @@
         transform: none;
         object-fit: cover;
       }
+      .st-store__map { height: 280px; margin-top: 18px; }
     }
   </style>
 </head>
@@ -265,6 +295,7 @@
                 <i class="bi bi-geo-alt"></i>
                 <p>서울특별시 성동구 연무장길 91-4 (성수동2가)</p>
                 <p>91-4, Yeonmujang-gil, Seongdong-gu, Seoul, <br class="st-mobile-break">Republic of Korea</p>
+                <a class="st-address__link" href="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%97%B0%EB%AC%B4%EC%9E%A5%EA%B8%B8%2091-4" target="_blank" rel="noopener"><i class="bi bi-map"></i> 지도에서 보기</a>
               </div>
             </div>
             <div class="st-store__contact">
@@ -275,13 +306,17 @@
               <span class="st-store__line" aria-hidden="true"></span>
               <dl>
                 <dt>전화번호</dt>
-                <dd>010 - 1234 - 5678</dd>
+                <dd><a class="st-tel" href="tel:01012345678">010 - 1234 - 5678</a></dd>
               </dl>
             </div>
           </div>
           <div class="st-store__photos">
             <div class="st-store__photo st-store__photo--seongsu-a"><img src="assets/img/stores/store-seongsu-hero-figma.jpg" alt="성수점 외관"></div>
             <div class="st-store__photo st-store__photo--seongsu-b"><img src="assets/img/stores/store-seongsu-side-figma.jpg" alt="성수점 공간"></div>
+          </div>
+          <div class="st-store__map">
+            <iframe title="성수점 지도" loading="lazy"
+              src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%97%B0%EB%AC%B4%EC%9E%A5%EA%B8%B8%2091-4&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
           </div>
         </article>
 
@@ -297,6 +332,7 @@
                 <i class="bi bi-geo-alt"></i>
                 <p>경기도 이천시 서희로60번길 14-3 (창전동)</p>
                 <p>14-3, Seohee-ro 60beon-gil, Icheon-si, Gyeonggi-do, <br class="st-mobile-break">Republic of Korea</p>
+                <a class="st-address__link" href="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%84%9C%ED%9D%AC%EB%A1%9C60%EB%B2%88%EA%B8%B8%2014-3" target="_blank" rel="noopener"><i class="bi bi-map"></i> 지도에서 보기</a>
               </div>
             </div>
             <div class="st-store__contact">
@@ -307,13 +343,17 @@
               <span class="st-store__line" aria-hidden="true"></span>
               <dl>
                 <dt>전화번호</dt>
-                <dd>010 - 1234 - 5678</dd>
+                <dd><a class="st-tel" href="tel:01012345678">010 - 1234 - 5678</a></dd>
               </dl>
             </div>
           </div>
           <div class="st-store__photos">
             <div class="st-store__photo st-store__photo--icheon-a"><img src="assets/img/stores/store-icheon-main-figma.jpg" alt="이천본점 외관"></div>
             <div class="st-store__photo st-store__photo--icheon-b"><img src="assets/img/stores/store-icheon-side-figma.jpg" alt="이천본점 공간"></div>
+          </div>
+          <div class="st-store__map">
+            <iframe title="이천본점 지도" loading="lazy"
+              src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%84%9C%ED%9D%AC%EB%A1%9C60%EB%B2%88%EA%B8%B8%2014-3&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
           </div>
         </article>
 

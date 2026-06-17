@@ -169,6 +169,12 @@ WEB_Final/
 ---
 
 # 🗒 변경 이력 (최신이 위 / 한 줄씩)
+- 2026-06-17 | stores.html 매장 2곳에 Google Maps 임베드 지도(`.st-store__map` iframe, icheon Food와 동일 패턴) + 주소 "지도에서 보기" 링크 + 전화 `tel:` 링크 추가, 제출_기획서_FULL.md 지도/Stores 항목도 현 코드에 맞게 갱신 | 문서의 "Stores 지도·tel" 서술을 실제 구현으로 일치
+- 2026-06-17 | 푸터 최하단 타탄 이미지를 `down.jpeg`로 교체 | 동일 위치 유지 + 새 이미지 반영
+- 2026-06-17 | 푸터 최하단 타탄 띠를 다시 복구 | Figma 36:4896 확인 결과 체크무늬 띠 포함이 맞음
+- 2026-06-17 | 푸터 맨 아래 타탄 띠 이미지를 삭제 | Designed by BootstrapMade 아래 잘린 이미지 제거
+- 2026-06-17 | 푸터 링크드인·노션 줄의 잘린 아이콘 이미지를 제거하고 텍스트 링크만 남김 | 하단 이미지 잘림 문제 해소
+- 2026-06-17 | 푸터를 피그마 6:8040(tag)/6:8038(Info) 그대로 재현 — 풀 로고 `assets/img/brand/logo-full.png`(오브+Vivienne Westwood+이천쌀, 첨부 이미지) 신규 추가, 멤버행=아이콘 좌측 고정+핸들/URL 가운데(`assets/img/icons/{instagram,linkedin,notion}.svg`), LinkedIn·Notion은 전체 URL 표기, 3행 동일 높이+이름/첫행 아래만 구분선 | logo-color.png는 오브만이라 풀 로고로 교체, 링크 텍스트·아이콘 와이어프레임대로 (※Notion href는 디자인의 `notion.comp` 오타를 `notion.com`으로 교정)
 - 2026-06-17 | `assets/js/app.js`를 const/let 기반으로 재정리하고 함수 분리·조기 반환으로 단순화 | 새 코드 작성 지침 반영
 - 2026-06-17 | CLAUDE.md 도입 문구를 더 명확하게 재작성 | 읽는 순서·파악 항목·기록 규칙을 한눈에 보이게 정리
 - 2026-06-17 | 푸터 브랜드 로고를 워드마크(`wordmark.svg`)→풀 로고(오브+워드마크 `logo-color.png`)로 교체 — `app.js` FOOTER_HTML + 각 HTML 정적 푸터 + custom.css `.brand-logo`(132/108px) | 신하현·김운정 옆 로고가 오브 없이 나오던 것 피그마(6:8038) 푸터 와이어프레임대로 교정

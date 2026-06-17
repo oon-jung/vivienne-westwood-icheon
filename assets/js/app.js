@@ -44,21 +44,21 @@
         <div class="row gy-4">
           <div class="col-lg-4 footer-brand">
             <a href="index.html" class="brand">
-              <img src="assets/img/brand/logo-color.png" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
+              <img src="assets/img/brand/logo-full.png" alt="Vivienne Westwood × 이천쌀" class="brand-logo">
             </a>
           </div>
           <div class="col-lg-4 footer-member">
             <h4>신하현 <small>Shin Hahyun</small></h4>
             <ul>
               <li><img class="sns-ic sns-ic--ig" src="assets/img/icons/instagram.svg" alt="Instagram"><a href="https://instagram.com/ha_yeah_thats_my_name" target="_blank" rel="noopener">@ha_yeah_thats_my_name</a></li>
-              <li><img class="sns-ic" src="assets/img/icons/linkedin.svg" alt="LinkedIn"><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener">www.linkedin.com/in/hahyun-shin-77b9712a8</a></li>
+              <li><a href="https://www.linkedin.com/in/hahyun-shin-77b9712a8" target="_blank" rel="noopener">LinkedIn</a></li>
             </ul>
           </div>
           <div class="col-lg-4 footer-member">
             <h4>김운정 <small>Kim Woonjung</small></h4>
             <ul>
               <li><img class="sns-ic sns-ic--ig" src="assets/img/icons/instagram.svg" alt="Instagram"><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener">@woonjvng</a></li>
-              <li><img class="sns-ic" src="assets/img/icons/notion.svg" alt="Notion"><a href="https://app.notion.com/014c604dc2e3835da694818cc00304d7?source=copy_link" target="_blank" rel="noopener">https://app.notion.com/014c604dc2e3835da694818cc00304d7?source=copy_link</a></li>
+              <li><a href="https://app.notion.com/014c604dc2e3835da694818cc00304d7?source=copy_link" target="_blank" rel="noopener">Notion</a></li>
             </ul>
           </div>
         </div>
@@ -70,7 +70,7 @@
         <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
       </div>
     </div>
-    <div class="footer-tartan" aria-hidden="true"><img src="assets/img/home/footer-tartan.png" alt=""></div>
+    <div class="footer-tartan" aria-hidden="true"><img src="down.jpeg" alt=""></div>
   `;
 
   const PAGE_MAIN_LINKS = {

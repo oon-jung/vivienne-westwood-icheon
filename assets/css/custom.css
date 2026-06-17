@@ -333,9 +333,9 @@ a:hover {
 }
 #footer .footer-top .row {
   display: grid;
-  grid-template-columns: minmax(280px, 1.05fr) 1fr 1fr;
-  gap: 24px 32px;
-  align-items: start;
+  grid-template-columns: minmax(280px, 0.82fr) 1fr 1fr;
+  gap: 0 20px;
+  align-items: stretch;
 }
 #footer .footer-top .row > * {
   width: auto;
@@ -348,10 +348,10 @@ a:hover {
   text-decoration: none;
   color: var(--k-black);
 }
-#footer .footer-brand { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding-top: 6px; }
+#footer .footer-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 12px 0; }
 #footer .footer-brand .brand-orb { width: 42px; height: 42px; margin: 0 auto 10px; }
-/* 푸터 풀 로고 (오브+워드마크, logo-color.png) — 피그마 6:8038 푸터 와이어프레임 기준 */
-#footer .footer-brand .brand-logo { height: 132px; width: auto; display: block; margin: 0 auto; }
+/* 푸터 풀 로고 (오브+Vivienne Westwood+이천쌀 스택, logo-full.png ≈ 696×345) — 피그마 6:8040(tag) 기준 */
+#footer .footer-brand .brand-logo { width: min(290px, 92%); height: auto; display: block; margin: 0 auto; }
 #footer .footer-brand .brand-name { display: flex; flex-direction: column; line-height: 1.1; }
 #footer .footer-brand .brand-name .en {
   font-family: var(--font-display);
@@ -367,21 +367,30 @@ a:hover {
   display: none;
 }
 
-/* 멤버 컬럼 */
+/* 멤버 컬럼 — 피그마 6:8038 Info_0
+   3행 동일 높이 / 이름·첫 행 아래만 구분선 / 아이콘은 행 좌측 고정, 핸들·URL은 가운데 정렬 */
 #footer .footer-member {
-  padding-top: 12px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
 }
 #footer .footer-member h4 {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   gap: 10px;
-  padding-bottom: 18px;
-  margin: 0 0 14px;
+  min-height: 60px;
+  margin: 0;
+  padding: 8px 20px;
   border-bottom: 1px solid var(--back-w4);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--grey-900);
+  color: var(--k-black);
+}
+#footer .footer-member h4 small {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--k-black);
 }
 #footer .footer-member .role {
   display: none;
@@ -390,33 +399,45 @@ a:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 #footer .footer-member ul li {
-  display: grid;
-  grid-template-columns: 26px 1fr;
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--back-w4);
+  justify-content: center;
+  flex: 1;
+  min-height: 60px;
   margin: 0;
+  padding: 10px 50px;
+  border-bottom: 1px solid var(--back-w4);
 }
 #footer .footer-member ul li:last-child { border-bottom: 0; }
-#footer .footer-member ul a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 1.3;
-  color: var(--grey-700);
-  white-space: normal;
-}
-#footer .footer-member ul a:hover { color: var(--k-black); }
-#footer .footer-member ul a i {
-  font-size: 22px;
-  width: 26px;
-  text-align: center;
+#footer .footer-member ul .sns-ic {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: block;
   flex: none;
 }
+#footer .footer-member ul .sns-ic--ig { width: 27px; height: 27px; }
+#footer .footer-member ul a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--k-black);
+  text-align: center;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  text-decoration: none;
+}
+#footer .footer-member ul a:hover { color: var(--c-red); text-decoration: underline; }
 
 /* 하단 카피라이트 / 크레딧 */
 #footer .footer-legal {
@@ -455,9 +476,9 @@ a:hover {
   #footer .footer-top { padding: 72px 0 0; }
   #footer .footer-top .row { grid-template-columns: 1fr; gap: 28px; }
   #footer .footer-brand { margin-bottom: 12px; }
-  #footer .footer-brand .brand-logo { height: 108px; }
+  #footer .footer-brand .brand-logo { width: 240px; }
   #footer .footer-member { margin-bottom: 0; padding-top: 0; }
-  #footer .footer-member ul li { padding: 16px 0; }
+  #footer .footer-member ul li { padding: 12px 50px; }
   #footer .footer-tartan { height: 220px; }
 }
 
