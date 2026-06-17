@@ -135,11 +135,11 @@
   <script>
     (function () {
       // 썸네일 → 메인 이미지
-      var main = document.getElementById('pdMain');
+      const mainImage = document.getElementById('pdMain');
       document.querySelectorAll('.pd-thumbs button').forEach(function (b) {
         b.addEventListener('click', function () {
           document.querySelectorAll('.pd-thumbs button').forEach(function (x) { x.classList.remove('is-active'); });
-          b.classList.add('is-active'); main.src = b.dataset.img;
+          b.classList.add('is-active'); mainImage.src = b.dataset.img;
         });
       });
       // 옵션 선택
@@ -152,13 +152,13 @@
         });
       });
       // 수량
-      var qty = document.getElementById('qty');
-      document.getElementById('qtyPlus').addEventListener('click', function () { qty.value = (+qty.value) + 1; });
-      document.getElementById('qtyMinus').addEventListener('click', function () { if (+qty.value > 1) qty.value = (+qty.value) - 1; });
+      const quantityInput = document.getElementById('qty');
+      document.getElementById('qtyPlus').addEventListener('click', function () { quantityInput.value = (+quantityInput.value) + 1; });
+      document.getElementById('qtyMinus').addEventListener('click', function () { if (+quantityInput.value > 1) quantityInput.value = (+quantityInput.value) - 1; });
       // 위시리스트
       document.getElementById('pdWish').addEventListener('click', function () { this.classList.toggle('is-on'); });
       // 장바구니 토스트
-      var toast = document.getElementById('pdToast');
+      const toast = document.getElementById('pdToast');
       document.getElementById('addCart').addEventListener('click', function () {
         toast.classList.add('show'); setTimeout(function () { toast.classList.remove('show'); }, 1800);
       });

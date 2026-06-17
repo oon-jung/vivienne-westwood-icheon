@@ -112,48 +112,56 @@
   <script>
     // 심볼 가로 캐러셀 — 휠→가로, 화살표/도트, 중앙 강조
     (function () {
-      var rail = document.querySelector('[data-symbol-rail]');
+      const rail = document.querySelector('[data-symbol-rail]');
       if (!rail) return;
-      var slides = Array.prototype.slice.call(rail.querySelectorAll('.sy-slide'));
-      var dots = document.querySelector('[data-sym-dots]');
-      slides.forEach(function (s, i) {
-        var d = document.createElement('span'); d.dataset.i = i; dots.appendChild(d);
+      const slides = Array.from(rail.querySelectorAll('.sy-slide'));
+      const dots = document.querySelector('[data-sym-dots]');
+      slides.forEach(function (slide, index) {
+        const dot = document.createElement('span');
+        dot.dataset.i = index;
+        dots.appendChild(dot);
       });
-      var dotEls = Array.prototype.slice.call(dots.children);
+      const dotEls = Array.from(dots.children);
 
       // 세로 휠 → 가로 스크롤 (레일 위에서만, 끝이면 페이지 스크롤 허용)
       rail.addEventListener('wheel', function (e) {
-        var dy = e.deltaY;
+        const dy = e.deltaY;
         if (Math.abs(dy) < Math.abs(e.deltaX)) return;
-        var atStart = rail.scrollLeft <= 0;
-        var atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
+        const atStart = rail.scrollLeft <= 0;
+        const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
         if ((dy < 0 && atStart) || (dy > 0 && atEnd)) return;
         e.preventDefault();
         rail.scrollLeft += dy;
       }, { passive: false });
 
       function centerIndex() {
-        var mid = rail.scrollLeft + rail.clientWidth / 2, best = 0, bd = Infinity;
-        slides.forEach(function (s, i) {
-          var c = s.offsetLeft + s.offsetWidth / 2, d = Math.abs(c - mid);
-          if (d < bd) { bd = d; best = i; }
+        const mid = rail.scrollLeft + rail.clientWidth / 2;
+        let best = 0;
+        let bestDistance = Infinity;
+        slides.forEach(function (slide, index) {
+          const center = slide.offsetLeft + slide.offsetWidth / 2;
+          const distance = Math.abs(center - mid);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            best = index;
+          }
         });
         return best;
       }
       function mark() {
-        var ci = centerIndex();
-        slides.forEach(function (s, i) { s.classList.toggle('is-center', i === ci); });
-        dotEls.forEach(function (d, i) { d.classList.toggle('is-on', i === ci); });
+        const currentIndex = centerIndex();
+        slides.forEach(function (slide, index) { slide.classList.toggle('is-center', index === currentIndex); });
+        dotEls.forEach(function (dot, index) { dot.classList.toggle('is-on', index === currentIndex); });
       }
-      function go(i) {
-        i = Math.max(0, Math.min(slides.length - 1, i));
-        var s = slides[i];
-        rail.scrollTo({ left: s.offsetLeft - (rail.clientWidth - s.offsetWidth) / 2, behavior: 'smooth' });
+      function go(index) {
+        const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
+        const slide = slides[nextIndex];
+        rail.scrollTo({ left: slide.offsetLeft - (rail.clientWidth - slide.offsetWidth) / 2, behavior: 'smooth' });
       }
       rail.addEventListener('scroll', function () { window.requestAnimationFrame(mark); });
       document.querySelector('[data-sym-prev]').addEventListener('click', function () { go(centerIndex() - 1); });
       document.querySelector('[data-sym-next]').addEventListener('click', function () { go(centerIndex() + 1); });
-      dotEls.forEach(function (d) { d.addEventListener('click', function () { go(+d.dataset.i); }); });
+      dotEls.forEach(function (dot) { dot.addEventListener('click', function () { go(+dot.dataset.i); }); });
       mark();
     })();
   </script>

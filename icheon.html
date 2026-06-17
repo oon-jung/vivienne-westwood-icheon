@@ -159,51 +159,53 @@
   <script src="assets/js/app.js"></script>
   <script>
     (function () {
-      var name = document.querySelector('[data-food-name]');
-      var desc = document.querySelector('[data-food-desc]');
-      var map = document.querySelector('[data-food-map]');
-      var link = document.querySelector('[data-food-link]');
-      var cards = Array.prototype.slice.call(document.querySelectorAll('.food-card'));
-      var prev = document.querySelector('[data-food-prev]');
-      var next = document.querySelector('[data-food-next]');
-      var activeIndex = 0;
+      const nameNode = document.querySelector('[data-food-name]');
+      const descNode = document.querySelector('[data-food-desc]');
+      const mapFrame = document.querySelector('[data-food-map]');
+      const mapLink = document.querySelector('[data-food-link]');
+      const cards = Array.from(document.querySelectorAll('.food-card'));
+      const prevButton = document.querySelector('[data-food-prev]');
+      const nextButton = document.querySelector('[data-food-next]');
 
       function activate(index, shouldScroll) {
         if (!cards.length) return;
-        index = (index + cards.length) % cards.length;
-        activeIndex = index;
-        cards.forEach(function (card, i) {
-          var isActive = i === index;
+
+        const nextIndex = (index + cards.length) % cards.length;
+        const activeCard = cards[nextIndex];
+
+        cards.forEach(function (card, cardIndex) {
+          const isActive = cardIndex === nextIndex;
           card.classList.toggle('is-active', isActive);
           card.setAttribute('aria-current', isActive ? 'true' : 'false');
         });
-        var card = cards[index];
-        var q = card.dataset.q;
-        name.textContent = card.dataset.name;
-        desc.textContent = card.dataset.desc;
-        map.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(q) + '&t=&z=14&ie=UTF8&iwloc=&output=embed';
-        link.href = 'https://maps.google.com/maps?q=' + encodeURIComponent(q);
-        if (shouldScroll && card.scrollIntoView) {
-          card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+
+        const query = activeCard.dataset.q;
+        nameNode.textContent = activeCard.dataset.name;
+        descNode.textContent = activeCard.dataset.desc;
+        mapFrame.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(query) + '&t=&z=14&ie=UTF8&iwloc=&output=embed';
+        mapLink.href = 'https://maps.google.com/maps?q=' + encodeURIComponent(query);
+
+        if (shouldScroll && activeCard.scrollIntoView) {
+          activeCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
         }
       }
 
-      cards.forEach(function (c, i) {
-        c.setAttribute('tabindex', '0');
-        c.addEventListener('click', function (e) {
+      cards.forEach(function (card, index) {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('click', function (e) {
           if (e.target.closest('.food-card__wish')) return;
-          activate(i, false);
+          activate(index, false);
         });
-        c.addEventListener('keydown', function (e) {
+        card.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            activate(i, false);
+            activate(index, false);
           }
         });
       });
       // 제목 화살표 = 이천 3개 페이지 무한 순환 (Food → Discover → Festivals → Food)
-      if (prev) prev.addEventListener('click', function () { window.location.href = 'icheon-festival.html'; });
-      if (next) next.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
+      if (prevButton) prevButton.addEventListener('click', function () { window.location.href = 'icheon-festival.html'; });
+      if (nextButton) nextButton.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
       document.querySelectorAll('.food-card__wish').forEach(function (b) {
         b.addEventListener('click', function (e) { e.stopPropagation(); b.classList.toggle('is-on'); });
       });

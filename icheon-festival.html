@@ -174,36 +174,33 @@
   <script src="assets/js/app.js"></script>
   <script>
     (function () {
-      var panels = Array.prototype.slice.call(document.querySelectorAll('.festival-panel'));
-      var prev = document.querySelector('[data-festival-prev]');
-      var next = document.querySelector('[data-festival-next]');
-      if (!panels.length || !prev || !next) return;
-      var currentIndex = 0;
-      var ticking = false;
+      const panels = Array.from(document.querySelectorAll('.festival-panel'));
+      const prevButton = document.querySelector('[data-festival-prev]');
+      const nextButton = document.querySelector('[data-festival-next]');
+      if (!panels.length || !prevButton || !nextButton) return;
+      let ticking = false;
 
       function go(index) {
         index = (index + panels.length) % panels.length;
-        var panel = panels[index];
+        const panel = panels[index];
         if (!panel) return;
-        currentIndex = index;
         if (panel.scrollIntoView) {
           panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
 
       function refreshCurrent() {
-        var headerOffset = (document.getElementById('header') || {}).offsetHeight || 0;
-        var bestIndex = 0;
-        var bestDistance = Infinity;
+        const headerOffset = (document.getElementById('header') || {}).offsetHeight || 0;
+        let bestIndex = 0;
+        let bestDistance = Infinity;
         panels.forEach(function (panel, index) {
-          var rect = panel.getBoundingClientRect();
-          var distance = Math.abs(rect.top - headerOffset - 24);
+          const rect = panel.getBoundingClientRect();
+          const distance = Math.abs(rect.top - headerOffset - 24);
           if (rect.bottom > headerOffset + 24 && distance < bestDistance) {
             bestDistance = distance;
             bestIndex = index;
           }
         });
-        currentIndex = bestIndex;
       }
 
       window.addEventListener('scroll', function () {
@@ -216,8 +213,8 @@
       }, { passive: true });
 
       // 3개 축제는 한 화면에 모두 노출(스크롤). 제목 화살표 = 이천 3개 페이지 무한 순환.
-      prev.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
-      next.addEventListener('click', function () { window.location.href = 'icheon.html'; });
+      prevButton.addEventListener('click', function () { window.location.href = 'icheon-discover.html'; });
+      nextButton.addEventListener('click', function () { window.location.href = 'icheon.html'; });
       refreshCurrent();
     })();
   </script>

@@ -113,8 +113,8 @@
   <script>
     (function () {
       // 코스(커플/친구/가족)는 탭 버튼으로 전환. 제목 화살표 = 이천 3개 페이지 무한 순환.
-      var dPrev = document.querySelector('[data-disc-prev]');
-      var dNext = document.querySelector('[data-disc-next]');
+      const dPrev = document.querySelector('[data-disc-prev]');
+      const dNext = document.querySelector('[data-disc-next]');
       if (dPrev) dPrev.addEventListener('click', function () { window.location.href = 'icheon.html'; });
       if (dNext) dNext.addEventListener('click', function () { window.location.href = 'icheon-festival.html'; });
     })();
