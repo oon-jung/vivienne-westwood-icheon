@@ -169,6 +169,8 @@ WEB_Final/
 ---
 
 # 🗒 변경 이력 (최신이 위 / 한 줄씩)
+- 2026-06-18 | 발표용 코드 설명서 `docs/발표_코드설명.md` 추가 | 기능·함수·JS 문법·코드 구조를 발표 참고용으로 정리
+- 2026-06-18 | products ACC 이미지를 wireframe 기준 `acc-1.jpg`/`acc-2.jpg`로 교체, rice 10kg 이미지는 와이어프레임 캡처에서 재생성 | 카드 썸네일 중복 해소
 - 2026-06-17 | 페스티벌 히어로를 맛집(icheon)·놀거리(discover)와 완전 동일하게 통일 — 전용 오버라이드(copy display:grid 등) 제거, 제목 `<h1>`→`<h2>`(공통 .ic-hero-nav__title 크기 일치), kicker/sub 전용 클래스→공통 .eyebrow/.ic-hero-nav__sub | 상단 문구가 다른 이천 페이지와 다르게 보이던 것 교정
 - 2026-06-17 | 이천 3페이지 히어로(`.ic-hero-nav`) 센터링을 화살표 절대배치+문구 전체폭 text-align:center로 변경(좌우 52px 대칭 패딩) | 화살표 칼럼 폭에 안 흔들리고 상단 문구가 항상 정중앙
 - 2026-06-17 | cart.html 쌀 항목 이미지를 목걸이(`home/feature-4.jpg`)→`products/rice-4kg.png`로 교정 | 장바구니 두 항목이 같은 목걸이로 보이던 문제(체크아웃·마이페이지와 이미지 불일치) 해소
