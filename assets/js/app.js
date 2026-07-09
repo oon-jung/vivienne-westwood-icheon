@@ -223,6 +223,10 @@
         navbar.classList.toggle("navbar-mobile");
         toggle.classList.toggle("bi-list");
         toggle.classList.toggle("bi-x");
+        // 헤더의 backdrop-filter(스크롤 시 블러)가 fixed 오버레이의 기준을 헤더로 바꿔
+        // 메뉴가 헤더 높이에 갇히는 문제 → 열림 동안 nav-open으로 블러를 끈다(custom.css)
+        const header = document.getElementById("header");
+        if (header) header.classList.toggle("nav-open", navbar.classList.contains("navbar-mobile"));
         return;
       }
 

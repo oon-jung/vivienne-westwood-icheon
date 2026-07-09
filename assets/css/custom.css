@@ -270,6 +270,15 @@ a:hover {
 }
 
 /* 모바일 네비 */
+/* 메뉴 열림 동안 헤더 블러 해제 — backdrop-filter가 살아 있으면 fixed 오버레이가
+   헤더 박스(64px)에 갇혀 상단 띠로만 보인다 (app.js initMobileNav가 nav-open 토글) */
+#header.nav-open,
+#header.nav-open.header-scrolled {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* 오버레이 색: 템플릿 남색(rgba(17,38,48,.9)) → 브랜드 블랙 톤 */
+.navbar-mobile { background: rgba(16, 16, 16, 0.6); }
 .navbar-mobile ul { background: var(--white); }
 /* 데스크톱용 호버/활성 밑줄(::after)은 모바일 패널에서 끔 */
 .navbar-mobile > ul > li > a::after { display: none; }
