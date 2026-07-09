@@ -56,31 +56,15 @@
         <p class="ct-steps"><b>01 장바구니</b> &nbsp;›&nbsp; 02 주문서 &nbsp;›&nbsp; 03 주문완료</p>
 
         <div class="ct-grid">
-          <div id="ctList">
-            <div class="ct-item" data-price="276000" data-qty="1">
-              <div class="ct-item__img"><img src="assets/img/products/acc-1.jpg" alt=""></div>
-              <div class="ct-item__info">
-                <h3>오브 진주 목걸이 · 실버</h3><p>Color 실버 / Size 45cm</p>
-                <div class="ct-qty"><button type="button" data-act="minus">−</button><span data-qty>1</span><button type="button" data-act="plus">+</button></div>
-              </div>
-              <div class="ct-item__right"><div class="ct-item__price" data-line>276,000 W</div><button class="ct-item__del" type="button" aria-label="삭제"><i class="bi bi-trash"></i></button></div>
-            </div>
-            <div class="ct-item" data-price="24000" data-qty="2">
-              <div class="ct-item__img"><img src="assets/img/products/rice-4kg.png" alt="이천 임금님표 쌀 4kg"></div>
-              <div class="ct-item__info">
-                <h3>이천 임금님표 쌀 · 4kg</h3><p>중량 4kg</p>
-                <div class="ct-qty"><button type="button" data-act="minus">−</button><span data-qty>2</span><button type="button" data-act="plus">+</button></div>
-              </div>
-              <div class="ct-item__right"><div class="ct-item__price" data-line>48,000 W</div><button class="ct-item__del" type="button" aria-label="삭제"><i class="bi bi-trash"></i></button></div>
-            </div>
-          </div>
+          <!-- 장바구니(vwCart) 실데이터를 JS가 렌더 -->
+          <div id="ctList"></div>
 
           <aside class="ct-sum">
             <h2>결제 정보</h2>
-            <div class="row"><span>상품 금액</span><span id="sumItems">324,000 W</span></div>
+            <div class="row"><span>상품 금액</span><span id="sumItems">0 W</span></div>
             <div class="row"><span>배송비</span><span>무료</span></div>
-            <div class="row total"><span>합계</span><span id="sumTotal">324,000 W</span></div>
-            <a class="btn-vw btn-vw--solid" href="checkout.html">주문하기</a>
+            <div class="row total"><span>합계</span><span id="sumTotal">0 W</span></div>
+            <a class="btn-vw btn-vw--solid" href="checkout.html" id="ctCheckout">주문하기</a>
             <a class="btn-vw btn-vw--ghost" href="products.html" style="margin-top:8px;width:100%">쇼핑 계속하기</a>
           </aside>
         </div>
@@ -98,32 +82,59 @@
   <script src="assets/js/app.js"></script>
   <script>
     (function () {
-      const formatWon = function (value) { return value.toLocaleString('ko-KR') + ' W'; };
+      const list = document.getElementById('ctList');
+      const checkoutButton = document.getElementById('ctCheckout');
 
-      function recalc() {
-        let total = 0;
-        document.querySelectorAll('.ct-item').forEach(function (it) {
-          const quantity = +it.dataset.qty;
-          const price = +it.dataset.price;
-          const lineTotal = price * quantity;
-          total += lineTotal;
-          it.querySelector('[data-line]').textContent = formatWon(lineTotal);
-        });
-        document.getElementById('sumItems').textContent = formatWon(total);
-        document.getElementById('sumTotal').textContent = formatWon(total);
-        const list = document.getElementById('ctList');
-        if (!list.querySelector('.ct-item')) list.innerHTML = '<div class="ct-empty">장바구니가 비어 있습니다.</div>';
+      // vwCart 라인 + 카탈로그 정보(이름·가격·이미지)를 합쳐 반환
+      function resolvedLines() {
+        return VW.getCart()
+          .map(function (line, index) {
+            const resolved = VW.resolveCartLine(line);
+            return resolved && Object.assign(resolved, { index: index });
+          })
+          .filter(Boolean);
       }
-      document.getElementById('ctList').addEventListener('click', function (e) {
-        const item = e.target.closest('.ct-item'); if (!item) return;
-        if (e.target.closest('[data-act=plus]')) { item.dataset.qty = +item.dataset.qty + 1; }
-        else if (e.target.closest('[data-act=minus]')) { if (+item.dataset.qty > 1) item.dataset.qty = +item.dataset.qty - 1; }
-        else if (e.target.closest('.ct-item__del')) { item.remove(); }
+
+      function itemHtml(line) {
+        return '<div class="ct-item" data-index="' + line.index + '">' +
+          '<div class="ct-item__img"><img src="' + line.img + '" alt="' + line.name + '"></div>' +
+          '<div class="ct-item__info"><h3>' + line.name + ' · ' + line.opt + '</h3><p>' + line.optionText + '</p>' +
+          '<div class="ct-qty"><button type="button" data-act="minus">−</button><span>' + line.qty + '</span><button type="button" data-act="plus">+</button></div></div>' +
+          '<div class="ct-item__right"><div class="ct-item__price">' + VW.formatWon(line.price * line.qty) + '</div>' +
+          '<button class="ct-item__del" type="button" aria-label="삭제"><i class="bi bi-trash"></i></button></div></div>';
+      }
+
+      function render() {
+        const lines = resolvedLines();
+        list.innerHTML = lines.length
+          ? lines.map(itemHtml).join('')
+          : '<div class="ct-empty">장바구니가 비어 있습니다.<br><br><a class="btn-vw btn-vw--ghost" href="products.html">상품 보러 가기</a></div>';
+
+        const total = lines.reduce(function (sum, line) { return sum + line.price * line.qty; }, 0);
+        document.getElementById('sumItems').textContent = VW.formatWon(total);
+        document.getElementById('sumTotal').textContent = VW.formatWon(total);
+        checkoutButton.style.pointerEvents = lines.length ? '' : 'none';
+        checkoutButton.style.opacity = lines.length ? '' : '.4';
+      }
+
+      list.addEventListener('click', function (event) {
+        const itemNode = event.target.closest('.ct-item');
+        if (!itemNode) return;
+
+        const cart = VW.getCart();
+        const line = cart[+itemNode.dataset.index];
+        if (!line) return;
+
+        if (event.target.closest('[data-act=plus]')) line.qty += 1;
+        else if (event.target.closest('[data-act=minus]')) { if (line.qty <= 1) return; line.qty -= 1; }
+        else if (event.target.closest('.ct-item__del')) cart.splice(+itemNode.dataset.index, 1);
         else return;
-        const quantityNode = item.querySelector('[data-qty]'); if (quantityNode) quantityNode.textContent = item.dataset.qty;
-        recalc();
+
+        VW.setCart(cart);
+        render();
       });
-      recalc();
+
+      render();
     })();
   </script>
 </body>

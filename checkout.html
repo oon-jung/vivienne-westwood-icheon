@@ -61,11 +61,11 @@
           <form id="coForm" onsubmit="return false">
             <div class="co-block">
               <h2>배송지 정보</h2>
-              <div class="co-field"><label>받는 분</label><input type="text" placeholder="이름" required></div>
-              <div class="co-field"><label>연락처</label><input type="tel" placeholder="010-0000-0000" required></div>
-              <div class="co-field"><label>주소</label><input type="text" placeholder="주소를 입력하세요" required></div>
-              <div class="co-field"><label>상세 주소</label><input type="text" placeholder="상세 주소"></div>
-              <div class="co-field"><label>배송 메모</label><textarea rows="2" placeholder="부재 시 문 앞에 놓아주세요"></textarea></div>
+              <div class="co-field"><label for="coName">받는 분</label><input id="coName" type="text" placeholder="이름" required></div>
+              <div class="co-field"><label for="coPhone">연락처</label><input id="coPhone" type="tel" placeholder="010-0000-0000" required></div>
+              <div class="co-field"><label for="coAddr">주소</label><input id="coAddr" type="text" placeholder="주소를 입력하세요" required></div>
+              <div class="co-field"><label for="coAddr2">상세 주소</label><input id="coAddr2" type="text" placeholder="상세 주소"></div>
+              <div class="co-field"><label for="coMemo">배송 메모</label><textarea id="coMemo" rows="2" placeholder="부재 시 문 앞에 놓아주세요"></textarea></div>
             </div>
             <div class="co-block">
               <h2>결제 수단</h2>
@@ -79,12 +79,12 @@
 
           <aside class="co-sum">
             <h2>주문 상품</h2>
-            <div class="co-sline"><img src="assets/img/products/acc-1.jpg" alt=""><span class="nm">오브 진주 목걸이 · 실버<br><small style="color:#888">수량 1</small></span><span class="pr">276,000 W</span></div>
-            <div class="co-sline"><img src="assets/img/products/rice-4kg.png" alt=""><span class="nm">이천 임금님표 쌀 · 4kg<br><small style="color:#888">수량 2</small></span><span class="pr">48,000 W</span></div>
-            <div class="row"><span>상품 금액</span><span>324,000 W</span></div>
+            <!-- 장바구니(vwCart) 실데이터를 JS가 렌더 -->
+            <div id="coLines"></div>
+            <div class="row"><span>상품 금액</span><span id="coSumItems">0 W</span></div>
             <div class="row"><span>배송비</span><span>무료</span></div>
-            <div class="row total"><span>총 결제금액</span><span>324,000 W</span></div>
-            <a class="btn-vw btn-vw--solid" href="order-complete.html">324,000 W 결제하기</a>
+            <div class="row total"><span>총 결제금액</span><span id="coSumTotal">0 W</span></div>
+            <button class="btn-vw btn-vw--solid" type="button" id="coPay">결제하기</button>
           </aside>
         </div>
       </div>
@@ -99,5 +99,61 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const lines = VW.getCart()
+        .map(function (line) { return VW.resolveCartLine(line); })
+        .filter(Boolean);
+
+      // 빈 장바구니로 주문서 진입 방지
+      if (!lines.length) { location.replace('cart.html'); return; }
+
+      const total = lines.reduce(function (sum, line) { return sum + line.price * line.qty; }, 0);
+
+      document.getElementById('coLines').innerHTML = lines.map(function (line) {
+        return '<div class="co-sline"><img src="' + line.img + '" alt="' + line.name + '">' +
+          '<span class="nm">' + line.name + ' · ' + line.opt + '<br><small style="color:#888">수량 ' + line.qty + '</small></span>' +
+          '<span class="pr">' + VW.formatWon(line.price * line.qty) + '</span></div>';
+      }).join('');
+      document.getElementById('coSumItems').textContent = VW.formatWon(total);
+      document.getElementById('coSumTotal').textContent = VW.formatWon(total);
+
+      const payButton = document.getElementById('coPay');
+      payButton.textContent = VW.formatWon(total) + ' 결제하기';
+
+      // 로그인 사용자 이름으로 받는 분 미리 채움
+      const auth = VW.getAuth();
+      if (auth) document.getElementById('coName').value = auth.name;
+
+      payButton.addEventListener('click', function () {
+        const receiver = document.getElementById('coName').value.trim();
+        const phone = document.getElementById('coPhone').value.trim();
+        const address = document.getElementById('coAddr').value.trim();
+        const addressDetail = document.getElementById('coAddr2').value.trim();
+        if (!receiver || !phone || !address) {
+          alert('받는 분 · 연락처 · 주소를 입력해주세요.');
+          return;
+        }
+
+        const now = new Date();
+        const two = function (value) { return String(value).padStart(2, '0'); };
+        const stamp = String(now.getFullYear()).slice(2) + two(now.getMonth() + 1) + two(now.getDate());
+        const orderNo = 'VW-ICHEON-' + stamp + '-' + String(VW.getOrders().length + 1).padStart(4, '0');
+
+        VW.addOrder({
+          no: orderNo,
+          date: now.toISOString().slice(0, 10),
+          receiver: receiver,
+          addr: [address, addressDetail].filter(Boolean).join(' '),
+          total: total,
+          items: lines.map(function (line) {
+            return { name: line.name, opt: line.opt, optionText: line.optionText, qty: line.qty, price: line.price, img: line.img };
+          })
+        });
+        VW.setCart([]);
+        location.href = 'order-complete.html';
+      });
+    })();
+  </script>
 </body>
 </html>

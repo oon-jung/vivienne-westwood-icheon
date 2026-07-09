@@ -102,6 +102,64 @@
 
   const USERS_STORAGE_KEY = "vwUsers";
   const AUTH_STORAGE_KEY = "vwAuth";
+  const CART_STORAGE_KEY = "vwCart";
+  const WISH_STORAGE_KEY = "vwWish";
+  const ORDERS_STORAGE_KEY = "vwOrders";
+
+  /* --------------------------------------------------------------------
+     커머스 데모 카탈로그 — 상품 이름·가격·이미지의 단일 출처.
+     products / product-detail / cart / checkout / mypage 가 전부 이걸 참조한다.
+     -------------------------------------------------------------------- */
+  const PRODUCTS = {
+    "apparel-black": {
+      name: "블랙 오브 크롭 탑",
+      cat: "Apparels",
+      tab: "apparels",
+      desc: "비비안의 오브 그래픽을 가슴에 얹은 시그니처 블랙 크롭 탑. 타탄 라벨 디테일로 콜라보의 무드를 담았습니다.",
+      optionLabel: "Size",
+      options: [
+        { val: "S", price: 248000, img: "assets/img/products/apparel-black.png" },
+        { val: "M", price: 248000, img: "assets/img/products/apparel-black.png" },
+        { val: "L", price: 248000, img: "assets/img/products/apparel-black.png" }
+      ]
+    },
+    "apparel-white": {
+      name: "화이트 오브 크롭 탑",
+      cat: "Apparels",
+      tab: "apparels",
+      desc: "쌀알의 흰빛을 담아낸 화이트 크롭 탑. 오브 자수와 미니멀한 절개 라인으로 마감했습니다.",
+      optionLabel: "Size",
+      options: [
+        { val: "S", price: 312000, img: "assets/img/products/apparel-white.png" },
+        { val: "M", price: 312000, img: "assets/img/products/apparel-white.png" },
+        { val: "L", price: 312000, img: "assets/img/products/apparel-white.png" }
+      ]
+    },
+    necklace: {
+      name: "오브 진주 목걸이",
+      cat: "Accessories",
+      tab: "acc",
+      desc: "진주처럼 빛나는 쌀알을 비비안의 오브에 담아낸 콜라보 목걸이. 토성의 고리와 왕관 모티프가 어우러진 시그니처 피스입니다.",
+      optionLabel: "Color",
+      options: [
+        { val: "실버", price: 276000, img: "assets/img/products/acc-1.jpg", hex: "#d9d9d9" },
+        { val: "골드", price: 389000, img: "assets/img/products/acc-2.jpg", hex: "#c9a227" }
+      ],
+      sizeLabel: "Size",
+      sizes: ["40cm", "45cm", "50cm"]
+    },
+    rice: {
+      name: "이천 임금님표 쌀",
+      cat: "Icheon Rice",
+      tab: "rice",
+      desc: "비비안 행성에 불시착한 임금님표 이천쌀. 왕실 진상미의 찰기와 은은한 단맛을 콜라보 패키지에 담았습니다.",
+      optionLabel: "중량",
+      options: [
+        { val: "4kg", price: 24000, img: "assets/img/products/rice-4kg.png" },
+        { val: "10kg", price: 55000, img: "assets/img/products/rice-10kg.png" }
+      ]
+    }
+  };
 
   function getPageKey() {
     const fileName = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
@@ -148,6 +206,35 @@
 
     const activeSubLink = navbar.querySelector(subLink);
     if (activeSubLink) activeSubLink.classList.add("active");
+  }
+
+  /* --------------------------------------------------------------------
+     모바일 네비 — main.js(원본)는 스크립트 로드 시점에 .mobile-nav-toggle을 찾는데
+     헤더는 DOMContentLoaded에서 주입되므로 리스너가 안 붙는다.
+     → document 위임 방식으로 토글/드롭다운을 여기서 처리한다. (main.js 무수정)
+     -------------------------------------------------------------------- */
+  function initMobileNav() {
+    document.addEventListener("click", (event) => {
+      const navbar = document.getElementById("navbar");
+      if (!navbar) return;
+
+      const toggle = event.target.closest(".mobile-nav-toggle");
+      if (toggle) {
+        navbar.classList.toggle("navbar-mobile");
+        toggle.classList.toggle("bi-list");
+        toggle.classList.toggle("bi-x");
+        return;
+      }
+
+      if (!navbar.classList.contains("navbar-mobile")) return;
+
+      // 모바일 오버레이에서 드롭다운 부모(About 등) 탭 → 이동 대신 하위 메뉴 펼침
+      const dropdownLink = event.target.closest(".navbar .dropdown > a");
+      if (dropdownLink && dropdownLink.nextElementSibling) {
+        event.preventDefault();
+        dropdownLink.nextElementSibling.classList.toggle("dropdown-active");
+      }
+    });
   }
 
   function initFeatureTabs() {
@@ -427,8 +514,116 @@
     location.href = "mypage.html";
   }
 
+  /* --------------------------------------------------------------------
+     커머스 저장소 — localStorage 기반 장바구니(vwCart)·위시(vwWish)·주문(vwOrders)
+     -------------------------------------------------------------------- */
+  function readStorage(storageKey, fallback) {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(storageKey));
+      return parsed === null || parsed === undefined ? fallback : parsed;
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function getCart() {
+    return readStorage(CART_STORAGE_KEY, []);
+  }
+
+  function setCart(lines) {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(lines));
+  }
+
+  function getWish() {
+    return readStorage(WISH_STORAGE_KEY, []);
+  }
+
+  function setWish(items) {
+    localStorage.setItem(WISH_STORAGE_KEY, JSON.stringify(items));
+  }
+
+  function getOrders() {
+    return readStorage(ORDERS_STORAGE_KEY, []);
+  }
+
+  function addOrder(order) {
+    const orders = getOrders();
+    orders.push(order);
+    localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+  }
+
+  function findOption(productId, optionValue) {
+    const product = PRODUCTS[productId];
+    if (!product) return null;
+    return product.options.find((option) => option.val === optionValue) || product.options[0];
+  }
+
+  // 장바구니 라인({id, opt, size, qty})에 카탈로그의 이름·가격·이미지를 붙여 반환
+  function resolveCartLine(line) {
+    const product = PRODUCTS[line.id];
+    const option = findOption(line.id, line.opt);
+    if (!product || !option) return null;
+
+    const optionText = [product.optionLabel + " " + option.val, line.size ? "Size " + line.size : ""]
+      .filter(Boolean)
+      .join(" / ");
+    return { id: line.id, opt: option.val, size: line.size || null, qty: line.qty, name: product.name, price: option.price, img: option.img, optionText };
+  }
+
+  function addToCart(productId, optionValue, sizeValue, quantity) {
+    const option = findOption(productId, optionValue);
+    if (!option) return;
+
+    const cart = getCart();
+    const size = sizeValue || null;
+    const existing = cart.find((line) => line.id === productId && line.opt === option.val && (line.size || null) === size);
+    if (existing) existing.qty += quantity;
+    else cart.push({ id: productId, opt: option.val, size, qty: quantity });
+    setCart(cart);
+  }
+
+  function isWished(productId, optionValue) {
+    const option = findOption(productId, optionValue);
+    if (!option) return false;
+    return getWish().some((item) => item.id === productId && item.opt === option.val);
+  }
+
+  function toggleWish(productId, optionValue) {
+    const option = findOption(productId, optionValue);
+    if (!option) return false;
+
+    const wish = getWish();
+    const index = wish.findIndex((item) => item.id === productId && item.opt === option.val);
+    if (index >= 0) wish.splice(index, 1);
+    else wish.push({ id: productId, opt: option.val });
+    setWish(wish);
+    return index < 0;
+  }
+
+  function formatWon(value) {
+    return value.toLocaleString("ko-KR") + " W";
+  }
+
+  // 페이지 인라인 스크립트에서 쓰는 커머스 공용 API
+  window.VW = {
+    PRODUCTS,
+    formatWon,
+    getAuth,
+    findOption,
+    getCart,
+    setCart,
+    addToCart,
+    resolveCartLine,
+    getWish,
+    toggleWish,
+    isWished,
+    getOrders,
+    addOrder
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     injectLayout();
+    initMobileNav();
     initFeatureTabs();
     initSymbolRail();
     initTabs();

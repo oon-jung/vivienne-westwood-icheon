@@ -46,6 +46,14 @@
 /* --------------------------------------------------------------------------
    2. 전역 베이스
    -------------------------------------------------------------------------- */
+/* 모바일에서 우측으로 밀리며 흰 여백이 보이던 문제 안전망 —
+   개별 원인(#features .row.g-5 거터)도 아래에서 고쳤지만, 어떤 요소가
+   뷰포트를 넘어도 가로 스크롤이 생기지 않게 문서 차원에서 잘라낸다. */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-base);
   color: var(--grey-800);
@@ -263,6 +271,8 @@ a:hover {
 
 /* 모바일 네비 */
 .navbar-mobile ul { background: var(--white); }
+/* 데스크톱용 호버/활성 밑줄(::after)은 모바일 패널에서 끔 */
+.navbar-mobile > ul > li > a::after { display: none; }
 .navbar-mobile a,
 .navbar-mobile a:focus { color: var(--grey-800); }
 .navbar-mobile a:hover,
@@ -280,6 +290,9 @@ a:hover {
 .navbar-mobile .nav-auth a { text-align: center; }
 .mobile-nav-toggle { color: var(--k-black); }
 #header.header-transparent:not(.header-scrolled) .mobile-nav-toggle { color: var(--white); }
+/* 메뉴 열림: 어두운 오버레이 위 X 아이콘은 항상 흰색 */
+.navbar-mobile .mobile-nav-toggle,
+#header .navbar-mobile .mobile-nav-toggle { color: var(--white); }
 
 /* --------------------------------------------------------------------------
    4. 타탄(체크) 유틸리티
@@ -904,7 +917,10 @@ a:hover {
   margin: 0;
 }
 
-/* 8.5 CTA Banner — 와이어프레임 실사진 (클릭 시 Stores) */
+/* 8.5 CTA Banner — 와이어프레임 실사진 (클릭 시 Stores)
+   데스크톱: 문구가 박힌 배너 이미지 그대로.
+   모바일: 배너를 그대로 축소하면 박힌 글자가 못 읽을 만큼 작아져서,
+   이미지는 우측(조형물)만 크롭해 배경으로 쓰고 문구·버튼은 HTML 오버레이로 보여준다. */
 .home-cta { padding: 0 0 100px; }
 .home-cta__card {
   display: block;
@@ -919,14 +935,46 @@ a:hover {
   transition: transform 0.5s ease;
 }
 .home-cta__card:hover .home-cta__img { transform: scale(1.02); }
+.home-cta__copy { display: none; }
 
 /* 8.6 반응형 */
 @media (max-width: 991px) {
   .intro { padding: 80px 0 64px; }
   .intro-title { font-size: 34px; }
+  /* .g-5 거터(24px)가 컨테이너 패딩(12px)보다 커서 row가 우측으로 12px 삐져나와
+     가로 스크롤(흰 여백)이 생기던 문제 — 모바일에선 거터를 패딩에 맞춘다 */
+  .features .row.g-5 { --bs-gutter-x: 1.5rem; }
   .feature-stage { margin-bottom: 36px; }
   .feature-stage__title { font-size: 26px; }
   .hero-home .hero-actions-wrap { justify-content: center; align-items: flex-end; padding-bottom: 90px; }
+}
+@media (max-width: 767px) {
+  .home-cta__img {
+    height: 400px;
+    object-fit: cover;
+    object-position: 100% center; /* 우측 조형물 위주로 크롭 — 이미지에 박힌 문구(x≈700px까지)가 안 보이게 */
+  }
+  .home-cta__copy {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 4px;
+    padding: 24px 22px 26px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.62) 100%);
+  }
+  .home-cta__copy .eyebrow { margin: 0 0 6px; }
+  .home-cta__title {
+    color: var(--white);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 16px;
+  }
+  .home-cta__btn { padding: 12px 22px; font-size: 13px; }
 }
 @media (max-width: 575px) {
   .intro-title { font-size: 28px; }

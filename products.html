@@ -20,7 +20,8 @@
   <style>
     #main.page { margin-top: var(--header-h); }
 
-    .pv-hero { position: relative; background: #fff; }
+    /* padding:0 — 템플릿 section 기본 패딩(60px 0) 제거: 히어로 위·아래 흰 빈칸 방지 */
+    .pv-hero { position: relative; background: #fff; padding: 0; }
     .pv-hero img { display: block; width: 100%; height: 500px; object-fit: cover; object-position: center; }
 
     .pv-wrap { padding: 52px 0 118px; background: #fff; }
@@ -51,13 +52,16 @@
     .pv-grid { display: none; grid-template-columns: repeat(2, minmax(0, 460px)); justify-content: center; gap: 54px 90px; }
     .pv-grid.is-active { display: grid; }
 
-    .pv-card { display: flex; flex-direction: column; min-width: 0; }
+    /* 가격+Get now(.pv-card__body)는 카드 하단에 절대배치 = 카드 내부(웹·모바일 동일).
+       media의 padding-bottom이 그 자리를 비워둬서 contain 이미지와 겹치지 않는다. */
+    .pv-card { position: relative; display: flex; flex-direction: column; min-width: 0; }
     .pv-card__media {
       position: relative;
       display: flex;
       align-items: flex-end;
       justify-content: center;
       height: 520px;
+      padding-bottom: 76px;
       overflow: hidden;
       background: #fff;
       border: 0;
@@ -85,7 +89,7 @@
     .pv-card__wish.is-on { color: var(--c-red, #c1121f); }
     .pv-card__wish.is-on i::before { content: "\f415"; } /* bi-heart-fill */
 
-    .pv-card__body { margin-top: -28px; position: relative; z-index: 3; padding: 0 38px; }
+    .pv-card__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; margin: 0; padding: 0 26px 20px; }
     .pv-card__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .pv-card__price { font-size: 18px; font-weight: 800; color: #141a22; white-space: nowrap; }
     .pv-card__buy {
@@ -105,16 +109,17 @@
     @media (max-width: 991px) {
       .pv-hero img { height: 320px; }
       .pv-wrap { padding: 40px 0 96px; }
-      .pv-tabs { gap: 18px; overflow-x: auto; justify-content: flex-start; padding-left: 6px; }
-      .pv-tab { min-width: 110px; font-size: 19px; padding-bottom: 20px; }
+      /* 탭 3개가 화면 폭을 1/3씩 나눠 갖도록 — 좌측 쏠림/우측 빈칸 방지 */
+      .pv-tabs { gap: 0; justify-content: space-between; }
+      .pv-tab { flex: 1 1 0; min-width: 0; font-size: 17px; padding: 0 2px 20px; white-space: nowrap; }
       .pv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 58px 24px; }
-      .pv-card__media { height: 420px; }
-      .pv-card__body { padding: 0 14px; }
+      .pv-card__media { height: 420px; padding-bottom: 68px; }
+      .pv-card__body { padding: 0 14px 16px; }
     }
     @media (max-width: 575px) {
       .pv-hero img { height: 230px; }
       .pv-grid { grid-template-columns: 1fr; }
-      .pv-card__media { height: 430px; }
+      .pv-card__media { height: 430px; padding-bottom: 70px; }
       .pv-card__label { left: 18px; top: 18px; font-size: 19px; }
       .pv-card__price { font-size: 20px; }
       .pv-card__buy { min-width: 104px; padding: 11px 18px; }
@@ -147,60 +152,60 @@
         <!-- Apparels -->
         <div class="pv-grid" data-tab-panel="apparels">
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=apparel-black">
               <img src="assets/img/products/apparel-black.png" alt="블랙 오브 크롭 탑">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="apparel-black" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">248.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">248.000W</span><a class="pv-card__buy" href="product-detail.html?id=apparel-black">Get now</a></div></div>
           </article>
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=apparel-white">
               <img src="assets/img/products/apparel-white.png" alt="화이트 오브 크롭 탑">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="apparel-white" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">312.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">312.000W</span><a class="pv-card__buy" href="product-detail.html?id=apparel-white">Get now</a></div></div>
           </article>
         </div>
 
         <!-- ACC -->
         <div class="pv-grid is-active" data-tab-panel="acc">
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=necklace">
               <img src="assets/img/products/acc-1.jpg" alt="오브 진주 목걸이 실버">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="necklace" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">276.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">276.000W</span><a class="pv-card__buy" href="product-detail.html?id=necklace">Get now</a></div></div>
           </article>
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=necklace&opt=골드">
               <img src="assets/img/products/acc-2.jpg" alt="오브 진주 목걸이 골드">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="necklace" data-wish-opt="골드" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">389.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">389.000W</span><a class="pv-card__buy" href="product-detail.html?id=necklace&opt=골드">Get now</a></div></div>
           </article>
         </div>
 
         <!-- Icheon Rice -->
         <div class="pv-grid" data-tab-panel="rice">
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=rice">
               <img src="assets/img/products/rice-4kg.png" alt="Vivienne Westwood 이천쌀 4kg">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="rice" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">72.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">24.000W</span><a class="pv-card__buy" href="product-detail.html?id=rice">Get now</a></div></div>
           </article>
           <article class="pv-card pv-card--figma">
-            <a class="pv-card__media" href="product-detail.html">
+            <a class="pv-card__media" href="product-detail.html?id=rice&opt=10kg">
               <img src="assets/img/products/rice-10kg.png" alt="Vivienne Westwood 이천쌀 10kg">
-              <button class="pv-card__wish" type="button" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
+              <button class="pv-card__wish" type="button" data-wish="rice" data-wish-opt="10kg" aria-label="위시리스트"><i class="bi bi-heart"></i></button>
             </a>
             <div class="pv-card__body">
-              <div class="pv-card__row"><span class="pv-card__price">72.000W</span><a class="pv-card__buy" href="product-detail.html">Get now</a></div></div>
+              <div class="pv-card__row"><span class="pv-card__price">55.000W</span><a class="pv-card__buy" href="product-detail.html?id=rice&opt=10kg">Get now</a></div></div>
           </article>
         </div>
 
@@ -220,10 +225,16 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/app.js"></script>
-  <!-- 위시리스트 토글 (프론트 흉내) -->
+  <!-- 위시리스트 토글 — vwWish(localStorage)에 저장, 마이페이지 위시 탭과 연동 -->
   <script>
-    document.querySelectorAll('.pv-card__wish').forEach(function(b){
-      b.addEventListener('click', function(e){ e.preventDefault(); b.classList.toggle('is-on'); });
+    document.querySelectorAll('.pv-card__wish[data-wish]').forEach(function (button) {
+      const productId = button.dataset.wish;
+      const optionValue = button.dataset.wishOpt || null;
+      button.classList.toggle('is-on', VW.isWished(productId, optionValue));
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        button.classList.toggle('is-on', VW.toggleWish(productId, optionValue));
+      });
     });
   </script>
 </body>

@@ -56,6 +56,10 @@
     .pd-toast.show { opacity: 1; transform: translate(-50%, 0); }
 
     @media (max-width: 991px) { .pd-grid { grid-template-columns: 1fr; gap: 32px; } }
+    @media (max-width: 575px) {
+      /* 좁은 화면에서 위시+ADD TO CART+Get now 3버튼이 비좁지 않게 */
+      .pd-actions .btn-vw { padding-left: 12px; padding-right: 12px; font-size: 13px; }
+    }
   </style>
 </head>
 
@@ -68,39 +72,22 @@
   <main id="main" class="page">
     <section class="pd-wrap">
       <div class="container">
-        <p class="pd-crumb"><a href="products.html">Products</a> / <a href="products.html#acc">ACC</a> / 오브 진주 목걸이</p>
+        <p class="pd-crumb" id="pdCrumb"><a href="products.html">Products</a></p>
         <div class="pd-grid">
-          <!-- 좌: 이미지 -->
+          <!-- 좌: 이미지 (카탈로그 기준으로 JS가 채움) -->
           <div class="pd-media" data-aos="fade-up">
-            <div class="pd-thumbs">
-              <button class="is-active" data-img="assets/img/products/acc-1.jpg"><img src="assets/img/products/acc-1.jpg" alt=""></button>
-              <button data-img="assets/img/products/acc-2.jpg"><img src="assets/img/products/acc-2.jpg" alt=""></button>
-            </div>
-            <div class="pd-main"><img id="pdMain" src="assets/img/products/acc-1.jpg" alt="오브 진주 목걸이"></div>
+            <div class="pd-thumbs" id="pdThumbs"></div>
+            <div class="pd-main"><img id="pdMain" src="" alt=""></div>
           </div>
 
-          <!-- 우: 정보 + 옵션 -->
+          <!-- 우: 정보 + 옵션 (URL ?id= 상품 기준으로 JS가 채움) -->
           <div class="pd-info" data-aos="fade-up" data-aos-delay="100">
-            <p class="cat">Accessories</p>
-            <h1>오브 진주 목걸이</h1>
-            <p class="pd-price">276,000 W</p>
-            <p class="pd-desc">진주처럼 빛나는 쌀알을 비비안의 오브에 담아낸 콜라보 목걸이. 토성의 고리와 왕관 모티프가 어우러진 시그니처 피스입니다.</p>
+            <p class="cat" id="pdCat"></p>
+            <h1 id="pdName"></h1>
+            <p class="pd-price" id="pdPrice"></p>
+            <p class="pd-desc" id="pdDesc"></p>
 
-            <div class="pd-opt">
-              <label>Color</label>
-              <div class="pd-chips" data-group="color">
-                <button class="pd-swatch is-active" style="background:#d9d9d9" data-val="실버" data-price="276000" data-img="assets/img/products/acc-1.jpg" aria-label="실버"></button>
-                <button class="pd-swatch" style="background:#c9a227" data-val="골드" data-price="389000" data-img="assets/img/products/acc-2.jpg" aria-label="골드"></button>
-              </div>
-            </div>
-            <div class="pd-opt">
-              <label>Size</label>
-              <div class="pd-chips" data-group="size">
-                <button class="pd-chip is-active" data-val="40cm">40cm</button>
-                <button class="pd-chip" data-val="45cm">45cm</button>
-                <button class="pd-chip" data-val="50cm">50cm</button>
-              </div>
-            </div>
+            <div id="pdOpts"></div>
             <div class="pd-opt">
               <label>수량</label>
               <div class="pd-qty">
@@ -134,44 +121,137 @@
   <script src="assets/js/app.js"></script>
   <script>
     (function () {
-      // 썸네일 → 메인 이미지
-      const mainImage = document.getElementById('pdMain');
-      document.querySelectorAll('.pd-thumbs button').forEach(function (b) {
-        b.addEventListener('click', function () {
-          document.querySelectorAll('.pd-thumbs button').forEach(function (x) { x.classList.remove('is-active'); });
-          b.classList.add('is-active'); mainImage.src = b.dataset.img;
-        });
-      });
-      // 옵션 선택
-      document.querySelectorAll('.pd-chips').forEach(function (g) {
-        g.querySelectorAll('button').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            g.querySelectorAll('button').forEach(function (x) { x.classList.remove('is-active'); });
-            btn.classList.add('is-active');
+      // URL ?id=&opt= 로 상품 결정 (카탈로그 = app.js VW.PRODUCTS, 기본값 목걸이)
+      const params = new URLSearchParams(location.search);
+      const productId = VW.PRODUCTS[params.get('id')] ? params.get('id') : 'necklace';
+      const product = VW.PRODUCTS[productId];
 
-            if (btn.dataset.price) {
-              document.querySelector('.pd-price').textContent = (+btn.dataset.price).toLocaleString('ko-KR') + ' W';
-            }
-            if (btn.dataset.img && mainImage) {
-              mainImage.src = btn.dataset.img;
-              document.querySelectorAll('.pd-thumbs button').forEach(function (x) {
-                x.classList.toggle('is-active', x.dataset.img === btn.dataset.img);
-              });
-            }
-          });
+      const requestedOption = product.options.find(function (option) { return option.val === params.get('opt'); });
+      const state = {
+        opt: (requestedOption || product.options[0]).val,
+        size: product.sizes ? product.sizes[0] : null,
+        qty: 1
+      };
+
+      const mainImage = document.getElementById('pdMain');
+      const wishButton = document.getElementById('pdWish');
+
+      function currentOption() {
+        return VW.findOption(productId, state.opt);
+      }
+
+      function setImage(src) {
+        mainImage.src = src;
+        mainImage.alt = product.name;
+        document.querySelectorAll('#pdThumbs button').forEach(function (button) {
+          button.classList.toggle('is-active', button.dataset.img === src);
         });
-      });
+      }
+
+      function renderInfo() {
+        document.title = product.name + ' — Vivienne Westwood × 이천쌀';
+        document.getElementById('pdCrumb').innerHTML =
+          '<a href="products.html">Products</a> / <a href="products.html#' + product.tab + '">' + product.cat + '</a> / ' + product.name;
+        document.getElementById('pdCat').textContent = product.cat;
+        document.getElementById('pdName').textContent = product.name;
+        document.getElementById('pdDesc').textContent = product.desc;
+      }
+
+      function renderThumbs() {
+        const images = product.options.map(function (option) { return option.img; })
+          .filter(function (img, index, all) { return all.indexOf(img) === index; });
+        const thumbsBox = document.getElementById('pdThumbs');
+
+        if (images.length < 2) {
+          // 단일 이미지 상품은 썸네일 칼럼 생략
+          thumbsBox.style.display = 'none';
+          document.querySelector('.pd-media').style.gridTemplateColumns = '1fr';
+        } else {
+          thumbsBox.innerHTML = images.map(function (img) {
+            return '<button type="button" data-img="' + img + '"><img src="' + img + '" alt=""></button>';
+          }).join('');
+          thumbsBox.querySelectorAll('button').forEach(function (button) {
+            button.addEventListener('click', function () { setImage(button.dataset.img); });
+          });
+        }
+        setImage(currentOption().img);
+      }
+
+      function renderOptions() {
+        const optionsBox = document.getElementById('pdOpts');
+        let html = '<div class="pd-opt"><label>' + product.optionLabel + '</label><div class="pd-chips" data-group="opt">' +
+          product.options.map(function (option) {
+            if (option.hex) {
+              return '<button type="button" class="pd-swatch" style="background:' + option.hex + '" data-val="' + option.val + '" aria-label="' + option.val + '"></button>';
+            }
+            return '<button type="button" class="pd-chip" data-val="' + option.val + '">' + option.val + '</button>';
+          }).join('') + '</div></div>';
+
+        if (product.sizes) {
+          html += '<div class="pd-opt"><label>' + product.sizeLabel + '</label><div class="pd-chips" data-group="size">' +
+            product.sizes.map(function (size) {
+              return '<button type="button" class="pd-chip" data-val="' + size + '">' + size + '</button>';
+            }).join('') + '</div></div>';
+        }
+        optionsBox.innerHTML = html;
+
+        optionsBox.querySelectorAll('[data-group="opt"] button').forEach(function (button) {
+          button.addEventListener('click', function () { state.opt = button.dataset.val; syncOption(); });
+        });
+        optionsBox.querySelectorAll('[data-group="size"] button').forEach(function (button) {
+          button.addEventListener('click', function () { state.size = button.dataset.val; syncSize(); });
+        });
+      }
+
+      function syncOption() {
+        document.querySelectorAll('[data-group="opt"] button').forEach(function (button) {
+          button.classList.toggle('is-active', button.dataset.val === state.opt);
+        });
+        document.getElementById('pdPrice').textContent = VW.formatWon(currentOption().price);
+        setImage(currentOption().img);
+        wishButton.classList.toggle('is-on', VW.isWished(productId, state.opt));
+      }
+
+      function syncSize() {
+        document.querySelectorAll('[data-group="size"] button').forEach(function (button) {
+          button.classList.toggle('is-active', button.dataset.val === state.size);
+        });
+      }
+
       // 수량
       const quantityInput = document.getElementById('qty');
-      document.getElementById('qtyPlus').addEventListener('click', function () { quantityInput.value = (+quantityInput.value) + 1; });
-      document.getElementById('qtyMinus').addEventListener('click', function () { if (+quantityInput.value > 1) quantityInput.value = (+quantityInput.value) - 1; });
-      // 위시리스트
-      document.getElementById('pdWish').addEventListener('click', function () { this.classList.toggle('is-on'); });
-      // 장바구니 토스트
+      document.getElementById('qtyPlus').addEventListener('click', function () {
+        state.qty += 1; quantityInput.value = state.qty;
+      });
+      document.getElementById('qtyMinus').addEventListener('click', function () {
+        if (state.qty > 1) { state.qty -= 1; quantityInput.value = state.qty; }
+      });
+
+      // 위시리스트 — vwWish 저장(마이페이지 연동)
+      wishButton.addEventListener('click', function () {
+        wishButton.classList.toggle('is-on', VW.toggleWish(productId, state.opt));
+      });
+
+      // 장바구니 — vwCart 저장(장바구니·주문서 연동)
       const toast = document.getElementById('pdToast');
       document.getElementById('addCart').addEventListener('click', function () {
-        toast.classList.add('show'); setTimeout(function () { toast.classList.remove('show'); }, 1800);
+        VW.addToCart(productId, state.opt, state.size, state.qty);
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 1800);
       });
+
+      // 바로 구매 — 장바구니에 담고 주문서로
+      document.getElementById('getNow').addEventListener('click', function (event) {
+        event.preventDefault();
+        VW.addToCart(productId, state.opt, state.size, state.qty);
+        location.href = 'checkout.html';
+      });
+
+      renderInfo();
+      renderThumbs();
+      renderOptions();
+      syncOption();
+      syncSize();
     })();
   </script>
 </body>

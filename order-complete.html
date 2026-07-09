@@ -39,11 +39,12 @@
       <h1>주문이 완료되었습니다</h1>
       <p>비비안 행성에서 이천 임금님표 쌀이 출발합니다. 주문 내역은 마이페이지에서 확인하실 수 있습니다.</p>
 
+      <!-- 최근 주문(vwOrders)을 JS가 채움 -->
       <div class="oc-card">
-        <div class="row"><span>주문번호</span><span>VW-ICHEON-260617-0001</span></div>
-        <div class="row"><span>주문상품</span><span>오브 진주 목걸이 외 1건</span></div>
-        <div class="row"><span>결제금액</span><span>120,000 W</span></div>
-        <div class="row"><span>배송지</span><span>서울특별시 성동구 …</span></div>
+        <div class="row"><span>주문번호</span><span id="ocNo">—</span></div>
+        <div class="row"><span>주문상품</span><span id="ocItems">—</span></div>
+        <div class="row"><span>결제금액</span><span id="ocTotal">—</span></div>
+        <div class="row"><span>배송지</span><span id="ocAddr">—</span></div>
         <div class="row"><span>예상 배송</span><span>2 – 3일 이내 도착</span></div>
       </div>
 
@@ -63,5 +64,20 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const orders = VW.getOrders();
+      const order = orders[orders.length - 1];
+
+      // 주문 없이 직접 진입하면 주문 흐름의 시작(장바구니)으로
+      if (!order) { location.replace('cart.html'); return; }
+
+      const extraCount = order.items.length - 1;
+      document.getElementById('ocNo').textContent = order.no;
+      document.getElementById('ocItems').textContent = order.items[0].name + (extraCount > 0 ? ' 외 ' + extraCount + '건' : '');
+      document.getElementById('ocTotal').textContent = VW.formatWon(order.total);
+      document.getElementById('ocAddr').textContent = order.addr;
+    })();
+  </script>
 </body>
 </html>

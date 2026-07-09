@@ -40,6 +40,8 @@
     .mp-list-item p { font-size: 12px; color: var(--grey-600); margin: 0; }
     .mp-status { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 20px; background: var(--back-w2); color: var(--grey-800); }
     .mp-status--done { background: #eafaf0; color: #1a8a4f; }
+    .mp-empty { padding: 46px 0; color: var(--grey-600); font-size: 14px; }
+    .mp-empty a { font-weight: 700; color: var(--k-black); text-decoration: underline; text-underline-offset: 3px; }
     @media (max-width: 991px) { .mp-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
@@ -54,8 +56,9 @@
       <div class="container" data-tab-root>
         <div class="mp-top">
           <div class="mp-avatar"><img src="assets/img/brand/orb.svg" alt=""></div>
-          <div><h1>비비안님</h1><p>vivienne@icheon.com</p></div>
-          <a class="out" href="index.html">로그아웃 ›</a>
+          <!-- 로그인한 사용자(vwAuth) 이름·이메일을 JS가 채움 -->
+          <div><h1 id="mpName">회원님</h1><p id="mpEmail"></p></div>
+          <a class="out" href="#" data-logout="1">로그아웃 ›</a>
         </div>
 
         <div class="mp-tabs">
@@ -64,26 +67,19 @@
           <button class="mp-tab" data-tab-target="history">주문 내역</button>
         </div>
 
-        <!-- 위시리스트 -->
+        <!-- 위시리스트 (vwWish 실데이터) -->
         <div class="mp-panel is-active" data-tab-panel="wish">
-          <div class="mp-grid">
-            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/products/acc-1.jpg" alt=""></div><div class="mp-card__b"><h3>오브 진주 목걸이 · 실버</h3><span class="pr">276,000 W</span></div></a>
-            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/products/acc-2.jpg" alt=""></div><div class="mp-card__b"><h3>오브 진주 목걸이 · 골드</h3><span class="pr">389,000 W</span></div></a>
-            <a class="mp-card" href="product-detail.html"><div class="mp-card__img"><img src="assets/img/home/feature-4.jpg" alt=""></div><div class="mp-card__b"><h3>빛나는 쌀알 오브</h3><span class="pr">68,000 W</span></div></a>
-          </div>
+          <div id="mpWish"></div>
         </div>
 
-        <!-- 장바구니 -->
+        <!-- 장바구니 (vwCart 실데이터) -->
         <div class="mp-panel" data-tab-panel="cart">
-          <div class="mp-list-item"><img src="assets/img/products/acc-1.jpg" alt=""><div><h3>오브 진주 목걸이 · 실버</h3><p>Color 실버 / Size 45cm · 수량 1</p></div><span class="pr" style="font-weight:800">276,000 W</span><a class="btn-vw btn-vw--ghost" href="cart.html" style="padding:8px 16px;font-size:13px">구매하기</a></div>
-          <div class="mp-list-item"><img src="assets/img/products/rice-4kg.png" alt=""><div><h3>이천 임금님표 쌀 · 4kg</h3><p>중량 4kg · 수량 2</p></div><span class="pr" style="font-weight:800">48,000 W</span><a class="btn-vw btn-vw--ghost" href="cart.html" style="padding:8px 16px;font-size:13px">구매하기</a></div>
-          <div style="text-align:right;margin-top:24px"><a class="btn-vw btn-vw--solid" href="cart.html">전체 구매</a></div>
+          <div id="mpCart"></div>
         </div>
 
-        <!-- 주문 내역 -->
+        <!-- 주문 내역 (vwOrders 실데이터) -->
         <div class="mp-panel" data-tab-panel="history">
-          <div class="mp-list-item"><img src="assets/img/products/acc-1.jpg" alt=""><div><h3>오브 진주 목걸이 외 1건</h3><p>VW-ICHEON-260617-0001 · 324,000 W</p></div><span class="mp-status mp-status--done">배송완료</span><a class="btn-vw btn-vw--ghost" href="shipping.html" style="padding:8px 16px;font-size:13px">배송확인</a></div>
-          <div class="mp-list-item"><img src="assets/img/products/acc-2.jpg" alt=""><div><h3>오브 진주 목걸이 · 골드</h3><p>VW-ICHEON-260610-0042 · 389,000 W</p></div><span class="mp-status">배송중</span><a class="btn-vw btn-vw--ghost" href="refund.html" style="padding:8px 16px;font-size:13px">환불요청</a></div>
+          <div id="mpHistory"></div>
         </div>
       </div>
     </section>
@@ -97,5 +93,61 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      // 로그인한 사용자만 접근 — 이름/이메일은 vwAuth에서
+      const auth = VW.getAuth();
+      if (!auth) { location.replace('login.html'); return; }
+      document.getElementById('mpName').textContent = auth.name + '님';
+      document.getElementById('mpEmail').textContent = auth.email;
+
+      function emptyHtml(message, withLink) {
+        return '<p class="mp-empty">' + message + (withLink ? ' <a href="products.html">상품 보러 가기 ›</a>' : '') + '</p>';
+      }
+
+      function detailUrl(item) {
+        return 'product-detail.html?id=' + item.id + '&opt=' + encodeURIComponent(item.opt);
+      }
+
+      // 위시리스트
+      const wishItems = VW.getWish()
+        .map(function (item) {
+          const option = VW.findOption(item.id, item.opt);
+          const product = VW.PRODUCTS[item.id];
+          return product && option && { id: item.id, opt: option.val, name: product.name, price: option.price, img: option.img };
+        })
+        .filter(Boolean);
+      document.getElementById('mpWish').innerHTML = wishItems.length
+        ? '<div class="mp-grid">' + wishItems.map(function (item) {
+            return '<a class="mp-card" href="' + detailUrl(item) + '"><div class="mp-card__img"><img src="' + item.img + '" alt=""></div>' +
+              '<div class="mp-card__b"><h3>' + item.name + ' · ' + item.opt + '</h3><span class="pr">' + VW.formatWon(item.price) + '</span></div></a>';
+          }).join('') + '</div>'
+        : emptyHtml('위시리스트가 비어 있습니다.', true);
+
+      // 장바구니
+      const cartLines = VW.getCart().map(function (line) { return VW.resolveCartLine(line); }).filter(Boolean);
+      document.getElementById('mpCart').innerHTML = cartLines.length
+        ? cartLines.map(function (line) {
+            return '<div class="mp-list-item"><img src="' + line.img + '" alt=""><div><h3>' + line.name + ' · ' + line.opt + '</h3>' +
+              '<p>' + line.optionText + ' · 수량 ' + line.qty + '</p></div>' +
+              '<span class="pr" style="font-weight:800">' + VW.formatWon(line.price * line.qty) + '</span>' +
+              '<a class="btn-vw btn-vw--ghost" href="cart.html" style="padding:8px 16px;font-size:13px">구매하기</a></div>';
+          }).join('') + '<div style="text-align:right;margin-top:24px"><a class="btn-vw btn-vw--solid" href="cart.html">전체 구매</a></div>'
+        : emptyHtml('장바구니가 비어 있습니다.', true);
+
+      // 주문 내역 (최신순)
+      const orders = VW.getOrders().slice().reverse();
+      document.getElementById('mpHistory').innerHTML = orders.length
+        ? orders.map(function (order) {
+            const extraCount = order.items.length - 1;
+            const title = order.items[0].name + (extraCount > 0 ? ' 외 ' + extraCount + '건' : ' · ' + order.items[0].opt);
+            return '<div class="mp-list-item"><img src="' + order.items[0].img + '" alt=""><div><h3>' + title + '</h3>' +
+              '<p>' + order.no + ' · ' + VW.formatWon(order.total) + '</p></div>' +
+              '<span class="mp-status">배송중</span>' +
+              '<a class="btn-vw btn-vw--ghost" href="shipping.html" style="padding:8px 16px;font-size:13px">배송확인</a></div>';
+          }).join('')
+        : emptyHtml('주문 내역이 없습니다.', false);
+    })();
+  </script>
 </body>
 </html>
