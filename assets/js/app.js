@@ -225,8 +225,11 @@
         toggle.classList.toggle("bi-x");
         // 헤더의 backdrop-filter(스크롤 시 블러)가 fixed 오버레이의 기준을 헤더로 바꿔
         // 메뉴가 헤더 높이에 갇히는 문제 → 열림 동안 nav-open으로 블러를 끈다(custom.css)
+        // body에도 토글: back-to-top(z-index 99999) 숨김 등 헤더 밖 요소 제어용
+        const isOpen = navbar.classList.contains("navbar-mobile");
         const header = document.getElementById("header");
-        if (header) header.classList.toggle("nav-open", navbar.classList.contains("navbar-mobile"));
+        if (header) header.classList.toggle("nav-open", isOpen);
+        document.body.classList.toggle("nav-open", isOpen);
         return;
       }
 

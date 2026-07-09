@@ -280,6 +280,30 @@ a:hover {
 /* 오버레이 색: 템플릿 남색(rgba(17,38,48,.9)) → 브랜드 블랙 톤 */
 .navbar-mobile { background: rgba(16, 16, 16, 0.6); }
 .navbar-mobile ul { background: var(--white); }
+/* 홈 최상단(투명 헤더)에서 메뉴를 열면 위의 "투명 헤더 = 흰 글자" 규칙이
+   흰 패널 위에 그대로 적용돼 항목이 안 보였다 → 오버레이 열림 상태에선 항상 진한 색 */
+#header.header-transparent:not(.header-scrolled) .navbar.navbar-mobile > ul > li > a {
+  color: var(--grey-800);
+}
+#header.header-transparent:not(.header-scrolled) .navbar.navbar-mobile > ul > li > a:hover,
+#header.header-transparent:not(.header-scrolled) .navbar.navbar-mobile .active {
+  color: var(--k-black);
+}
+#header.header-transparent:not(.header-scrolled) .navbar.navbar-mobile .nav-auth .btn-signup {
+  color: var(--k-black);
+  background: transparent;
+}
+#header.header-transparent:not(.header-scrolled) .navbar.navbar-mobile .nav-auth .btn-login {
+  background: var(--k-black);
+  color: var(--white);
+  border-color: var(--k-black);
+}
+/* 메뉴 열림 동안 back-to-top(z-index 99999, 원본)이 패널 위에 뜨지 않게 숨김
+   (app.js가 body에도 nav-open을 토글) */
+body.nav-open .back-to-top {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
 /* 데스크톱용 호버/활성 밑줄(::after)은 모바일 패널에서 끔 */
 .navbar-mobile > ul > li > a::after { display: none; }
 .navbar-mobile a,
