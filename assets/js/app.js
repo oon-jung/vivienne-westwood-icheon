@@ -57,7 +57,7 @@
           <div class="col-lg-4 footer-member">
             <h4>김운정 <small>Kim Woonjung</small></h4>
             <ul>
-              <li><img class="sns-ic sns-ic--ig" src="assets/img/icons/instagram.svg" alt="Instagram"><a href="https://instagram.com/woonjvng" target="_blank" rel="noopener">@woonjvng</a></li>
+              <li><img class="sns-ic sns-ic--ig" src="assets/img/icons/instagram.svg" alt="Instagram"><a href="https://www.instagram.com/oonjvng/" target="_blank" rel="noopener">@oonjvng</a></li>
               <li><img class="sns-ic sns-ic--no" src="assets/img/icons/notion.svg" alt="Notion"><a href="https://app.notion.com/014c604dc2e3835da694818cc00304d7?source=copy_link" target="_blank" rel="noopener">app.notion.com/014c604dc2e3835da694818cc00304d7</a></li>
             </ul>
           </div>

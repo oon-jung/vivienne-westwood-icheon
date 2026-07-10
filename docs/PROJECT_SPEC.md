@@ -116,7 +116,7 @@ Archive → 뉴스 / 인터뷰 / 갤러리
 로고 + 멤버 2인 SNS:
 
 신하현 — IG @ha_yeah_thats_my_name, LinkedIn linkedin.com/in/hahyun-shin-77b9712a8
-김운정 — IG @woonjvng, Notion(복사 링크)
+김운정 — IG @oonjvng, Notion(복사 링크)
 
 
 

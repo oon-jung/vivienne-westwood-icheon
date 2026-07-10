@@ -221,7 +221,7 @@ Stores: stores.html (매장 2곳 + Google 지도 임베드 + 전화 tel 링크)
 - 이천 3대 축제 공식 사이트 직접 연동:
   icheondoja.kr (도자기) · 2104sansooyou.com (산수유) · ricefestival.or.kr (쌀문화).
 - 상품 가격 현실화: 어패럴/ACC를 248,000 / 312,000 / 276,000 / 389,000 처럼 실제 가격대로 직접 책정(초기 일괄 72,000 더미값에서 교정), 쌀은 72,000원대 유지.
-- 푸터 멤버 SNS를 실제 본인 계정으로 입력: 신하현 @ha_yeah_thats_my_name + LinkedIn, 김운정 @woonjvng + Notion.
+- 푸터 멤버 SNS를 실제 본인 계정으로 입력: 신하현 @ha_yeah_thats_my_name + LinkedIn, 김운정 @oonjvng + Notion.
   (개인 실계정 → 본인이 직접 넣은 정보임이 명확)
 
 세부 디테일 교정 (렌더를 직접 보고 발견·지시)
