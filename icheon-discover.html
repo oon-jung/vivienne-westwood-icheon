@@ -13,7 +13,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/custom.css?v=20260710b" rel="stylesheet">
+  <link href="assets/css/custom.css?v=20260710c" rel="stylesheet">
   <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
 
   <style>
@@ -33,27 +33,37 @@
     .disc-panel.is-active { display: block; }
     .disc-panel img { width: 100%; height: auto; display: block; }
 
+    .disc-hint { display: none; }
+
     @media (max-width: 575px) {
+      /* 탭 3개를 한 줄에 — 두 줄로 갈라지던 그리드 배치 제거 */
       .disc-tabs {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px 12px;
-        width: 100%;
+        gap: 26px;
+        margin-bottom: 24px;
       }
       .disc-tab {
-        font-size: 11px;
-        padding-left: 0;
-        padding-right: 0;
-        text-align: center;
-        white-space: normal;
-        line-height: 1.2;
-        min-height: 2.4em;
-      }
-      .disc-tab:nth-of-type(3) {
-        grid-column: 1 / -1;
+        font-size: 14px;
+        padding: 0 2px 8px;
+        white-space: nowrap;
       }
       .disc-tab__full { display: none; }
       .disc-tab__short { display: inline; }
+
+      /* 콜라주: 축소해 통째로 구겨넣지 않고, 높이 기준으로 크게 두고 가로 스와이프 */
+      .disc-stage {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 calc(var(--bs-gutter-x, 1.5rem) / -2);
+        border-radius: 0;
+      }
+      .disc-panel img { width: auto; height: 620px; max-width: none; }
+      .disc-hint {
+        display: block;
+        margin: 14px 0 0;
+        text-align: center;
+        font-size: 12px;
+        color: var(--grey-600);
+      }
     }
   </style>
 </head>
@@ -95,6 +105,7 @@
             <img src="assets/img/icheon/disc/collage-families.jpg" alt="For Families — 설봉공원 · 시몬스테라스 · 이진상회">
           </div>
         </div>
+        <p class="disc-hint" aria-hidden="true">← 옆으로 밀어 콜라주 전체를 살펴보세요 →</p>
       </div>
     </section>
 
@@ -115,7 +126,7 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/app.js?v=20260710b"></script>
+  <script src="assets/js/app.js?v=20260710c"></script>
   <script>
     (function () {
       // 코스(커플/친구/가족)는 탭 버튼으로 전환. 제목 화살표 = 이천 3개 페이지 무한 순환.

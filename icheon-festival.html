@@ -13,7 +13,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/custom.css?v=20260710b" rel="stylesheet">
+  <link href="assets/css/custom.css?v=20260710c" rel="stylesheet">
   <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
 
   <style>
@@ -35,22 +35,20 @@
     .festival-panel__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .festival-panel::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
     .festival-panel--ceramic::after { background: linear-gradient(to bottom, rgba(0,0,0,0) 18%, rgba(0,0,0,.88) 100%); }
-    .festival-panel--sansuyu { align-items: center; }
-    .festival-panel--sansuyu::after { background: linear-gradient(to right, rgba(0,0,0,0) 28%, rgba(0,0,0,.92) 100%); }
+    /* 산수유도 도자기·쌀과 동일한 하단 정렬 + 하단 그라디언트 (링크가 제목에 붙고
+       정렬이 어긋나 보이던 우측 정렬 전용 레이아웃 제거) */
+    .festival-panel--sansuyu::after { background: linear-gradient(to bottom, rgba(0,0,0,0) 18%, rgba(0,0,0,.88) 100%); }
     .festival-panel--rice::after { background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 65%); }
     .festival-panel--ceramic .festival-panel__image img { object-position: center 34%; }
     .festival-panel--sansuyu .festival-panel__image img { object-position: center; }
     .festival-panel--rice .festival-panel__image img { object-position: center 68%; }
 
-    .festival-panel__content { width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding: 0 0 56px; color: #fff; }
-    .festival-panel--sansuyu .festival-panel__content { padding: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+    .festival-panel__content { width: min(1240px, calc(100% - 80px)); margin: 0 auto; padding: 48px 0 56px; color: #fff; }
     .festival-panel--rice .festival-panel__content { padding-bottom: 90px; }
-    .festival-panel__desc { max-width: 760px; margin: 0 0 30px; color: #fff; font-size: 16px; line-height: 1.4; }
-    .festival-panel--sansuyu .festival-panel__desc { max-width: 1040px; margin: 0; }
+    .festival-panel__desc { max-width: 760px; margin: 0 0 30px; color: #fff; font-size: 16px; line-height: 1.55; }
     .festival-panel__rule { width: 100%; height: 1px; margin: 0 0 30px; background: rgba(255,255,255,.85); }
-    .festival-panel--sansuyu .festival-panel__rule { margin: 30px 0; }
     .festival-panel__row { display: flex; align-items: center; justify-content: space-between; gap: 38px; width: 100%; }
-    .festival-panel h2 { margin: 0; color: #fff; font-size: clamp(52px, 6.65vw, 96px); font-weight: 800; line-height: 1; letter-spacing: .2px; }
+    .festival-panel h2 { margin: 0; color: #fff; font-size: clamp(52px, 6.65vw, 96px); font-weight: 800; line-height: 1.08; letter-spacing: .2px; word-break: keep-all; }
     .festival-panel__line { flex: 1 1 220px; max-width: 400px; height: 1px; background: #fff; position: relative; }
     .festival-panel__line::after { content: ""; position: absolute; right: 0; top: 50%; width: 15px; height: 15px; border-top: 2px solid #fff; border-right: 2px solid #fff; transform: translateY(-50%) rotate(45deg); }
     .festival-panel__link { color: #fff; font-size: 16px; line-height: 1.4; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
@@ -62,7 +60,6 @@
       .festival-panel__content { width: min(100% - 40px, 720px); padding-bottom: 44px; }
       .festival-panel__row { align-items: flex-start; flex-direction: column; gap: 18px; }
       .festival-panel__line { display: none; }
-      .festival-panel--sansuyu .festival-panel__content { align-items: flex-start; text-align: left; }
       .festival-panel--sansuyu::after { background: linear-gradient(to bottom, rgba(0,0,0,.12) 0%, rgba(0,0,0,.88) 100%); }
     }
     @media (max-width: 575px) {
@@ -71,9 +68,11 @@
       .festival-hero .ic-hero-nav__sub { max-width: 300px; margin-left: auto; margin-right: auto; font-size: 16px; white-space: normal; overflow-wrap: break-word; }
       .festival-panel { min-height: 520px; }
       .festival-panel__content { width: calc(100vw - 40px); max-width: calc(100vw - 40px); }
-      .festival-panel h2 { font-size: 42px; white-space: normal; }
-      .festival-panel__desc { width: 100%; max-width: 100%; font-size: 14px; line-height: 1.5; word-break: break-all; overflow-wrap: anywhere; }
+      .festival-panel h2 { font-size: 40px; white-space: normal; line-height: 1.15; }
+      /* break-all은 단어 중간을 끊어 문장이 밀려 보이던 원인 — 한글 어절 단위 유지 */
+      .festival-panel__desc { width: 100%; max-width: 100%; font-size: 14px; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
       .festival-panel__desc br { display: none; }
+      .festival-panel__content { padding-top: 56px; }
     }
   </style>
 </head>
@@ -125,14 +124,17 @@
           <img src="assets/img/icheon/festival-sansuyu.jpg" alt="">
         </div>
         <div class="festival-panel__content" data-aos="fade-up">
-          <h2>이천백사<br>산수유꽃축제</h2>
-          <a class="festival-panel__link" href="https://2104sansooyou.com" target="_blank" rel="noopener">Check out the link</a>
-          <div class="festival-panel__rule" aria-hidden="true"></div>
           <p class="festival-panel__desc">
             이천백사 산수유꽃축제는 백사면 산수유마을에서 열리는 봄꽃 축제입니다.<br>
             백사면 도립리, 송말리, 경사리 일대에는 수령 100년이 넘는 산수유나무 군락지가 형성되어 있어, 초봄이면 마을 전체가 노란 꽃으로 물듭니다.<br>
             축제에서는 산수유꽃길 산책, 포토존, 공연, 만들기 체험, 전통놀이, 지역 먹거리 등을 함께 즐길 수 있습니다.
           </p>
+          <div class="festival-panel__rule" aria-hidden="true"></div>
+          <div class="festival-panel__row">
+            <h2>이천백사 산수유꽃축제</h2>
+            <span class="festival-panel__line" aria-hidden="true"></span>
+            <a class="festival-panel__link" href="https://2104sansooyou.com" target="_blank" rel="noopener">Check out the link</a>
+          </div>
         </div>
       </article>
 
@@ -173,7 +175,7 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/app.js?v=20260710b"></script>
+  <script src="assets/js/app.js?v=20260710c"></script>
   <script>
     (function () {
       const panels = Array.from(document.querySelectorAll('.festival-panel'));

@@ -13,14 +13,16 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/custom.css?v=20260710b" rel="stylesheet">
+  <link href="assets/css/custom.css?v=20260710c" rel="stylesheet">
   <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
 
   <style>
     #main.page { margin-top: var(--header-h); }
+    /* 히어로: 사진이 주인공 — 낮은 띠(250px)+진한 오버레이(.8)로 잘려 보이던 것을
+       큰 캔버스(460px)+가벼운 그라디언트로 교체 */
     .st-hero {
       position: relative;
-      height: 250px;
+      height: 460px;
       overflow: hidden;
       color: var(--white);
     }
@@ -32,14 +34,16 @@
       display: block;
     }
     .st-hero__img {
-      transform: scale(1.2);
-      transform-origin: center;
+      /* height:100%가 340px로 풀리는 % 기준 문제 회피 — 절대배치로 히어로에 완전 밀착 */
+      position: absolute;
+      inset: 0;
+      object-position: center 38%;
     }
     .st-hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.8) 0%, rgba(102,102,102,.8) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.16) 45%, rgba(0,0,0,.5) 100%);
     }
     .st-hero__inner {
       position: absolute;
@@ -53,16 +57,16 @@
       gap: 110px;
     }
     .st-hero h1 {
-      font-size: 24px;
+      font-size: 30px;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.3;
       margin: 0;
       white-space: nowrap;
       color: #fff;
     }
     .st-hero p {
       font-size: 16px;
-      line-height: 1.2;
+      line-height: 1.65;
       margin: 0;
       width: 220px;
       color: #fff;
@@ -220,13 +224,22 @@
     }
 
     @media (max-width: 991px) {
+      .st-hero { height: 400px; }
       .st-hero__inner {
         grid-template-columns: 1fr;
         width: min(100% - 48px, 420px);
-        gap: 18px;
+        gap: 14px;
         align-content: center;
       }
-      .st-hero p { width: auto; }
+      .st-hero h1 { font-size: 28px; }
+      .st-hero p { width: auto; font-size: 15px; line-height: 1.7; }
+      /* 모바일 타이포: 행간을 본문 기준(1.5~1.6)으로, 항목 사이 리듬 통일 */
+      .st-store__name h2 { font-size: 19px; line-height: 1.45; }
+      .st-store__name p { font-size: 14px; line-height: 1.5; }
+      .st-address { font-size: 14px; line-height: 1.55; gap: 6px; }
+      .st-store__contact { font-size: 14px; line-height: 1.5; }
+      .st-store__contact dd { font-size: 16px; }
+      .st-store + .st-store { margin-top: 72px; }
       br.st-mobile-break { display: block; }
       .st-store {
         grid-template-rows: auto auto;
@@ -377,6 +390,6 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/app.js?v=20260710b"></script>
+  <script src="assets/js/app.js?v=20260710c"></script>
 </body>
 </html>

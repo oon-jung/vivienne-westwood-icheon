@@ -313,6 +313,21 @@ body.nav-open .back-to-top {
 }
 /* 데스크톱용 호버/활성 밑줄(::after)은 모바일 패널에서 끔 */
 .navbar-mobile > ul > li > a::after { display: none; }
+/* 드롭다운 화살표: 본문과 같은 진한 색·충분한 크기로 우측 끝 정렬
+   (기본 상태는 가늘고 작아 아이콘이 빠진 것처럼 보이던 문제) */
+.navbar-mobile > ul > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.navbar-mobile .dropdown > a > i.bi-chevron-down {
+  font-size: 16px;
+  line-height: 1;
+  margin-left: 12px;
+  color: currentColor;
+  -webkit-text-stroke: 0.7px currentColor;
+}
 .navbar-mobile a,
 .navbar-mobile a:focus { color: var(--grey-800); }
 .navbar-mobile a:hover,
@@ -989,6 +1004,14 @@ body.nav-open .back-to-top {
   .hero-home .hero-actions-wrap { justify-content: center; align-items: flex-end; padding-bottom: 90px; }
 }
 @media (max-width: 767px) {
+  /* Features 모바일: 상하 패딩 통일 + 이미지-리스트 사이 과대 여백 제거
+     (stage margin 36px + g-5 세로 거터 48px ≈ 90px → 거터만 남김) */
+  .features { padding: 56px 0 64px; }
+  .feature-stage { margin-bottom: 0; }
+  .feature-stage__img { height: 340px; }
+  .ph--feature { height: 340px; }
+  .feature-stage__sub { margin-bottom: 16px; }
+  .feature-list__item { padding: 20px 10px; }
   .home-cta__img {
     height: 400px;
     object-fit: cover;
