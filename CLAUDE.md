@@ -169,6 +169,8 @@ WEB_Final/
 ---
 
 # 🗒 변경 이력 (최신이 위 / 한 줄씩)
+- 2026-07-10 | 홈 Feature 3번(콜라보 로고 아카이브) 이미지를 Figma 36-5355 원본 에셋(보라 퍼 진주 자수 아트워크)으로 교체 — Figma에서 원본 PNG(2400×1792) 다운로드 후 `assets/img/home/feature-logo.jpg`(1400px, 627KB)로 압축, index.html data-img 교체 | Chrome 확장으로 Figma 실물 확인, 웹·모바일 렌더 검증
+- 2026-07-10 | 푸터 링크드인·노션 표기를 Figma 38-6xxx 디자인대로 "아이콘+전체 URL"로 변경 (기존 짧은 라벨 → www.linkedin.com/in/... · https://app.notion.com/...) | Figma 푸터 실물 대조, 캐시버스터 v=20260710b
 - 2026-07-10 | products 카드 가격+Get now를 카드 "안"으로 (Figma 6-4232/6-4236 요청) — 제품 이미지 4종(apparel-black/white, rice-4kg/10kg) 배경을 acc와 동일한 #EDEDED로 플러드필(PIL, 흰 옷 실루엣 보존: 외곽 플러드+작은 얼룩 성분만 채움) + `.pv-card__media` 배경 #ededed로 카드가 한 덩어리로 보이게 | 웹 1460·모바일 390 스크린샷으로 3개 탭 전부 확인
 - 2026-07-10 | 푸터 링크드인·노션 아이콘 복원 — app.js FOOTER_HTML에 `sns-ic--li/--no` img 추가(기존 `.sns-ic` CSS 자리 그대로, 예전 "잘림"은 재현 안 됨) | 데스크톱·모바일 렌더 확인, 링크는 기존 URL 유지
 - 2026-07-10 | 전 페이지 vendor 스크립트 세트를 index.html과 동일하게 통일 — main.js(원본 IIFE)가 Swiper/PureCounter 미정의 예외로 중간에 죽어 그 아래 AOS 초기화 등이 전 서브페이지에서 안 돌던 문제 해소, login/signup에 favicon 링크 추가(/favicon.ico 404 제거) | 헤드리스 CDP로 21페이지 콘솔 에러 0 확인
