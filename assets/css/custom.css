@@ -51,7 +51,14 @@
    뷰포트를 넘어도 가로 스크롤이 생기지 않게 문서 차원에서 잘라낸다. */
 html,
 body {
+  overflow-x: hidden; /* iOS 16 미만 Safari 폴백(clip 미지원) */
   overflow-x: clip;
+}
+
+/* iOS에서 좌우로 밀었을 때 바운스로 옆 흰 배경이 드러나는 것 방지 */
+html,
+body {
+  overscroll-behavior-x: none;
 }
 
 body {
