@@ -13,7 +13,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/custom.css?v=20260710c" rel="stylesheet">
+  <link href="assets/css/custom.css?v=20260710d" rel="stylesheet">
   <!-- Moderna template — https://bootstrapmade.com/  License: https://bootstrapmade.com/license/ -->
 
   <style>
@@ -233,13 +233,17 @@
       }
       .st-hero h1 { font-size: 28px; }
       .st-hero p { width: auto; font-size: 15px; line-height: 1.7; }
-      /* 모바일 타이포: 행간을 본문 기준(1.5~1.6)으로, 항목 사이 리듬 통일 */
-      .st-store__name h2 { font-size: 19px; line-height: 1.45; }
-      .st-store__name p { font-size: 14px; line-height: 1.5; }
-      .st-address { font-size: 14px; line-height: 1.55; gap: 6px; }
-      .st-store__contact { font-size: 14px; line-height: 1.5; }
-      .st-store__contact dd { font-size: 16px; }
-      .st-store + .st-store { margin-top: 72px; }
+      /* 모바일 타이포: 행간을 넉넉하게(1.7 안팎) + 블록 사이 호흡 확보 */
+      .st-store__name h2 { font-size: 19px; line-height: 1.5; margin-bottom: 8px; }
+      .st-store__name p { font-size: 14px; line-height: 1.6; }
+      .st-store__name { margin-bottom: 22px; }
+      .st-address { font-size: 14px; line-height: 1.75; gap: 10px; }
+      .st-address__link { margin-top: 16px; }
+      .st-store__contact { font-size: 14px; line-height: 1.7; gap: 22px; }
+      .st-store__contact dt { margin-bottom: 6px; }
+      .st-store__contact dd { font-size: 16px; letter-spacing: .05em; }
+      .st-store__info { gap: 34px; margin-bottom: 36px; }
+      .st-store + .st-store { margin-top: 84px; }
       br.st-mobile-break { display: block; }
       .st-store {
         grid-template-rows: auto auto;
@@ -252,13 +256,6 @@
       .st-store__main,
       .st-store__contact {
         padding: 0;
-      }
-      .st-store__info {
-        gap: 28px;
-        margin-bottom: 32px;
-      }
-      .st-store__contact {
-        gap: 18px;
       }
       .st-store__photos {
         height: auto;
@@ -390,6 +387,6 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/app.js?v=20260710c"></script>
+  <script src="assets/js/app.js?v=20260710d"></script>
 </body>
 </html>
